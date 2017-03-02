@@ -1,0 +1,2 @@
+#from cms root
+phpdoc -d lib -f README.txt,CHANGELOG.txt -t docs --pear on -ric README.txt,CHANGELOG.txt --title "Seagull CMS API Docs" --output "HTML:Smarty:HandS"

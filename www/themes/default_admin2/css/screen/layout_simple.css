@@ -1,0 +1,25 @@
+
+/**
+ * Simple layout.
+ *
+ * @package admin
+ * @author Dmitri Lakachauskis <lakiboy83@gmail.com>
+ */
+
+  #page_margins {
+    /*
+    min-width: 500px;
+    max-width: 500px;
+    */
+    width: 500px;
+  }
+
+  #col1 {
+    margin-bottom: 25px;
+    width: auto;
+    float: none;
+  }
+
+  #nav_main, #greeting {
+    display: none;
+  }

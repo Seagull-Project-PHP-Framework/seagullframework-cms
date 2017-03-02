@@ -1,0 +1,45 @@
+<div id="content-activity" class="columns layout-2cols">
+
+    <div class="title-edit-simple" flexy:if="oUser">
+        <h1>{tr(#activity of user %username%#,#vprintf#,oUser)}</h1>
+        <span>
+            <a href="{makeUrl(##,#cmsactivity#,#simplecms#)}">{tr(#show activity of all users#)}</a>
+        </span>
+    </div>
+
+    <div class="c75l list">
+        <div class="layout-inner">
+
+            <!-- Actions:
+                * create new content item
+                * updated content (specific version)
+            -->
+
+            <div class="date-container" flexy:foreach="aContents,date,aItems">
+                <h2>{formatDate2Pretty(date)}</h2>
+                <ul>
+                    <li flexy:raw="{this.plugin(#getContentRowStyle#):h}"
+                        flexy:foreach="aItems,oItem">
+                        <em>{formatTime(oItem.last_updated)}</em>
+                        <span>{this.plugin(#getContentLangIcon#,oItem.language_id):h}</span>
+                        {this.plugin(#getContentActivityMessage#,oItem,aContentTypes,redir):h}
+                    </li>
+                </ul>
+            </div>
+
+            <p class="pager" flexy:if="pagerLinks">{pagerLinks:h}</p>
+
+            <p flexy:if="!aContents">
+                {tr(#no activity found#)}
+            </p>
+
+        </div><!-- inner -->
+    </div><!-- list -->
+
+    <div class="c25r">
+
+        <flexy:include src="block_activity_usersearch.html" />
+
+    </div>
+
+</div><!-- content-activity -->

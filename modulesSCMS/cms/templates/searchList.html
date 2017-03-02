@@ -1,0 +1,55 @@
+<div class="moduleContainer" id="cmsContainer" flexy:ignore>
+    <div class="moduleContent full">
+        <div class="wrap">
+            <h1>{translate(pageTitle)}</h1>
+            <div class="message" id="ajaxMessage">{msgGet()}</div>
+
+            <div class="moduleToolbar">
+                <div class="cmsBox">
+                    <form method="post" action="" flexy:ignore>
+                        <fieldset class="hide">
+                            <input type="hidden" name="action" value="search" />
+                            <input type="hidden" name="submitted" value="1" />
+                        </fieldset>
+                        <fieldset>
+                            <dl class="onTop">
+                                <dt><label for="cms_search">{translate(#Enter search text#)}</label></dt>
+                                <dd>
+                                    <div class="error" flexy:if="error[pattern]">{error[pattern]}</div>
+                                    <input id="cms_search" class="text" type="text" name="pattern" />
+                                </dd>
+                                <dt><!-- --></dt>
+                                <dd>
+                                    <input type="submit" name="submit" value="Search" />
+                                </dd>
+                            </dl>
+                        </fieldset>
+                        <p><strong>{translate(#Current search text#)}</strong>: {currentPattern}</p>
+                    </form>
+                </div>
+            </div>
+
+                    {if:aContentTypes}
+                    <table class="full" id="contentListTable">
+                        <!-- TABLE HEADER -->
+                        <thead>
+                            <flexy:include src="_contentListTableHead.html">
+                        </thead>
+                        <tfoot>
+                            <tr class="tfoot">
+                                <td colspan="99"></td>
+                            </tr>
+                        </tfoot>
+                        <tbody id="contentList-items">
+                        {foreach:aContentTypes,aContents}
+                            <flexy:include src="contentList_items.html" />
+                        {end:}
+                        </tbody>
+                    </table>
+
+                    {else:}
+                    <p>Specify the search text.</p>
+                    {end:}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,279 @@
+/**
+ * Status container.
+ */
+ul.status-container {
+  margin: 0;
+  list-style: none;
+}
+  ul.status-container li {
+    margin: 0;
+  }
+  ul.status-container li a {
+    display: block;
+    padding-left: 20px;
+  }
+  span.status-edited,
+  ul.status-container li.edited a {
+    background: url(<?= $baseUrl ?>/images/icons/flag_white.gif) no-repeat left center;
+  }
+  span.status-approval,
+  ul.status-container li.approval a {
+    background: url(<?= $baseUrl ?>/images/icons/flag_blue.gif) no-repeat left center;
+  }
+  span.status-approved,
+  ul.status-container li.approved a {
+    background: url(<?= $baseUrl ?>/images/icons/flag_orange.gif) no-repeat left center;
+  }
+  span.status-published,
+  ul.status-container li.published a {
+    background: url(<?= $baseUrl ?>/images/icons/flag_green.gif) no-repeat left center;
+  }
+  span.status-archived,
+  span.status-deleted,
+  ul.status-container li.archived a,
+  ul.status-container li.deleted a {
+    background: url(<?= $baseUrl ?>/images/icons/flag_red.gif) no-repeat left center;
+  }
+
+/**
+ * Statuses block.
+ */
+#content-status-legend li a {
+  color: #000;
+  text-decoration: none;
+}
+#content-status-legend li a:hover {
+  text-decoration: underline;
+}
+
+/**
+ * Content filter.
+ */
+#content-filter li {
+  margin: 0 0 0.5em 0;
+}
+
+/**
+ * Lang/revision version bocks.
+ */
+#content-version dt {
+  width: 60px;
+  #font-size: 0.9em;
+}
+  #content-version dd a.version,
+  #content-version-lang li a {
+    text-decoration: none;
+  }
+  #content-version dd a:hover,
+  #content-version dd.current a.version,
+  #content-version-lang li a:hover,
+  #content-version-lang li.current a {
+    text-decoration: underline;
+  }
+  #content-version dd.current a.version,
+  #content-version-lang li.current a {
+    color: #000;
+  }
+
+#content-activity-filter fieldset input.text {
+  width: 150px;
+}
+#content-activity-filter fieldset ol li {
+  padding: 0;
+}
+
+
+/**
+ * Preview block.
+ */
+#content-preview input.button {
+  font-size: 1.5em;
+}
+
+
+/**
+ * Categories block.
+ */
+#content-categories select {
+  width: 99%;
+  height: 120px;
+}
+
+/**
+ * Content list
+ */
+#content-container .layout-inner {
+  position: relative;
+}
+
+#content-list.locked {
+  opacity: 0.5;
+}
+  #content-list th a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+#content-list-loader {
+  position: absolute;
+  left: 50%;
+  top: 25px;
+  margin-left: -28px;
+}
+
+  /* Status */
+  #content-list .status-cell {
+  }
+    #content-list .status-cell .status-current {
+      float: left;
+      width: 10px;
+      height: 15px;
+      padding-right: 10px;
+    }
+    /* Specific context menu */
+    #content-list .status-cell div.context-menu ul.status-container a {
+      padding-left: 25px;
+      background-position: 5px center;
+      white-space: nowrap;
+    }
+    #content-list .status-cell div.context-menu ul.status-container a:hover {
+      background-color: #ff9;
+    }
+
+  /* Version/Language */
+  #content-list .version-cell,
+  #content-list .lang-cell {
+  }
+    #content-list .version-cell .version-current,
+    #content-list .lang-cell .lang-current {
+      float: left;
+      margin-right: 5px;
+    }
+
+/**
+ * Content activity.
+ */
+#content-activity .list {
+}
+  #content-activity .list .date-container {
+  }
+    /**
+     * Make below styles generic?
+     */
+    #content-activity .list .date-container h2 {
+      padding: 0.4em 5px 0.2em;
+      background-color: #ff9;
+      font-size: 1.1em;
+      font-weight: normal;
+    }
+    #content-activity .list .date-container ul {
+      list-style: none;
+      margin: 0 0 1em 0;
+    }
+    #content-activity .list .date-container li {
+      position: relative;
+      margin: 0;
+      padding: 0.3em 0 0.2em 65px;
+    }
+      #content-activity .list .date-container li em {
+        position: absolute;
+        left: 5px;
+        top: 0.5em;
+        font-size: 0.9em;
+        font-style: normal;
+        color: #333;
+      }
+      #content-activity .list .date-container li span {
+        position: absolute;
+        left: 40px;
+        top: 0.6em;
+      }
+
+
+/**
+ * Attribute lists.
+ */
+#attrib-list form.editmode {
+}
+  #attrib-list form.editmode .subcolumns {
+    padding-top: 0.5em;
+  }
+    /* new field form */
+      #attrib-list form.editmode .subcolumns .newfield .fieldIndent {
+        margin-left: 0;
+        text-align: right;
+      }
+    /* current fields form */
+      #attrib-list form.editmode .subcolumns .fields .inner {
+        position: relative;
+        padding-left: 40px;
+      }
+        #attrib-list form.editmode .subcolumns .fields .inner .field-add,
+        #attrib-list form.editmode .subcolumns .fields .inner .field-up,
+        #attrib-list form.editmode .subcolumns .fields .inner .field-down {
+          position: absolute;
+        }
+        #attrib-list form.editmode .subcolumns .fields .inner .field-add {
+          left: 14px;
+          top: 45px;
+        }
+        #attrib-list form.editmode .subcolumns .fields .inner .field-up {
+          right: 8px;
+          top: 15px;
+        }
+        #attrib-list form.editmode .subcolumns .fields .inner .field-down {
+          right: 8px;
+          top: 45px;
+        }
+        #attrib-list form.editmode .subcolumns .fields .inner select {
+          width: 250px;
+          height: 79px;
+        }
+
+
+/**
+ * Content type list.
+ */
+#content-type-list .editmode {
+  margin-bottom: 1em;
+  padding-top: 0.5em;
+}
+  #content-type-list .editmode .header {
+    position: relative;
+  }
+    #content-type-list .editmode .header ol {
+      margin-left: 8px;
+    }
+    #content-type-list .editmode .header label {
+      text-align: left;
+    }
+    #content-type-list .editmode .header .actions {
+      position: absolute;
+      right: 10px;
+      bottom: 0.8em;
+    }
+  #content-type-list .editmode .submit {
+    padding-left: 8px;
+  }
+  #content-type-list .editmode select.list {
+    width: 75px;
+  }
+  #content-type-list .editmode table {
+  }
+    #content-type-list .editmode table thead td {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+    #content-type-list .editmode table td {
+      padding-bottom: 0;
+    }
+
+
+/**
+ * SQL export.
+ */
+#export-data textarea {
+  width: 99%;
+  _height: 500px;
+  min-height: 500px;
+}

@@ -1,0 +1,146 @@
+
+/**
+ * Admin main styles.
+ *
+ * @package admin
+ * @author Dmitri Lakachauskis <lakiboy83@gmail.com>
+ */
+
+@media all
+{
+  /* reset font size for all elements to standard (16 Pixel) */
+  html * { font-size: 100.01%; }
+
+  /* reset monospaced elements to font size 16px in Gecko browsers */
+  textarea, pre, tt, code {
+    font-family: "Courier New", Courier, monospace;
+  }
+
+  /* base layout gets standard font size 12px */
+  body {
+    font-family: Helvetica, Arial, Verdana, sans-serif, "Trebuchet MS";
+    font-size: 75.00%;
+    color: #000;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 0.5em 0;
+    font-weight: bold;
+  }
+
+  h1 { font-size: 175%; }                         /* 21px */
+  h2 { font-size: 150%; }                         /* 18px */
+  h3 { font-size: 150%; }                         /* 18px */
+  h4 { font-size: 133.33%; }                      /* 16px */
+  h5 { font-size: 116.67%; }                      /* 14px */
+  h6 { font-size: 116.67%; font-style: italic; }  /* 14px */
+
+  p { line-height: 1.5em; margin: 0 0 1em 0; }
+
+  /* Lists */
+
+  ul, ol, dl { line-height: 1.5em; margin: 0 0 1em 1em; }
+  li { margin-left: 1.5em; line-height: 1.5em; }
+
+  dt { font-weight: bold; }
+  dd { margin: 0 0 1em 2em; }
+
+  /* Text formatting */
+
+  cite, blockquote { font-style: italic; }
+  blockquote { margin: 0 0 1em 1.5em; }
+
+  strong, b { font-weight: bold; }
+  em, i { font-style: italic; }
+
+  pre, code { font-family: monospace; font-size: 1.1em; }
+
+  acronym, abbr {
+    letter-spacing: .07em;
+    border-bottom: .1em dashed #c00;
+    cursor: help;
+  }
+
+  /**
+   * External Links
+   *
+   * Formatting of hyperlinks
+   */
+
+  a {
+    color: #069;
+    text-decoration: underline;
+    outline: none;
+  }
+  a:hover
+  a:focus,
+  a:active {
+    color: #0085cf;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /**
+   * Tables
+   */
+   
+  table {
+    margin-bottom: 0.5em;
+    border-collapse: collapse;
+    width: auto;
+  }
+  table.full { width: 100%; }
+  table.fixed { table-layout: fixed }
+    table th {
+      padding: 0.8em 8px 0.6em;
+      background-color: #ff9;    
+      font-size: 0.8em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+    table th.sort {
+    }
+    table th.sort-up {
+      padding-left: 20px;
+      background: #ff9 url(<?= $baseUrl ?>/images/icons/sort_up.png) no-repeat 5px center;
+    }
+    table th.sort-down {
+      padding-left: 20px;
+      background: #ff9 url(<?= $baseUrl ?>/images/icons/sort_down.png) no-repeat 5px center;
+    }    
+    tbody td {
+      padding: 0.5em 8px;  
+    }
+
+  /**
+   * Miscellaneous
+   */
+
+  hr {
+    color: #fff;
+    background: transparent;
+    margin: 0 0 0.5em 0;
+    padding: 0 0 0.5em 0;
+    border: 0;
+    border-bottom: 1px #eee solid;
+  }
+
+  /**
+   * Generic Content Classes
+   *
+   * Standard classes for positioning and highlighting
+   *
+   * @section content-generic-classes
+   */
+
+  .float_left { float: left; display:inline; margin-right: 1em; margin-bottom: 0.15em;  }
+  .float_right { float: right; display:inline; margin-left: 1em; margin-bottom: 0.15em;  }
+  .center { text-align:center; margin: 0.5em auto }
+
+/*
+  .note {background: #dfd; padding: 1em; border-top: 1px #bdb dotted; border-bottom: 1px #bdb dotted;}
+  .important {background: #ffd; padding: 1em; border-top: 1px #ddb dotted; border-bottom: 1px #ddb dotted;}
+  .warning {background: #fdd; padding: 1em; border-top: 1px #dbb dotted; border-bottom: 1px #dbb dotted;}
+*/
+}

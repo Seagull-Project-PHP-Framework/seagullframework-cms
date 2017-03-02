@@ -1,0 +1,19 @@
+<label for="contentTypeFilter">{translate(#Content type#)}</label>
+<select id="contentTypeFilter" name="contentTypeFilter"
+    onchange="CmsQuery.initAttributes()" flexy:ignore>
+{foreach:aContentTypes,typeId,typeName}
+    <option value="{typeId}">{typeName}</option>
+{end:}
+</select>
+<fieldset flexy:ignore>
+    <label for="attributesFilter">{translate(#Attributes#)}</label>
+    <select id="attributesFilter" name="attributesFilter">
+    </select>
+    <input type="button" name="addAttributeFilter" value="{translate(#Add#)}"
+        onclick="CmsQuery.addAttributeFilter()" />
+    <div id="attributeFilterPanel">
+    </div>
+</fieldset>
+<input id="removeFilter_contentType" class="remove" type="button"
+    value="{translate(#Remove#)}"
+    onclick="CmsQuery.removeFilter(this)" />

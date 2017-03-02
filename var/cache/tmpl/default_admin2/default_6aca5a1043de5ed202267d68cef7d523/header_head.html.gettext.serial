@@ -1,0 +1,28 @@
+a:11:{i:0;s:52:"--- Application wide + manager specific JS + CSS ---";i:1;s:27:"--- Onload events setup ---";i:2;s:30:"$(document).ready(function() {";i:3;s:28:"window.onload = function() {";i:4;s:21:"--- WYSIWYG setup ---";i:5;s:297:"oFCKEditors = new Array;
+
+        // initalises an instance of FCK
+        function fck_add(id) {
+            var i = oFCKEditors.length;
+
+            // width/height and toolbar must be customized
+            oFCKEditors[i] = new FCKeditor(id, 460, 300);
+            oFCKEditors[i].ToolbarSet = '";i:6;s:785:"';
+
+            oFCKEditors[i].BasePath = SGL_WEBROOT + '/fckeditor/';
+            oFCKEditors[i].Config['CustomConfigurationsPath'] = SGL_WEBROOT + '/admin/js/FckConfig.js';
+            oFCKEditors[i].ReplaceTextarea();
+        }
+
+        function fck_init() {
+            if (document.getElementsByTagName) {
+                var aAreas = document.getElementsByTagName('textarea');
+                for (var i = 0; i < aAreas.length; i++) {
+                    if (aAreas[i].className.match('wysiwyg')) {
+                        fck_add(aAreas[i].id);
+                    } else if (aAreas[i].id.match('frmBodyName')) {
+                        // fallback for old templates
+                        fck_add('frmBodyName');
+                    }
+                }
+            }
+        }";i:7;s:39:"--- Application wide JS translation ---";i:8;s:37:"--- Application wide IE 6/7 fixes ---";i:9;s:14:"[if lte IE 7]>";i:10;s:6:"endif]";}

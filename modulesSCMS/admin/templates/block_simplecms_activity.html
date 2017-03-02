@@ -1,0 +1,20 @@
+<div id="dashboard-activity" class="block-helper block-item-list widget-item"
+     sgl:widget="admin_dashboard-content_activity">
+    <h2 class="widget-header"><a href="#">{tr(#latest content activity (header)#)}</a></h2>
+    <div class="inner">
+    
+        <div class="date-container" flexy:foreach="aActivity,date,aItems">
+            <h3>{formatDate2Pretty(date)}</h3>
+            <ul>
+                <li flexy:foreach="aItems,oItem">
+                    <em>{formatTime(oItem.last_updated)}</em>
+                    <span>{this.plugin(#getContentLangIcon#,oItem.language_id):h}</span>
+                    {this.plugin(#getContentActivityMessage#,oItem,aContentTypes,##,#1#):h}
+                </li>
+            </ul>
+        </div>
+        
+        <a href="{makeUrl(##,#cmsactivity#,#simplecms#)}">{tr(#view all activity#)}</a>
+        
+    </div>
+</div>

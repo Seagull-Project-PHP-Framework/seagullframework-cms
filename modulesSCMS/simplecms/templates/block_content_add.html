@@ -1,0 +1,19 @@
+<!-- Create new content & content type -->
+<div id="content-create" class="block-helper block-icon block-icon-new block-input widget-item"
+     sgl:widget="admin_dashboard-content_create">
+    <h2 class="widget-header"><a href="#">{tr(#create content (header)#)}</a></h2>
+    <form class="inner" method="post" action="" flexy:ignore>
+        <fieldset>
+            <select>
+            {foreach:aContentTypes,typeId,typeName}
+                {assign(typeId2,typeId)}
+                <option flexy:if="isEqual(type,typeId)" selected="selected"
+                        value="{makeUrl(#module|simplecms||manager|cmscontent||action|add||type|typeId2||cLang|cLang#)}">{typeName}</option>
+                <option flexy:if="!isEqual(type,typeId)"
+                        value="{makeUrl(#module|simplecms||manager|cmscontent||action|add||type|typeId2||cLang|cLang#)}">{typeName}</option>
+            {end:}
+            </select>
+            <input class="button" type="button" name="submitted" value="{tr(#create content (action)#)}" />
+        </fieldset>
+    </form>
+</div>

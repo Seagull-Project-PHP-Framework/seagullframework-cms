@@ -1,0 +1,299 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>TestAddNewContent</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TestAddNewContent</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>http://dev.babyfy.com/index.php/user/login/action/logout</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>frm_username</td>
+	<td>admin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>frm_password</td>
+	<td>admin</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>submitted</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Maintenance</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>document.rebuildSeagull.submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Environment rebuilt successfully</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Manage Content</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Admin</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Manage Content</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>comboxContentType-menu</td>
+	<td>label=Page</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>contentName</td>
+	<td>Test Page</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>content[classifiers][]</td>
+	<td>label=regexp:\s+Baby Carriers</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>content[classifiers][]</td>
+	<td>label=regexp:\s+Baby Monitors</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>content[classifiers][]</td>
+	<td>label=regexp:\s+Bathing</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>content[status]</td>
+	<td>label=approved</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Date Created</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Date Created</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Test Page</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Test Page</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>contentName</td>
+	<td>Test Page</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>continueEdit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Content successfully updated</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Content Manager</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>comboxContentType-menu</td>
+	<td>label=Page</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>contentName</td>
+	<td>Test Page</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Cancel</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>comboxContentType-menu</td>
+	<td>label=Product: pushchair</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>frmFieldName_title</td>
+	<td>Test Pushchair</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>frmFieldName_description</td>
+	<td>A test pushchair</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>frmFieldName_brand</td>
+	<td>label=Avent</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>content[status]</td>
+	<td>label=being edited</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>continueEdit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>For approval</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Being edited</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>reviewProductExpert Product: pushchair - Avent - Test Pushchair (to be compeleted)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=reviewProductExpert Product: pushchair - Avent - Test Pushchair (to be compeleted)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>frmFieldName_summary</td>
+	<td>Summary</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>frmFieldName_overview</td>
+	<td>The overview</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>frmFieldName_rating</td>
+	<td>label=8</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>continueEdit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=View</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Summary</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>The overview</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>8</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Admin</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Maintenance</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>document.rebuildSeagull.submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Environment rebuilt successfully</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=logout</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td> Login</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

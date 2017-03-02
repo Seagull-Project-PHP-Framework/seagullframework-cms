@@ -1,0 +1,53 @@
+<div id="page-container" class="columns layout-2cols">
+
+    <div class="title-edit">
+        <h1>{tr(#routes manager (header)#)}</h1>
+    </div>
+
+    <div class="c75l list">
+        <div class="layout-inner">
+            <form id="frmRouteList" action="{makeUrl(#getRoutes#,#page#,#page#)}" method="get" flexy:ignore>
+            <table id="route-list" class="full">
+                <thead>
+                    <tr>
+                        <th width="3%">
+                            <input type="checkbox" name="checkAll" id="checkAll" />
+                        </th>
+                        <th width="45%" flexy:raw="{this.plugin(#getColumnSortIcon#,#route#,sortBy,sortOrder):h}">
+                            <a sgl:sort_by="route" href="#">{tr(#name (th)#)}</a>
+                        </th>
+                        <th width="52%" flexy:raw="{this.plugin(#getColumnSortIcon#,#description#,sortBy,sortOrder):h}">
+                            <a sgl:sort_by="description" href="#">{tr(#description (th)#)}</a>
+                        </th>
+                        <th width="5%">
+                            {tr(#active (th)#)}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <flexy:include src="route_tablelist.html" />
+                </tbody>
+                <tfoot>
+                    <tr>
+                    <td colspan="4">
+                    <button class="delete-routes">{tr(#delete selected#)}</button>
+                    </td>
+                    </tr>
+                </tfoot>
+            </table><!-- full -->
+            </form>
+            <img id="route-list-loader" src="{webRoot}/themes/{theme}/images/ajax-loader_2.gif"
+                alt="" style="display: none;" />
+
+            <p id="route-list-pager" class="pager">{pagerLinks:h}</p>
+        </div><!-- inner -->
+    </div><!-- list -->
+
+    <div class="c25r">
+        <flexy:include src="block_route_add.html" />
+        <flexy:include src="block_route_filter.html" />
+
+    </div>
+
+</div>
+

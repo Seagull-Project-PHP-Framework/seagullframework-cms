@@ -1,0 +1,17 @@
+<div id="media-overview" class="block-helper block-icon block-icon-note block-overview">
+    <h2><a href="#">{tr(#media overview (header)#)}</a></h2>
+    <div class="inner fieldsetlike">
+        <dl class="clearfix">
+            <dt>{tr(#file size#)}</dt>
+            <dd>{this.plugin(#formatFileSize#,oMedia.file_size)} </dd>
+            <dt>{tr(#media uploader#)}</dt>
+            <dd>{this.plugin(#getUserFullName#,oMedia.created_by)}</dd>
+            <dt>{tr(#media modifier#)}</dt>
+            <dd>{this.plugin(#getUserFullName#,oMedia.updated_by)}</dd>
+            <dt>{tr(#media creation date#)}</dt>
+            <dd>{formatDateTime2Pretty(oMedia.date_created)}</dd>
+            <dt>{tr(#media modification date#)}</dt>
+            <dd>{formatDateTime2Pretty(oMedia.last_updated)}</dd>
+        </dl>
+    </div>
+</div>

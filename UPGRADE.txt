@@ -1,0 +1,4 @@
+ - add Uber.php to include path in php.ini
+ - update global js to 'simplecms/js/jquery.js,simplecms/js/jquery/ui/effects.core.js,simplecms/js/jquery/ui/effects.highlight.js,js/SGL2.js'
+ - update $conf['site']['customRebuildTasks'] = 'SimpleCms_Task_LoadData,SGL_Task_CreateModeratorUser';
+ - add $conf['table']['route'] = 'route';

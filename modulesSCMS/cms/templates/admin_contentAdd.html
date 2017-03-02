@@ -1,0 +1,55 @@
+<h1 class="pageTitle">New Content</h1>
+
+{if:oAsset}
+<form method="post" name="frmAsset" flexy:ignore id="frmAsset">
+    <input type="hidden" name="action" value="insert" />
+    <input type="hidden" name="asset[type_id]" value="{oAsset.typeId}" />
+
+    <table class="wide">
+        <tr>
+            <th width="30%" nowrap="nowrap">Asset Type</th>
+            <td width="70%">
+                <select name="frmAssetTypeId" disabled="true">
+                    {generateSelect(aArticleTypes,oAsset.typeId):h}
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <th width="30%" nowrap="nowrap">{translate(#Author#)}</th>
+            <td width="70%">{loggedOnUser}</td>
+        </tr>
+
+        <tr>
+            <th width="30%" nowrap="nowrap">Name</th>
+            <td width="70%">
+                <input type="text" name="asset[name]" />
+            </td>
+        </tr>
+
+        {foreach:oAsset.aAttribs,oAttrib}
+        <tr>
+            <th>{oAttrib.alias}</th>
+            <td>{this.plugin(#renderAttribute#,oAttrib):h}</td>
+        </tr>
+        {end:}
+
+        <tr>
+            <td width="100%" colspan="2" align="center" nowrap="nowrap">
+                <input class="wideButton" type="submit" value="Save" />
+                <input class="wideButton" type="button" value="Cancel"
+                    onclick="javascript:document.location.href='{makeUrl(##,#content#,#cms#)}'" />
+            </td>
+        </tr>
+    </table>
+{else:}
+    invalid asset type chosen
+{end:}
+    <p>
+        <label>&nbsp;</label>
+        <div id="uploadLayer" class="error"></div>
+    </p>
+</form>
+<style type="text/css">
+@import url("{webRoot}/themes/{theme}/css/calendar-artists_online.css");
+</style>

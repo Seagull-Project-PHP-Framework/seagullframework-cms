@@ -1,0 +1,675 @@
+<?php
+//  Define some module specific vars
+$linkColor = '#999';
+$actionLinkColor = $primary;
+$actionAltLinkColor = $secondary;
+$actionDoneLinkColor = $greyDark;
+$subHeadingColor = $primary;
+?>
+
+/**********************/
+/*   CMS MODULE       */
+/**********************/
+fieldset {
+	background-color:#fff;
+	border: 1px solid #ddd;
+}
+
+fieldset.secondary {
+	background-color:#f7f7f7;
+}
+
+#ajaxIndicator {
+    padding: 2px 4px;
+    background: #ff3300;
+    color: #fff;
+    font-size: 0.9em;
+}
+dt {
+}
+dt .required {
+}
+dt .required:after {
+    content: " *";
+    color: #ff0000;
+}
+dt label {
+    padding-right: 20px;
+}
+dt.onSide, dl.onSide dt {
+    float: left;
+    width: 110px;
+    padding-right: 0;
+    text-align: left;
+}
+dd.onSide, dl.onSide dd {
+    margin-left: 110px;
+    margin-bottom: 0.5em;
+}
+dt.onTop, dl.onTop dt {
+    margin-bottom: 4px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+dd.onTop, dl.onTop dd {
+    margin-left: 0;
+    margin-bottom: 1em;
+}
+input[type="text"], input[type="password"] {
+    font-size: 1em;
+}
+input.mediumButton {
+    width: 8em;
+}
+.manager-actions {
+    padding: 4px 2px;
+}
+.button {
+    /*padding: 2px;
+    background: #e5e5e5;
+    border: 1px solid #999;
+    border-width: 1px 2px 2px 1px;*/
+    font-size: 12px;
+}
+.cmsBox {
+    margin: 0 0 1em;
+    padding: 8px 8px 4px;
+    background: #f7f7f7;
+    border: 1px solid #ccc;
+}
+tr th, tr td {
+    text-align: left;
+}
+table thead tr, thead > tr {
+    background: #339BD3;
+}
+.moduleContainer a,
+.moduleContainer a:link,
+.moduleContainer a:visited {
+    font-size: 12px;
+    padding: 1px;
+}
+.moduleContainer a:hover {
+    text-decoration: underline;
+}
+
+#cmsContainer .moduleContent p {
+    padding: 0 0 0.4em;
+    font-size: 1em;
+    line-height: 1.6;
+    color: #333;
+}
+
+#cmsContainer input.text, #cmsContainer textarea.textarea, #cmsContainer select {
+    font-size: 1em;
+    border: 1px solid #ccc;
+}
+#cmsContainer input.text, #cmsContainer textarea.textarea {
+    padding: 3px;
+}
+#cmsContainer .error {
+    color: #f30;
+}
+#cmsContainer p.warning {
+    padding-left: 4px;
+    background: #f7f7f7;
+    border-top: 2px solid #f90;
+}
+
+/**********************/
+/*   ACCORDION LISTS  */
+/**********************/
+.accordionItem {
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.accordionItemHead h2 {
+    margin: 0 !important;
+    padding: 5px !important;
+    background-repeat: no-repeat;
+    background-position: 4px 6px;
+}
+.accordionItemHead h2 span, .accordionItemHead h2 a{
+    font-size: 16px !important;
+    font-weight: normal;
+    cursor: pointer;
+}
+.accordionItemHead.closed h2 {
+    text-indent: 16px;
+    background-image: url('<?php echo $moduleUrl ?>/images/arrow_closed.gif');
+}
+.accordionItemHead.opened h2 {
+    border-bottom: 1px dotted #ddd !important;
+    text-indent: 16px;
+    background-image: url('<?php echo $moduleUrl ?>/images/arrow_opened.gif');
+}
+.accordionItemHead.loading h2 {
+    text-indent: 16px;
+    background-image: url('<?php echo $moduleUrl ?>/images/ajax-indicator-s.gif') !important;
+}
+.accordionItemBody {
+    border:0;
+}
+.accordionItem fieldset{
+	border:0;
+}
+.accordionItem h2{
+    font-size: 16px;
+	font-weight: normal;
+    padding:10px;
+    border-bottom: 1px dotted #ddd !important;
+}
+
+.accordionItemBody h3{
+	color:#999;
+	display:inline;
+}
+
+/**********************/
+/*   LAYOUT           */
+/**********************/
+.moduleContainer {
+    position: relative;
+    padding-top: 10px;
+}
+/** Only one column */
+.moduleContent.full {
+    width: 100%;
+}
+/** With two columns */
+.moduleContent.left {
+    float: left;
+    width: 75%;
+}
+.moduleContent.left .wrap {
+    margin-right: 20px;
+}
+.moduleInfobar.right {
+    float: right;
+    width: 25%;
+}
+.moduleInfobar.right .wrap {
+    margin-top: 25px;
+    margin-left: 10px;
+}
+
+/**********************/
+/*   CONTENT LIST     */
+/**********************/
+#contentFilterBox {
+    font-size: 11px;
+}
+#contentFilterBox select {
+    margin: 0 5px 0 2px;
+    font-size: 11px;
+}
+#screenIntro {
+    margin: 10px 0;
+    padding-left: 5px;
+    border-left: 4px solid #ccc;
+}
+#cmsContainer .moduleContent .help {
+    padding: 4px 0;
+    line-height: 1;
+    font-size: 11px;
+}
+#cmsContainer .moduleContent .help a {
+    font-size: 11px;
+}
+#contentList-items td a {
+    /* If content name is too long it's table can be wider
+       than it supposed to be */
+    /* white-space: nowrap; */
+}
+
+#contentList fieldset.noBorder {
+    background-color: #f7f4ef;
+}
+
+/**********************/
+/*   CONTENT EDIT     */
+/**********************/
+#cmsContainer .moduleToolbar {
+
+}
+#moduleToolbarHeader {
+    padding: 0 0px 2px;
+    text-align: left;
+}
+#cmsContainer .moduleInfobar {
+    text-align: left;
+}
+#cmsContainer .moduleInfobar h2 {
+    margin: 10px 0 10px;
+    padding: 4px 0 2px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: inherit;
+    color: inherit;
+    border-bottom: 1px solid #666;
+}
+#cmsContainer .moduleInfobar p {
+    font-size: 11px;
+    line-height: 1.6;
+    color: #333;
+}
+.moduleInfobar select {
+    display: block;
+}
+
+#cmsContainer ul.inline {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+#cmsContainer ul.inline li {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+.full {
+    width: 100%;
+}
+.moduleContent table {
+    width: 100%;
+    margin: 10px 0;
+    border: none;
+    border-collapse: collapse;
+}
+.moduleContent .thead th {
+    padding: 4px 8px 3px;
+    border: none;
+    border-bottom: 1px solid #666;
+    text-align: left;
+}
+.moduleContent tbody td {
+    padding: 5px 8px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    vertical-align: middle;
+}
+.moduleContent .tfoot td {
+    border: none;
+}
+.moduleContent table a {
+    display: inline;
+    background: none;
+    font-size: inherit;
+}
+.moduleContent table thead a {
+    text-decoration: none;
+    font-weight: bold;
+    opacity: 0.999;
+    -moz-opacity: 0.999;
+    filter:alpha(opacity=999);
+}
+.moduleContent tr {
+
+}
+.moduleContent th {
+
+}
+.moduleContent tr.alternateRow td {
+    background: none;
+}
+.moduleContent tr:hover td, .moduleContent tr.rowHover td {
+    background: #e5e5e5;
+}
+#contentEditForm input.medium, #contentEditForm textarea.medium {
+    width: 70%;
+}
+#contentEditForm textarea.medium {
+    height: 5em;
+}
+#contentEditForm input.large, #contentEditForm textarea.large {
+    width: 95%;
+}
+#contentEditForm textarea.large {
+    height: 10em;
+}
+#contentEditForm textarea.large.wysiwyg {
+    height: 15em;
+}
+#contentEditForm div.moduleInfobar .categories select {
+    height: 20em;
+    width: 190px;
+}
+
+#cmsContainer table.versions {
+    width: 100%;
+    background: none;
+    border: none;
+    margin-bottom: 10px;
+}
+#cmsContainer table.versions tr {
+    height: auto;
+    line-height: normal;
+}
+#cmsContainer table.versions td {
+    padding: 5px 2px 3px;
+    vertical-align: middle;
+}
+#cmsContainer table.versions tr.selected td {
+    background: #fff;
+    border-top: 1px solid <?php echo $primary ?>;
+    border-bottom: 1px solid <?php echo $primary ?>;
+}
+    #cmsContainer table.versions td.version_n {
+        padding-left: 5px;
+    }
+    #cmsContainer table.versions td.version_c {
+        text-align: center;
+    }
+    #cmsContainer table.versions td.version_a {
+        font-size: 11px;
+    }
+    #cmsContainer table.versions tr.selected td.version_n {
+        border-left: 1px solid <?php echo $primary ?>;
+    }
+    #cmsContainer table.versions tr.selected td.version_a {
+        border-right: 1px solid <?php echo $primary ?>;
+    }
+#cmsContainer table.versions a:hover {
+    background: none;
+    color: <?php echo $primary ?>;
+}
+
+
+p.submit {
+    margin: 5px 0 0;
+    padding: 4px 0 0 !important;
+    border-top: 1px solid #ddd;
+}
+p.submit input {
+    vertical-align: middle;
+}
+
+/**********************/
+/*   CONTENT TYPE     */
+/**********************/
+
+/* LIST */
+#moduleToolbarHeader {
+    margin-bottom: 10px;
+}
+#cmsContainer .moduleToolbar {
+    position: relative;
+}
+.contentTypeEditForm li label {
+    vertical-align: middle;
+}
+.contentTypeEditForm input.contentType_name {
+    padding: 3px;
+    font-size: 16px;
+    font-weight: bold;
+}
+#newContentTypeForm {
+    float:none;
+}
+
+#newContentTypeForm input {
+    vertical-align: middle;
+}
+
+/* VIEW */
+.contentType {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+.contentType h2 {
+    margin: 0 !important;
+    padding: 5px !important;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: 4px 6px;
+}
+.contentType h2 span, .contentType h2 a{
+    font-size: 16px !important;
+    font-weight: normal;
+    cursor: pointer;
+}
+.contentType.closed h2 {
+    text-indent: 16px;
+    background-image: url('<?php echo $moduleUrl ?>/images/arrow_closed.gif');
+}
+.contentType.opened h2 {
+    border-bottom: 1px dotted #ddd !important;
+    text-indent: 16px;
+    background-image: url('<?php echo $moduleUrl ?>/images/arrow_opened.gif');
+
+}
+.contentType.loading h2 {
+    text-indent: 16px;
+    background-image: url('<?php echo $moduleUrl ?>/images/ajax-indicator-s.gif') !important;
+}
+
+.contentType ol {
+    padding-left: 20px;
+    padding-right: 15px;
+}
+.contentType ol li {
+    margin: 5px 0;
+    overflow: hidden;
+}
+.contentType ol li.newAttribute {
+    list-style: none;
+}
+.contentType a img {
+    vertical-align: middle;
+}
+.contentType a.deleteLink {
+    text-decoration: none;
+}
+.contentType a.deleteLink:hover, .contentType a.deleteLink:active {
+    background: none;
+}
+
+.contentType form {
+    padding: 5px 10px;
+    background: #f8f8f8;
+}
+.contentType .attributeEditForm label {
+    float: left;
+    width: 75px;
+    font-size: 0.9em;
+    font-weight: normal;
+}
+.contentType .attributeEditForm input {
+    vertical-align: middle;
+}
+.contentType li.attributeParams {
+    background: #fff;
+    border: 1px solid #ddd;
+}
+.contentType li.attributeParams label {
+    width: 120px;
+}
+
+/**********************/
+/*   QUERY            */
+/**********************/
+form#filterPanel {
+}
+    form#filterPanel fieldset label {
+        float: left;
+        display: block;
+        margin-top: 0.2em;
+        width: 170px;
+    }
+    form#filterPanel fieldset input.remove {
+        position: absolute;
+        right: 0;
+        top: -2px;
+    }
+
+    /* Actions */
+    form#filterPanel fieldset.actions {
+        margin-top: 0.5em;
+        border-top: 1px solid #ddd;
+        padding: 1em 10px 0.5em;
+    }
+        form#filterPanel fieldset.actions label {
+            float: none;
+            display: inline;
+            width: auto;
+            margin-right: 5px;
+        }
+        form#filterPanel fieldset.actions select {
+            margin-right: 5px;
+        }
+        form#filterPanel fieldset.actions span.filterOptionsContainer {
+            margin-right: 10px;
+        }
+        form#filterPanel fieldset.actions input.update {
+            /* margin-left: 10px; */
+        }
+
+    /* Common for all filter containers */
+    form#filterPanel div.filterContainer {
+        position: relative;
+        padding-bottom: 1.5em;
+    }
+
+    * html form#filterPanel div.filterContainer {
+        height: 1%;
+    }
+
+        /* Status filter */
+        form#filterPanel div#statusFilter_container {
+            padding-right: 70px;
+        }
+            form#filterPanel div#statusFilter_container span {
+                padding-left: 2px;
+                margin-right: 5px;
+            }
+
+
+        /* Content type filter */
+        form#filterPanel div#contentTypeFilter_container select#contentTypeFilter {
+            width: 200px;
+        }
+        form#filterPanel div#contentTypeFilter_container fieldset {
+            margin: 10px 0 10px 170px;
+            border: 1px solid #ddd;
+        }
+
+            /* Attributes */
+            form#filterPanel select#attributesFilter {
+                width: 150px;
+            }
+            form#filterPanel div#attributeFilterPanel {
+            }
+                form#filterPanel div#attributeFilterPanel div.attributeContainer {
+                    padding-top: 0.5em;
+                    clear: left;
+                }
+                form#filterPanel div#attributeFilterPanel input.remove {
+                    position: static;
+                    margin-left: 10px;
+                }
+
+/**********************/
+/*   ATTRIB LIST      */
+/**********************/
+#frmNewAtribList {
+	float:none;
+}
+div#newAttribListBox textarea {
+    width: 177px;
+    height: 100px;
+}
+
+div#newAttribListBox input[type="text"] {
+    width: 75px;
+}
+div#newAttribListBox input[type="text"].text {
+    width: 177px;
+}
+div#attribListNameAndValues {
+    float: left;
+}
+div#attribListNameValuePairs {
+    float: left;
+}
+
+/* name and value inputs for attrib list */
+div#attribListNameAndValues dl dd dl {
+    width: 90px;
+    float: left;
+    display: inline;
+}
+form.frmEditAttribList {
+    float:none;
+}
+
+/**********************/
+/*   CATEGORIES       */
+/**********************/
+#frmCategoryMgr p label {
+    width: 170px;
+}
+#frmCategoryMgr input.longText {
+    width: 40%;
+}
+#frmCategoryMgr span.tipText {
+    width: 300px;
+}
+#frmCategoryMgr fieldset#permissions, 
+#frmCategoryMgr fieldset#description, 
+#frmCategoryMgr fieldset#tags, 
+#frmCategoryMgr fieldset#image {
+    width: 80%;
+    margin-top: 1em;
+    border: 1px solid <?php echo $borderDark ?>;
+}
+#frmCategoryMgr #permissions p label, 
+#frmCategoryMgr #description p label, 
+#frmCategoryMgr #tags p label, 
+#frmCategoryMgr #image p label {
+    width: 160px;
+}
+
+#frmCategoryMgr fieldset#description textarea {
+    width: 50%;
+}
+
+#frmCategoryMgr #image img {
+    border: 1px solid;
+}
+
+/**********************/
+/*   PAGES            */
+/**********************/
+p.errorMsg {
+    color: <?php echo $errorMessage ?>;
+    text-align: center;
+}
+#pageEdit p label {
+    width: 200px;
+}
+#pageEdit .longText {
+    width: 250px;
+}
+
+/**********************/
+/*   LINK MGR         */
+/**********************/
+form#linkerForm p label {
+    float: left;
+    text-align: right;
+    margin-right: 10px;
+    width: 150px;
+}
+form#linkerForm p span {
+    background-color :#efefef;
+    width: 150px;
+}
+form#linkerForm p select#content_id {
+    width: 400px;
+}
+form#linkerForm p label.tipOwner {
+    width: 130px;
+}

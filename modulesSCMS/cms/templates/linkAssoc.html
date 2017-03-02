@@ -1,0 +1,49 @@
+{scriptOpen:h}
+SGL.ready(function() {
+    cms.content.linkEditor.init('{linkType}');
+});
+{scriptClose:h}
+<div id="linkAssoc" flexy:ignore>
+    <h2>Edit link</h2>
+    <div class="mwInner" id="linkEditor">
+        <div id="linkEditorHeader">
+            <label for="linkText-editValue">Text to display</label>
+            <input type="text" id="linkText-editValue" value="{linkText}" />
+            <input type="hidden" id="linkHref-editValue" value="{linkHref}" />
+        </div>
+        <div>
+            <dl id="linkTypePane">
+                <dt>Which resource type would you like to link to?</dt>
+                <dd>
+                    <input type="radio" class="linkTypeSelect" id="linkTypeInternal"
+                     name="linkType" value="type_internal" />
+                    <label for="linkTypeInternal">Internal</label>
+                </dd>
+                <dd>
+                    <input type="radio" class="linkTypeSelect" id="linkTypeExternal"
+                     name="linkType" value="type_external" />
+                    <label for="linkTypeExternal">External</label>
+                </dd>
+            </dl>
+            <div id="linkResourcePane">
+                <div class="linkResourcePane" id="linkTypeInternal-pane">
+                    <p>Select a page you want to link to</p>
+                    <select id="linkHref-selectField">
+                    {this.plugin(#getAllPages#):h}
+                    </select>
+
+                    <div class="spacer" style="height:100px">&nbsp</div>
+                </div>
+                <div class="linkResourcePane" id="linkTypeExternal-pane">
+                    <p>Enter the URL you want to link to</p>
+                    <input type="text" id="linkHref-editField" value="{linkHref}" />
+                    <div class="spacer" style="height:150px">&nbsp</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="manager-actions right">
+        <a href="#" class="button mwAction" rel="editable_blur">OK</a>
+        <a href="#" class="action mwAction" rel="editable_cancel">Cancel</a>
+    </div>
+</div>

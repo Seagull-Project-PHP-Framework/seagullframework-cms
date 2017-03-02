@@ -1,0 +1,10 @@
+<div class="cms-content {camelise(oContent.typeName)}" id="content{oContent.id}" flexy:ignore>
+
+    <h1><span class="contentName" id="content{oContent.id}-name">{oContent.name}</span></h1>
+
+    {foreach:oContent.aAttribs,oAttrib}
+
+        {this.plugin(#renderViewAttribute#,oAttrib,editable):h}
+    {end:}
+
+</div>

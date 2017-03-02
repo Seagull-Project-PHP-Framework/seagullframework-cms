@@ -1,0 +1,19 @@
+<div id="page-overview" class="block-helper block-icon block-icon-note block-overview">
+    <h2><a href="#">{tr(#page overview (header)#)}</a></h2>
+    <div class="inner fieldsetlike">
+        <dl class="clearfix">
+            <!--dt>{tr(#page site#)}</dt>
+            <dd>{summarise(oSite.name,#17#,#1#)}</dd>
+            <dt>{tr(#page total comments#)}</dt>
+            <dd>0</dd-->
+            <dt>{tr(#page author#)}</dt>
+            <dd>{summarise(oCreatedByUser.username,#17#,#1#)}</dd>
+            <dt>{tr(#page editor#)}</dt>
+            <dd>{summarise(oUpdatedByUser.username,#17#,#1#)}</dd>
+            <dt>{tr(#page creation date#)}</dt>
+            <dd>{formatDateTime2Pretty(oPage.date_created)}</dd>
+            <dt>{tr(#page modification date#)}</dt>
+            <dd>{formatDateTime2Pretty(oPage.last_updated)}</dd>
+        </dl>
+    </div>
+</div>

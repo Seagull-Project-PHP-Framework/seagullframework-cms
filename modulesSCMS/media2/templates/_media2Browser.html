@@ -1,0 +1,102 @@
+<div id="media-manager-tabs">
+    <ul>
+        <li><a href="#media-browser"><span>{tr(#browse#)}</span></a></li>
+        <li><a href="#media-uploader"><span>{tr(#upload#)}</span></a></li>
+    </ul>
+    <a href="#" class="dialog-close ui-dialog-titlebar-close ui-corner-all" role="button" unselectable="on" style="-moz-user-select: none;"><span class="ui-icon ui-icon-closethick" unselectable="on" style="-moz-user-select: none;">close</span></a>    
+    <div id="media-browser">
+		<div id="media-filter" class="clearfix">
+		    <!-- Filter -->
+		    <form id="frmMediaFilter" action="{makeUrl(#getMediaBrowserView#,#media2#,#media2#)}" method="get">
+		        <input type="hidden" name="pageID" value="{pageID}" />
+			    <label for="filter_mime">{tr(#filter by mime type#)}</label>
+			    <select id="filter_mime" name="filter[mimeTypeId]" flexy:ignore>
+			        <option value="">{tr(#all#)}</option>
+			        {generateSelect(aMimeTypes,mimeTypeId):h}
+			    </select>
+			    &nbsp;
+			    <label for="filter_type">{tr(#filter by media type#)}</label>
+			    <select id="filter_type" name="filter[mediaTypeId]" flexy:ignore>
+		            <option value="">{tr(#all#)}</option>
+		            {generateSelect(aMediaTypes,mediaTypeId):h}
+			    </select>
+		    </form>
+		</div>     
+		<input id="resultsPerPage" type="hidden" value="{resPerPage}" flexy:ignore />
+		<div id="media-list-container" class="clearfix">
+		    <ul id="media-list" class="clearfix">
+		        <flexy:include src="_media2BrowserList.html">
+		    </ul>
+	        <p class="media-list-empty" flexy:if="!aPagedData[data]">
+	            {tr(#no media found#)}
+	        </p>
+		    <div id="pager-links">
+		        {pagerLinks:h}
+		    </div>
+		</div>
+		<div class="media-list-ajaxloading" style="display: none;" >
+		  <img class="ajaxLoader" src="{imagesDir}/ajax-loader.gif" alt="" style="margin-top:170px" />
+        </div>
+        <div class="button-bar">     
+			<button type="button" class="select-media ui-state-default ui-corner-all">Ok</button>
+			<button type="button" class="dialog-close ui-state-default ui-corner-all">Cancel</button>
+        </div>
+	</div>
+    <div id="media-uploader">
+        <form id="frmMediaUpload" flexy:ignore>
+        <fieldset class="hide" flexy:if="!aMediaTypes">
+            <input id="media_type" type="hidden" name="mediaTypeId" value="0" />
+        </fieldset>                   
+        <fieldset class="info" flexy:if="aMediaTypes">
+            <ol class="clearfix">
+                <li>
+                    <label for="media_type">{tr(#media type#)}</label>
+                    <div>
+                        <select id="media_type" name="mediaTypeId">
+                            <option value="">{tr(#default media type#)}</option>
+                            {generateSelect(aMediaTypes):h}
+                        </select>
+                        <p class="comment">{tr(#media type select hint#)}</p>
+                    </div>
+                </li>
+            </ol>           
+        </fieldset>
+        <fieldset class="fields">
+            <ol class="clearfix">
+                <li>
+                    <label for="media_upload"><em>*</em> {tr(#select file to upload#)}</label>
+                    <div>
+                        <input id="media_upload" type="file" name="filedata" />
+                    </div>
+                </li>
+            </ol>           
+        </fieldset>
+        <fieldset class="hide">
+            <input id="media_redir" type="hidden" name="redir" value="{redir}" />
+        </fieldset>           
+        <p class="fieldIndent">
+            <span class="triggers">
+                <input class="button" type="submit" name="submitted"
+                       value="{tr(#upload media (button)#)}" />
+                &nbsp;
+                {tr(#or#)}
+                &nbsp;
+                <a flexy:if="redir" href="{redir}">{tr(#cancel#)}</a>
+                <a flexy:if="!redir" href="{makeUrl(##,#media2#,#media2#)}">{tr(#cancel#)}</a>
+            </span>
+            <img class="ajaxLoader" src="{imagesDir}/ajax-loader.gif" alt=""
+                 style="display: none;" />
+        </p>
+        <p><em>*</em> {translate(#denotes required field#)}</p>
+        </form>            
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    Media2.Browser.init();
+});
+</script>
+<style>
+
+</style>

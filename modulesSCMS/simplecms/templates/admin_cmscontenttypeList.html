@@ -1,0 +1,43 @@
+<div id="content-type-container" class="columns layout-2cols">
+
+    <div class="title-edit-simple">
+        <h1>{tr(#content types (header)#)}</h1>
+        <span>
+            <a id="content-type-add"
+               href="#">{tr(#add content type (action)#)}</a>
+            <img class="ajaxLoader" src="{webRoot}/themes/{theme}/images/ajax-loader.gif" alt=""
+                 style="display: none;" />
+        </span>
+    </div>
+
+    <div class="c75l list">
+        <div class="layout-inner">
+
+            <p class="help">
+                {tr(#content type list help#)}
+            </p>
+
+            <div id="content-type-list" class="zebra-container">
+            {foreach:aContentTypes,contentTypeId,contentTypeName}
+
+                <div id="content-type-item_{contentTypeId}" class="zebra-item">
+                    <flexy:include src="admin_contenttype_item_header.html" />
+                </div>
+
+            {end:}
+            </div>
+
+            <p class="notfound" flexy:if="!aContentTypes">
+                {tr(#no content types found#)}
+            </p>
+
+        </div><!-- inner -->
+    </div><!-- list -->
+
+    <div class="c25r">
+
+        <flexy:include src="block_contenttype_stats.html" />
+
+    </div>
+
+</div>

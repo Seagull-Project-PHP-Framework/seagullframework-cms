@@ -1,0 +1,10 @@
+<ul class="clearfix">
+{foreach:aSections,key,section}
+    <li flexy:if="section[is_current]" class="current">
+        <a href="{section[url]}">{tr(section[title])}</a>
+    </li>
+    <li flexy:if="!section[is_current]">
+        <a href="{section[url]}">{tr(section[title])}</a>
+    </li>
+{end:}
+</ul>

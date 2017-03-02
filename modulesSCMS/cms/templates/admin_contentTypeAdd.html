@@ -1,0 +1,41 @@
+<span flexy:if="msgGet()">{msgGet()}</span>
+<h1 class="pageTitle">{pageTitle} :: {translate(action)}</h1>
+
+<form name="addType" method="post" flexy:ignore>
+<input type="hidden" name="action" value="insert" />
+
+<table class="wide">
+    <tr>
+        <th colspan="3">
+        <div class="error" flexy:if="error[name]">
+            {error}
+        </div>
+        * Content Type Name: <input type="text" id="contentType[name]" name="contentType[name]" value="{contentType[name]}" /></th>
+    </tr>
+    <tr>
+<!--        <th>Attribute Name</th>-->
+        <th>Attribute Alias</th>
+        <th>Attribute Type</th>
+    </tr>
+    <tr flexy:foreach="totalFields,key">
+<!--        <td><span id="attribTypeNameDisplay"></span></td>-->
+        <td><!--<input type="hidden" id="contentType[attrib_name][{key}]" name="contentType[attrib_name][{key}]" value="" />-->
+            <input type="text" id="contentType[attrib_alias][{key}]" name="contentType[attrib_alias][{key}]" />
+        </td>
+        <td><select name="contentType[attrib_type][{key}]">
+            {generateSelect(fieldTypes):h}</select>
+        </td>
+    </tr>
+    <tr>
+        <td><input class="wideButton" name="submitted" value="{translate(#Submit#)}" type="submit" /></td>
+        <td><input class="wideButton" type="button" value="{translate(#Cancel#)}"
+                onclick="javascript:document.location.href='{makeUrl(##,#contenttype#,#cms#)}'" /></td>
+    </tr>
+    <tr>
+        <td valign="top" colspan="2">
+            <span class="error">*</span>
+            <span>{translate(#denotes required field#)}</span>
+        </td>
+    </tr>
+</table>
+</form>

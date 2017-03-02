@@ -1,0 +1,30 @@
+<!--
+  --  REMINDER : {id} is a shortcut for {oContentType.id} --
+-->
+
+<div class="contentType closed" id="contentType_{id}" flexy:ignore>
+    <div id="contentType_{id}_view">
+        <h2>
+            <span id="contentType_{id}_viewInfo" onclick="cms.contentType.toggleContentType({id});">{oContentType.typeName}</span>&nbsp;
+            <a class="action editLink" href="#" onclick="cms.contentType.editor.edit({id});return false;">rename</a>
+            <a class="action deleteLink" href="#" onclick="cms.contentType.deleteContentType({id});return false;">
+                <img src="{webRoot}/cms/images/trash.gif" alt="delete" />
+            </a>
+        </h2>
+    </div>
+    <div id="contentType_{id}_edit" style="display:none">
+         <!-- CONTENT TYPE EDIT FORM -->
+        <form class="contentTypeEditForm" id="contentType_{id}_editForm">
+            <input type="hidden" name="contentTypeId" value="{id}" />
+
+            <div id="contentType_{id}_errorMsg" style="display:none"></div>
+            <input type="text" class="contentType_name"
+                   name="contentType[name]" id="contentType_{id}_name" value="{oContentType.typeName}" />
+            <p class="submit">
+                <input type="submit" value="Save name" />&nbsp;
+                <span>or</span>&nbsp;
+                <a href="#" class="action" onclick="cms.contentType.editor.cancel({id});return false;">Cancel</a>
+            </p>
+        </form>
+    </div>
+</div>

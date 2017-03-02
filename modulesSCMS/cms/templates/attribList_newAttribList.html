@@ -1,0 +1,55 @@
+        <div class="accordionItem clearfix" id="newAttribListBox" style="display:none">
+            <h2>New Attribute List</h2>
+            <form name="frmNewAtribList" method="post" action="" id="frmNewAtribList" flexy:ignore>
+                <fieldset class="hide">
+                </fieldset>
+                <fieldset class="inside secondary">
+                    <div class="error" style="display:none"></div>
+                    <div>
+                        <table>
+                            <tr>
+                                <td style="width:220px;">
+                                    <p>
+                                        <h3 style="display:inline;">{translate(#Attribute list name#)}</h3> : <input type="text" name="name" value="{aAttribList[name]}" tabindex="1" />
+                                    </p>
+                                <dl class="onSide">
+                                    <dt>
+                                        <label>{translate(#Field value#)}</label>
+                                    </dt>
+                                    <dd>
+                                        <input type="text" name="fieldValue" value="" tabindex="2" />
+                                    </dd>
+                                    <dt>
+                                        <label >{translate(#Field key#)}</label>
+                                    </dt>
+                                    <dd>
+                                        <input type="text" name="fieldKey" value="" tabindex="3" />
+                                    </dd>
+                                </dl>
+                                </td>
+                                <td style="padding-top:35px">
+                                    <select class="cms_attribFields" size="3"  name="listItems" multiple="multiple"
+                                            style="width: 250px;" tabindex="6" >
+                                        {generateSelect(data,##,1):h}
+                                    </select>
+                                    <span class="cms_attribOrder">
+                                        <a href="" name="listItemMoveUp" ><img alt="{translate(#Up#)}" src="{webRoot}/themes/default_admin/images/16/move_up.gif" /></a>
+                                        <a href="" name="listItemMoveDown" ><img alt="{translate(#Down#)}" src="{webRoot}/themes/default_admin/images/16/move_down.gif" /></a>
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="attribListButtons">
+                        <input style="width:55px;" class="sgl-button" type="button" name="listItemAdd" value="{translate(#Add#)}" tabindex="4"  />
+                        &nbsp;
+                        <input class="sgl-button" type="button" name="listItemRemove" value="{translate(#Remove#)}" tabindex="5"  />
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <input class="sgl-button" type="submit" name="submit" value="{translate(#Save list#)}" />
+                    <input class="sgl-button" type="button" name="cancel" value="{translate(#Cancel#)}" />
+                </fieldset>
+            </form>
+        </div>
+            

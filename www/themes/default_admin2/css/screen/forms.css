@@ -1,0 +1,121 @@
+
+/**
+ * Admin form styles.
+ *
+ * @package admin
+ * @author Dmitri Lakachauskis <lakiboy83@gmail.com>
+ */
+
+@media all
+{
+  /* basic form elements */
+  input.text, select, textarea {
+    border: 1px solid #cdd3d5;
+    padding: 2px;
+    /* font-size: 0.9em; */
+    color: #333;
+  }
+  
+  form textarea {
+  }
+  form label {
+  }
+  form em {
+    font-style: normal;
+    color: #f00;
+  }
+  form .readonly {
+    background-color: #eee;
+    color: #666;
+  }
+  form div,
+  form p {
+    margin-bottom: 0.7em;
+  }
+  form .fieldIndent {
+    margin-left: 160px;
+  }
+
+  /* ordered list for displaying form elements */
+  form fieldset ol {
+    margin: 0;
+    #margin-bottom: 0.7em;    
+    list-style: none;
+    line-height: 1em;
+  }
+    form fieldset ol li {
+      clear: left;
+      margin: 0;
+      padding-left: 160px;
+    }
+      form fieldset ol li label {
+        float: left;
+        margin-left: -160px;
+        width: 140px;
+        text-align: right;
+      }    
+      form fieldset ol li div {
+        float: left;      
+      }
+      
+      form fieldset ol li p { /* field comments */
+        margin-top: 0.2em;
+        margin-bottom: 0;
+        font-size: 0.9em;
+        line-height: 1.2em;
+      }
+      form fieldset ol li p.error { /* field error */
+        margin-top: 0;
+        margin-bottom: 0.3em;
+        color: #f00;
+      }
+
+  /* fields on top */
+  form fieldset ol.onTop {
+  }
+    form fieldset ol.onTop li {
+      clear: none;
+      padding-left: 0;
+    }
+      form fieldset ol.onTop li label {
+        float: none;
+        display: block;
+        margin-left: 0;
+        margin-bottom: 0.2em;
+        width: auto;
+        text-align: left;
+      }
+      form fieldset ol.onTop li div {
+        float: none;
+      }
+      
+  form.sgl-form legend{
+    background:transparent none repeat scroll 0 0;
+    border:0 none;
+    font-size: 1.2em;
+    padding:0 0.5em;
+  }
+  form.sgl-form fieldset {
+    border:1px solid #cccccc;
+  	padding:0.5em;
+  }
+  form.sgl-form fieldset.info {
+	border:0;
+  }
+  form.sgl-form fieldset.hide {
+	display:none;
+  }
+  /* all IE */
+  form.sgl-form { padding-top:0\9; }
+  form.sgl-form fieldset { padding:0 5px\9; padding-top:1em\9; }
+  form.sgl-form legend { position:absolute\9; top:-.5em\9; *left:0\9; }
+  form.sgl-form fieldset { position:relative\9; overflow:visible\9;  margin-top:1.5em\9; zoom:1; }
+
+  /* IE5.x, IE6 & IE7 */
+  form.sgl-form legend { *padding:0 5px; }
+  form.sgl-form fieldset { *padding-top:1.5em; }
+  
+  /* IE5.x & IE6 */
+  * html form.sgl-form { padding-top:10px; }
+      
+}

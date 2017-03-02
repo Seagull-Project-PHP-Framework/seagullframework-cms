@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+/* Layout-independent adjustments */
+@import url(../yaml/core/iehacks.css);
+
+/* Layout-dependent adjustments */
+@media screen, projection
+{
+  * html #col3 { height: 1%; }
+}

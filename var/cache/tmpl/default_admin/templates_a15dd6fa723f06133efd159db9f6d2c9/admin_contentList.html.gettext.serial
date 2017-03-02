@@ -1,0 +1,3 @@
+a:7:{i:0;s:43:"You still haven't created any content type.";i:1;s:26:"and come back to this page";i:2;s:3:"All";i:5;s:17:"Results per page:";i:6;s:101:"No contents were found. To create your first content, simply click on the "New content" button above.";i:7;s:17:"Contacting server";i:8;s:52:"$(document).ready(function(){
+cms.content.init();
+})";}

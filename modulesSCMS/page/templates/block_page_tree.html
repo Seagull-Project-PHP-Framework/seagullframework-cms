@@ -1,0 +1,16 @@
+<div id="page-tree" class="block-helper">
+    <h2>
+        <a href="#">{tr(#page tree (header)#)}</a>
+        <img class="ajaxLoader" src="{imagesDir}/ajax-loader.gif" alt=""
+             style="display: none;" />
+    </h2>
+    <div class="inner fieldsetlike">
+        <ul class="simpleTree">
+            <li class="root">
+                <span class="text">{tr(#top level page#)}</span>
+                <!--span class="text">{tr(#page tree#)}</span-->
+                {this.plugin(#renderPageNav#,aTree):h}
+            </li>
+        </ul>
+    </div>
+</div>

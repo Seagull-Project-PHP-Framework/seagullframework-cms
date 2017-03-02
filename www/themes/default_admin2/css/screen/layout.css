@@ -1,0 +1,152 @@
+
+/**
+ * Admin main layout.
+ *
+ * @package admin
+ * @author Dmitri Lakachauskis <lakiboy83@gmail.com>
+ */
+
+@media screen, projection
+{
+  body.main {
+    background: #f2f7f1 url(<?= $baseUrl ?>/images/bg/header.gif) repeat-x left top;  
+    text-align: center; 
+  }
+  body.simple {
+    padding: 10px;
+  }
+  #page_margins {
+    margin: 0 auto;
+    width: 960px;    
+    text-align: left;
+  }
+  #page {
+    padding: 0 10px 10px;
+  }
+
+  /* Designing main layout elements */
+  #header {
+    height: 107px;
+  }
+  
+  #footer {
+    border-top: 1px dashed #ccc;
+    border-bottom: 1px dashed #ccc;
+    padding: 10px;
+    background-color: #ebebeb;
+    line-height: 1.3em;
+    color: #333;
+  }
+    #footer .nav {
+      text-align: right;
+    }
+    #footer p {
+      margin-bottom: 0;
+    }
+  
+  #main {
+    border: 1px solid #aaa;
+    border-top: none;
+    padding: 15px;
+    margin-bottom: 1em;
+    background-color: #fff;
+  }
+
+  /*-------------------------------------------------------------------------*/
+
+  /* Main navigation */
+  #nav {
+    position: absolute;
+    top: 45px;
+    width: 100%; 
+  }
+    #nav_main ul, #nav_sub ul {
+      list-style: none;
+    }
+    #nav_main ul, #nav_main li, #nav_sub ul, #nav_sub li {
+      margin: 0;
+    }
+    #nav_main li, #nav_sub li {
+      float: left;
+      line-height: 1em;      
+    }
+    
+  /* Primary nav */
+  #nav_main {
+  }
+    #nav_main li {
+      margin-right: 10px;
+    }   
+      #nav_main li a {
+        display: block;
+        border: 1px solid #0f3b6f;
+        border-bottom: 0;
+        padding: 7px 10px 6px;
+        background-color: #366aae;
+        color: #a4bce3;
+        font-weight: bold;
+        text-decoration: none;
+      }
+      #nav_main li.current a,
+      #nav_main li a:hover {
+        border-color: #333;
+        background-color: #ebebeb;
+        color: #000;
+      }
+    
+  /* Sub navigation */
+  #nav_sub {
+    border: 1px solid #aaa;
+    border-top: none;
+    height: 35px;
+    background-color: #ebebeb;
+  }
+    #nav_sub li {
+      margin: 13px 0 0 10px;
+      padding-left: 20px;
+      background: url(<?= $baseUrl ?>/images/bg/nav_devider.gif) no-repeat 5px center;
+    }
+    #nav_sub li.first {
+      padding-left: 0;
+      background: none;
+    }
+      #nav_sub li a {
+        color: #333;
+        text-decoration: none;
+      }
+      #nav_sub li a:hover {
+        text-decoration: underline;
+      }
+      #nav_sub li strong {
+        color: #000;
+      }
+      
+  /*------------------------------------------------------------------------------------------------------*/
+
+  /**
+   * Repositioning content container
+   *
+   * |-------------------------------|
+   * | #header                       |
+   * |-------------------------------|
+   * | #col3                         |
+   * | 100%                          |
+   * |-------------------------------|
+   * | #footer                       |
+   * |-------------------------------|
+   */
+
+  /* #col1 becomes main column */
+  #col1 {
+    display: none;
+  }
+  #col1_content {
+  }
+
+  /* #col3 moves to the right */
+  #col3 {
+    margin: 0;
+  }
+  #col3_content {
+  }      
+}

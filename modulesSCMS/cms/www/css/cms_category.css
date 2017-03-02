@@ -1,0 +1,35 @@
+/************************************/
+/*           Category Mgr           */
+/************************************/
+
+#categoryList {
+    margin: 0 0px 0 0px;
+    width:20%;
+    padding:10px 0 10px 20px;
+    background-color:#ffffff;
+    border:1px solid #dddddd;
+    float:left;
+}
+#categoryDetails {
+    float:right;
+    width:75%;
+}
+#categoryDetails h3 {
+    padding-left:20px;
+    color:#666666;
+    background-image: url('<?php echo $webRootUrl ?>/cms/images/arrow_closed.gif');
+    background-position:left;
+    background-repeat:no-repeat;
+}
+#categoryDetails h3.loading {
+    background-image: url('<?php echo $webRootUrl ?>/cms/images/ajax-indicator-s.gif');
+    background-position:left;
+    background-repeat:no-repeat;
+}
+.ajaxLoader {
+    background-image: url('<?php echo $webRootUrl ?>/cms/images/ajax-indicator-s.gif');
+    background-position:right;
+    background-repeat:no-repeat;
+    width:16px;
+    height:16px;
+}

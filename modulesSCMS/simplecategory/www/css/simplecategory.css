@@ -1,0 +1,18 @@
+#category-container .layout-inner {
+  margin-left: 30px;
+  margin-right: 0;
+}
+
+#category-nav {
+  padding: 0.5em 0 0 1px;
+}
+  #category-nav a.action {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #999;
+  }
+  #category-nav p * {
+    float: left;
+    margin-right: 10px;
+  }

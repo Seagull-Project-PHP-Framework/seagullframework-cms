@@ -1,0 +1,65 @@
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.contentTypeEditForm').ajaxForm({
+        url :         makeUrl({module: 'cms', action: 'updateName'}),
+        type:         'post',
+        dataType :    'json',
+        beforeSubmit: cms.contentType.editor.validate,
+        success:      cms.contentType.editor.save
+    });
+    $('#newContentTypeForm').ajaxForm({
+        url :         makeUrl({module: 'cms', action: 'addContentType'}),
+        dataType :    'json',
+        beforeSubmit: cms.contentType.creator.validate,
+        success:      cms.contentType.creator.save
+    });
+});
+</script>
+<div id="content-header">
+    <h2>{translate(#Content Type Manager#)}</h2>
+    <div class="message" id="ajaxMessage">{msgGet()}</div>
+</div>
+<div class="moduleContainer" id="cmsContainer">
+    <div class="moduleContent left">
+        <div class="wrap">
+
+            <div id="moduleToolbarHeader">
+                <!--MANAGE LISTS-->
+                <a class="action" href="{makeUrl(##,#attriblist#,#cms#)}">{translate(#manage lists#,#ucfirst#)}</a>
+                |
+                <!--NEW ATTRIBUTE LIST-->
+                <a class="action" href="#" id="newAttribList_link"
+                   sgl:active_text="{translate(#cancel new attribute list#,#ucfirst#)}" sgl:active_class="actionDone"
+                   onclick="cms.contentType.attributeList.toggle();return false;">{translate(#new attribute list#,#ucfirst#)}</a>
+                |
+                <!--NEW CONTENT TYPE-->
+                <a class="action" href="#" id="newContentTypeLink"
+                   sgl:active_text="{translate(#cancel new content type#,#ucfirst#)}" sgl:active_class="actionDone"
+                   onclick="cms.contentType.creator.toggle();return false;">{translate(#new content type#,#ucfirst#)}</a>
+            </div>
+
+            <div class="moduleToolbar">
+                <div class="cmsBox clearfix" id="newAttribListBox" style="display:none">
+                    <flexy:include src="contentType_newAttribListForm.html" />
+                </div>
+            </div>
+
+            <div class="moduleToolbar">
+                <div class="clearfix" id="newContentType">
+                    <flexy:include src="contentType_newContentTypeForm.html" />
+                </div>
+            </div>
+
+            {if:aContentTypes} <!-- SHOW CONTENT TYPEs -->
+            <div id="contentTypeList">
+            {foreach:aContentTypes,id,oContentType}
+                <flexy:include src="contentType_contentType.html" />
+            {end:}
+            </div>
+
+            {else:} <!-- NO CONTENT TYPES -->
+            <p>{translate(#No content types were found#)}</p>
+            {end:}
+        </div>
+    </div>
+</div>

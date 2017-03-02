@@ -1,0 +1,131 @@
+p.submit {
+	margin: 5px 0 0;
+	padding: 4px 0 0 !important;
+	border-top: 1px solid #ddd;
+}
+
+p.submit input {
+	vertical-align: middle;
+}
+
+/************************************/
+	/*        CONTENT TYPE LIST         */
+	/************************************/
+#cmsContainer .moduleToolbar {
+	position: relative;
+}
+
+.contentTypeEditForm li label {
+	vertical-align: middle;
+}
+
+.contentTypeEditForm input.contentType_name {
+	padding: 3px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+#newContentTypeForm {
+	margin-bottom: 10px;
+	padding-top: 5px;
+	background-color: #f2f2f2;
+	border: 1px solid #ddd;
+}
+
+#newContentTypeForm input {
+	vertical-align: middle;
+}
+
+/************************************/
+	/*        CONTENT TYPE VIEW         */
+	/************************************/
+.contentType {
+	margin-bottom: 10px;
+	border: 1px solid #ddd;
+	background-color: #fff;
+}
+
+.contentType h2 {
+	margin: 0 !important;
+	padding: 5px !important;
+	background-color: #fff;
+	background-repeat: no-repeat;
+	background-position: 4px 6px;
+}
+
+#cmsContainer .contentType h2 span {
+	font-size: 16px !important;
+	font-weight: normal;
+	cursor: pointer;
+}
+
+.contentType.closed h2 {
+	text-indent: 16px;
+	background-image:
+		url('<?php echo $moduleUrl ?>/images/arrow_closed.gif');
+}
+
+.contentType.opened h2 {
+	border-bottom: 1px dotted #ddd !important;
+	text-indent: 16px;
+	background-image:
+		url('<?php echo $moduleUrl ?>/images/arrow_opened.gif');
+}
+
+.contentType.loading h2 {
+	text-indent: 16px;
+	background-image:
+		url('<?php echo $moduleUrl ?>/images/ajax-indicator-s.gif') !important
+		;
+}
+
+.contentType ol {
+	padding-left: 20px;
+	padding-right: 15px;
+}
+
+.contentType ol li {
+	margin: 5px 0;
+	overflow: hidden;
+}
+
+.contentType ol li.newAttribute {
+	list-style: none;
+}
+
+.contentType a img {
+	vertical-align: middle;
+}
+
+.contentType a.deleteLink {
+	text-decoration: none;
+}
+
+.contentType a.deleteLink:hover,.contentType a.deleteLink:active {
+	background: none;
+}
+
+.contentType form {
+	padding: 5px 10px;
+	background: #f8f8f8;
+}
+
+.contentType .attributeEditForm label {
+	float: left;
+	width: 75px;
+	font-size: 0.9em;
+	font-weight: normal;
+}
+
+.contentType .attributeEditForm input {
+	vertical-align: middle;
+}
+
+.contentType li.attributeParams {
+	background: #fff;
+	border: 1px solid #666;
+}
+
+.contentType li.attributeParams label {
+	width: 120px;
+}

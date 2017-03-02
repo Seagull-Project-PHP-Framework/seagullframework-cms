@@ -1,0 +1,27 @@
+<div class="cms-content {camelise(oContent.typeName)}" id="content{oContent.id}" flexy:ignore>
+
+    <h1><span class="contentName" id="content{oContent.id}-name">{oContent.name}</span></h1>
+
+    <div class="picture">{this.plugin(#renderAttribute#,oContent,#picture#,editable):h}</div>
+    
+    <p class="attribLabel">Date of birth</p>
+    {this.plugin(#renderAttribute#,oContent,#dateOfBirth#,editable):h}
+
+    <p class="attribLabel">Web site</p>
+    {this.plugin(#renderAttribute#,oContent,#website#,editable):h}
+
+    <p class="attribLabel">Last salary</p>
+    {this.plugin(#renderAttribute#,oContent,#lastSalaryAmount#,editable):h}
+
+    <p class="attribLabel">Available immediately?</p>
+    {this.plugin(#renderAttribute#,oContent,#availableImmediately#,editable):h}
+
+    <p class="attribLabel">Experience</p>
+    {this.plugin(#renderAttribute#,oContent,#experience#,editable):h}
+
+    <p class="attribLabel">Skills</p>
+    {this.plugin(#renderAttribute#,oContent,#skills#,editable):h}
+
+    <p class="attribLabel">Hobbies</p>
+    {this.plugin(#renderAttribute#,oContent,#hobbies#,editable):h}
+</div>

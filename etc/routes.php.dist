@@ -1,0 +1,171 @@
+<?php
+$aRoutes = array(
+
+    // admin
+    array('admin/dashboard', array(
+        'moduleName' => 'admin',
+//        'controller' => 'admin',
+    )),
+
+    // media
+    array('media/manage/:mimeTypeId/:mediaTypeId/:page', array(
+        'moduleName' => 'media2',
+//        'controller' => 'media2',
+
+        // defaults
+        'mimeTypeId'  => 'all',
+        'mediaTypeId' => 'all',
+        'page'        => 1
+    )),
+    array('media/upload', array(
+        'moduleName' => 'media2',
+        'action'     => 'upload'
+    )),
+    array('media/edit/:mediaId', array(
+        'moduleName' => 'media2',
+        'action'     => 'edit'
+    )),
+    array('media/download/:mediaId', array(
+        'moduleName' => 'media2',
+        'action'     => 'download'
+    )),
+
+    // simplecms
+    array('content/manage/:type/:status/:cLang/:resPerPage/:page', array(
+        'moduleName' => 'simplecms',
+        'controller' => 'cmscontent',
+
+        // defaults
+        'type'       => 'default',
+        'status'     => 'default',
+        'cLang'      => 'default',
+        'resPerPage' => 'default',
+        'page'       => 1
+    )),
+    array('content/edit/:contentId/:cLang/:versionId', array(
+        'moduleName' => 'simplecms',
+        'controller' => 'cmscontent',
+        'action'     => 'edit',
+
+        // defaults
+        'cLang'     => 'default',
+        'versionId' => 0
+    )),
+    array('content/add/:type/:cLang/:contentId', array(
+        'moduleName' => 'simplecms',
+        'controller' => 'cmscontent',
+        'action'     => 'add',
+
+        // defaults
+        'type'      => 'default',
+        'cLang'     => 'default',
+        'contentId' => 0
+    )),
+    array('content/activity/:userId/:page', array(
+        'moduleName' => 'simplecms',
+        'controller' => 'cmsactivity',
+
+        // defaults
+        'userId' => 'all',
+        'page'   => 1,
+    )),
+    array('cms/choices/manage', array(
+        'moduleName' => 'simplecms',
+        'controller' => 'cmsattriblist',
+    )),
+    array('cms/content-types/manage', array(
+        'moduleName' => 'simplecms',
+        'controller' => 'cmscontenttype',
+    )),
+    array('cms/export', array(
+        'moduleName' => 'simplecms',
+        'controller' => 'cmsexporter',
+    )),
+
+    // user2
+    array('login', array(
+        'moduleName' => 'user2',
+        'controller' => 'login2',
+        'action' => 'login'
+    )),
+    array('register', array(
+        'moduleName' => 'user2',
+        'controller' => 'login2',
+        'action' => 'register'
+    )),
+    array('logout', array(
+        'moduleName' => 'user2',
+        'controller' => 'login2',
+        'action' => 'logout'
+    )),
+    array('password/reset', array(
+        'moduleName' => 'user2',
+        'controller' => 'passwordrecovery'
+    )),
+    array('password/reset/:userId/:k', array(
+        'moduleName' => 'user2',
+        'controller' => 'passwordrecovery',
+        'action' => 'reset'
+    )),
+
+    // simplecategory
+    array('category/manage', array(
+        'moduleName' => 'simplecategory',
+//        'controller' => 'simplecategory',
+    )),
+
+    // page
+    array('page/manage/:siteId/:langId/:parentId/:status/:resPerPage/:page', array(
+        'moduleName' => 'page',
+//        'controller' => 'page',
+
+        // defaults
+        'siteId'     => 'default',
+        'langId'     => 'default',
+        'parentId'   => 'default',
+        'status'     => 'default',
+        'resPerPage' => 'default',
+        'page'       => 1
+    )),
+    array('page/edit/:pageId/:langId', array(
+        'moduleName' => 'page',
+//        'controller' => 'page',
+        'action'     => 'edit',
+
+        // defaults
+        'langId'     => 'default'
+    )),
+    array('page/add/:langId/:siteId', array(
+        'moduleName' => 'page',
+//        'controller' => 'page',
+        'action'     => 'add',
+
+        // defaults
+        'langId'     => 'default',
+        'siteId'     => null // null not, zero
+    )),
+    array('url/manage/:siteId', array(
+        'moduleName' => 'page',
+        'controller' => 'route',
+
+        // defaults
+        'siteId'     => null,
+    )),
+    array('url/edit/:routeId/:siteId', array(
+        'moduleName' => 'page',
+        'controller' => 'route',
+        'action'     => 'edit',
+
+        // defaults
+        'siteId'     => null,
+    )),
+    array('url/add/:siteId', array(
+        'moduleName' => 'page',
+        'controller' => 'route',
+        'action'     => 'add',
+
+        // defaults
+        'siteId'     => null,
+    )),
+);
+?>

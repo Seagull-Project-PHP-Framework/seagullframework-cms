@@ -1,0 +1,13 @@
+#frontend-helper-panel {
+  position: absolute;
+  z-index: 1000;
+  right: 10px;
+  top: 10px;
+  border: 1px solid #666;
+  padding: 10px 10px 15px;
+  background-color: #eee;
+  opacity: 0.75;
+}
+  #frontend-helper-panel p {
+    margin-bottom: 0;
+  }

@@ -1,0 +1,36 @@
+<form id="category-container" class="columns layout-2cols"
+      method="post" action="{makeUrl(#updateCategory#,#simplecategory#,#simplecategory#)}">
+
+    <div class="title-edit">
+        <h1>{tr(#category manager (header)#)}</h1>
+        <span>
+            <a id="category-add" href="#" class="add">{tr(#add root category (action)#)}</a>
+            <img class="ajaxLoader" src="{imagesDir}/ajax-loader.gif" alt=""
+                 style="display: none;" />
+        </span>
+    </div>
+
+    <div class="c25l item">
+
+        <div id="category-nav">
+            <p class="clearfix">
+                <select id="category-nav-lang" name="lang" flexy:ignore>
+                    {generateSelect(aLangs,currLang):h}
+                </select>
+                <img class="ajaxLoader" src="{imagesDir}/ajax-loader.gif" alt=""
+                     style="display: none;" />
+            </p>
+            <flexy:include src="simplecategory_tree.html" />
+        </div><!-- category tree -->
+
+    </div><!-- tree -->
+
+    <div class="c75r item">
+        <div id="category-edit" class="layout-inner">
+
+            <p>{tr(#select category from nav for edit#)}</p>
+
+        </div>
+    </div><!-- category's data -->
+
+</form><!-- category container -->

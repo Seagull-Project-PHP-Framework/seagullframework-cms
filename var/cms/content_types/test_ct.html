@@ -1,0 +1,14 @@
+<div class="testCt">
+    <div class="field">
+        <h3>{this.plugin(#renderAttributeAlias#,oContent,#foo#)}</h3>
+        <p>{oContent.foo}</p>
+    </div>
+    <div class="field">
+        <h3>{this.plugin(#renderAttributeAlias#,oContent,#bar#)}</h3>
+        <p>{oContent.bar}</p>
+    </div>
+    <div class="field">
+        <h3>{this.plugin(#renderAttributeAlias#,oContent,#images#)}</h3>
+        <p>{this.plugin(#renderMediaFile#,oContent.images):h}</p>
+    </div>
+</div>

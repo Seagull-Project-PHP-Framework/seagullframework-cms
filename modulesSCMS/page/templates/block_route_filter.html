@@ -1,0 +1,40 @@
+<!-- Filter -->
+<div id="route-filter" class="block-helper block-icon block-icon-search block-item-list">
+    <h2><a href="#">{tr(#url filter (header)#)}</a></h2>
+    <form id="frmRouteFilter" action="{makeUrl(#getRoutes#,#page#,#page#)}" method="get">
+    <div class="inner">
+        <input type="hidden" name="pageID" value="{pageID}" />
+        <input type="hidden" name="filter[sortBy]" value="{sortBy}" />
+        <input type="hidden" name="filter[sortOrder]" value="{sortOrder}" />
+        <ul>
+            <li>
+                <label for="filter_url">{tr(#filter by url#)}</label>
+                <input id="filter_url" name="filter[route]" value="{filter[route]}" flexy:ignore>
+            </li>
+            <li>
+                <label for="filter_site">{tr(#filter by site#)}</label>
+                <select id="filter_site" name="filter[siteId]" flexy:ignore>
+                    <option value="">{tr(#all#)}</option>
+                    {generateSelect(aSites,siteId):h}
+                </select>
+            </li>
+            <li>
+                <label for="filter_status">{tr(#filter by status#)}</label>
+                <select id="filter_status" name="filter[isActive]" flexy:ignore>
+                    <option value="">{tr(#all#)}</option>
+                    {generateSelect(aStatuses,isActive):h}
+                </select>
+            </li>
+            <li>
+                <label for="filter_resPerPage">{tr(#filter results per page#)}</label>
+                <select id="filter_resPerPage" name="filter[resPerPage]" flexy:ignore>
+                    {generateSelect(aResPerPage,resPerPage):h}
+                </select>
+            </li>
+            <li>
+                <input type="submit" value="{tr(#apply#)}" />
+            </li>
+        </ul>
+    </div>
+    </form>
+</div>

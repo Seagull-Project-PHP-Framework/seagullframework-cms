@@ -1,0 +1,18 @@
+<div id="content-overview" class="block-helper block-icon block-icon-note block-overview">
+    <h2><a href="#">{tr(#content overview (header)#)}</a></h2>
+    <div class="inner fieldsetlike">
+        <dl class="clearfix">
+            <dt>{tr(#content type#)}</dt>
+            <dd>{oContent.typeName}</dd>
+            {if:isEdit}
+            <dt>{tr(#content author#)}</dt>
+            {assign(userId,oContent.createdById)}
+            <dd><a href="{makeUrl(#manager|cmsactivity||userId|userId#)}">{oContent.createdByName}</a></dd>
+            <dt>{tr(#content creation date#)}</dt>
+            <dd>{formatDateTime2Pretty(oContent.dateCreated)}</dd>
+            <dt>{tr(#content modification date#)}</dt>
+            <dd>{formatDateTime2Pretty(oContent.lastUpdated)}</dd>
+            {end:}
+        </dl>
+    </div>
+</div>

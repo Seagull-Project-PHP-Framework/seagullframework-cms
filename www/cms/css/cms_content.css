@@ -1,0 +1,185 @@
+/************************************/
+	/*           CONTENT LIST           */
+	/************************************/
+#contentFilterBox {
+	font-size: 11px;
+}
+
+#contentFilterBox select {
+	margin: 0 5px 0 2px;
+	font-size: 11px;
+}
+
+#newContent {
+	margin: 10px 0;
+	padding-left: 5px;
+	border-left: 4px solid #ccc;
+}
+
+#cmsContainer .moduleContent .help {
+	padding: 4px 0;
+	line-height: 1;
+	font-size: 10px;
+}
+
+#cmsContainer .moduleContent .help a {
+	font-size: 10px;
+}
+
+#contentList-items td a {
+	/* If content name is too long it's table can be wider
+       than it supposed to be */
+	/* white-space: nowrap; */
+	
+}
+
+/************************************/
+	/*           CONTENT EDIT           */
+	/************************************/
+#contentEditForm input.medium,#contentEditForm textarea.medium {
+	width: 70%;
+}
+
+#contentEditForm textarea.medium {
+	height: 5em;
+}
+
+#contentEditForm input.large,#contentEditForm textarea.large {
+	width: 95%;
+}
+
+#contentEditForm textarea.large {
+	height: 10em;
+}
+
+#contentEditForm textarea.large.wysiwyg {
+	height: 15em;
+}
+
+#contentEditForm div.moduleInfobar .categories select {
+	height: 20em;
+	width: 190px;
+}
+
+/* Preview fieldset */
+fieldset#contentPreview {
+	width: 75%;
+	margin: 0 0 10px;
+	padding: 0;
+	background: #fff
+		url('<?php echo $webRootUrl ?>/cms/images/content_preview.gif')
+		no-repeat;
+	border: 1px solid <? php echo $ grey ?>;
+}
+
+fieldset#contentPreview .previewBox {
+	padding: 5px;
+}
+
+fieldset#contentPreview legend {
+	padding: 0 0.5em;
+	font-size: 1.1em;
+	font-weight: bold;
+	color: <? php echo $ grey ?>;
+}
+
+fieldset#contentPreview legend a {
+	color: <? php echo $ primary ?>;
+}
+
+/************************************/
+	/*           CONTENT VIEW           */
+	/************************************/
+a#contentModeTrigger {
+	font-size: 12px;
+	color: <? php echo $ actionLinkColor ?>;
+	text-decoration: underline;
+}
+
+a#contentModeTrigger :hover {
+	background: <? php echo $ actionLinkColor ?>;
+	color: #fff;
+	text-decoration: none;
+}
+
+.attributeLabel {
+	font-weight: bold;
+}
+
+/* Edit */
+.contentBar {
+	position: absolute;
+	width: 170px;
+	left: 0;
+	margin-left: -175px;
+	top: 2px;
+}
+
+.contentBarInner {
+	height: 250px;
+	padding: 4px;
+	background: <? php echo $ greyLight ?>;
+	border: 1px solid <? php echo $ greyDark ?>;
+	-moz-border-radius: 4px;
+	-moz-opacity: 0.95;
+}
+
+html>body .contentBarInner {
+	height: auto;
+	min-height: 250px;
+}
+
+.contentBar h2 {
+	margin: 0;
+	padding: 2px 4px 4px;
+	font-size: 1.1em;
+	text-align: center;
+}
+
+.contentBar a.control-link {
+	padding: 0.4em;
+	font-size: 1em;
+	color: <? php echo $ primary ?>;
+	text-decoration: underline;
+}
+
+.elemHover {
+	background: #efefef;
+}
+
+#content .attribLabel {
+	font-size: 1.1em;
+	color: <? php echo $ primary ?>;
+	font-weight: bold;
+}
+
+.fieldEdit {
+	background: inherit;
+	border: none;
+	font: inherit;
+	color: inherit;
+}
+
+textarea.fieldEdit {
+	width: 99%;
+}
+
+.imageEmpty {
+	width: 90px;
+	height: 90px;
+	border: 2px solid red;
+}
+
+#replaceImage { /*testing*/
+	position: fixed;
+	background: #FF9900;
+	top: 50px;
+	left: 50px;
+	width: 400px;
+	height: 300px;
+}
+
+.picture {
+	float: right;
+	margin: 0 0 10px 10px;
+}

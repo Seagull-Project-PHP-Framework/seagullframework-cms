@@ -1,0 +1,116 @@
+<form id="route-container" class="columns layout-2cols sgl-form" method="post"
+      action="{makeUrl(#updateRoute#,#page#,#page#)}">
+
+    <div class="c75l item">
+        <div class="layout-inner" flexy:ignore>
+            <div style="margin-bottom:20px">
+            <p style="font-size: 1.2em">{tr(#enter route#)}</p>
+            <input name="route[path]" value="{route.path}" class="text path" type="text" />
+            <button class="process-path">{tr(#process (button)#)}</button>
+            </div>
+
+            <fieldset style="display: none;">
+                <input name="routeId" value="{route.route_id}" type="hidden" />
+                <input name="route[site_id]" value="{route.site_id}" type="hidden" />
+                <input name="route[page_id]" value="{route.page_id}" type="hidden" />
+                <input name="route[is_active]" value="{route.is_active}" type="hidden" />
+                
+                <input type="hidden" name="redir" value="{redir}" />
+            </fieldset>
+
+	        <fieldset class="fields">
+	             <legend>{tr(#url params#)}</legend>
+                 <ol class="clearfix custom-values">
+                    {this.plugin(#renderRoutePathParameters#,route):h}
+	             </ol>
+	        </fieldset>
+	        <fieldset class="fields">
+	             <legend>{tr(#linked module#)}</legend>
+                 <ol id="module-matrix" class="clearfix default-values">
+                     <li class="required">
+	                     <label>{tr(#module#,#ucfirst#)}</label>
+	                     <div>
+	                     <select name="route[moduleName]">
+	                     {generateSelect(aModules,route.moduleName):h}
+	                     </select>
+	                     </div>
+                     </li>
+                     <li class="required">
+	                     <label>{tr(#manager#,#ucfirst#)}</label>
+	                     <div>
+	                     <select name="route[controller]">
+	                     {generateSelect(aManagers,route.controller):h}
+	                     </select>
+	                     </div>
+                     </li>
+                     <li class="required">
+	                     <label>{tr(#action#,#ucfirst#)}</label>
+	                     <div>
+	                     <select name="route[action]">
+	                     {generateSelect(aActions,route.action):h}
+	                     </select>
+	                     </div>
+                     </li>
+                     {this.plugin(#renderRouteDefaultParameters#,route):h}
+  	             </ol>
+                 <hr/>
+	             <ol>
+                     <li>
+                         <label>{tr(#add parameter#)}</label>
+                         <div>
+                            <input name="parameterName" class="text" type="text" style="width: 100px;" />
+                            <button class="add-parameter">{tr(#add#)}</button>
+                         </div>
+                     </li>
+                 </ol>
+
+	        </fieldset>
+	        <fieldset class="fields">
+	             <legend>{tr(#extra#)}</legend>
+                 <ol class="clearfix">
+	             <li>
+		             <label>{tr(#description#)}</label>
+		             <div>
+		             <textarea name="route[description]" rows="5" cols="40">{route.description:h}</textarea>
+		             </div>
+	             </li>
+	             </ol>
+	        </fieldset>
+            <p class="fieldIndent">
+                <span class="triggers">
+                    {if:isEdit}
+                    <input class="button" type="submit" name="submitted"
+                           value="{tr(#update url (button)#)}" />
+                    &nbsp;&nbsp;
+                    <input class="button" type="submit" name="submittedContinue"
+                           value="{tr(#update url and continue (button)#)}" />
+                    {else:}
+                    <input class="button" type="submit" name="submitted"
+                           value="{tr(#add url (button)#)}" />
+                    &nbsp;&nbsp;
+                    <input class="button" type="submit" name="submittedContinue"
+                           value="{tr(#add url and continue (button)#)}" />
+                    {end:}
+                    &nbsp;
+                    {tr(#or#)}
+                    &nbsp;
+                    <a flexy:if="redir" href="{redir}">{tr(#cancel#)}</a>
+                    <a flexy:if="!redir" href="{makeUrl(##,#route#,#page#)}">{tr(#cancel#)}</a>
+                </span>
+                <img class="ajaxLoader" src="{imagesDir}/ajax-loader.gif" alt=""
+                     style="display: none;" />
+            </p>
+        </div>
+    </div><!-- item -->
+
+    <div class="c25r">
+
+    </div>
+
+</form><!-- route-container -->
+<style>
+span.ui-icon {
+float:left;
+margin:0 4px;
+}
+</style>

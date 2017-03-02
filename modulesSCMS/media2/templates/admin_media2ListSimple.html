@@ -1,0 +1,50 @@
+<p id="media-filter" class="clearfix">
+    <a class="delete float_right"
+       href="#">{tr(#close window#)}</a>             
+    <a class="upload float_right"
+       href="{makeUrl(#uploadSimple#,#media2#,#media2#)}?redir={redir}">{tr(#upload media (short)#)}</a>
+
+    <!-- Filter -->
+    <label for="filter_mime">{tr(#filter by mime type#)}</label>
+    <select id="filter_mime" name="media_mime" flexy:ignore>
+        {this.plugin(#generateFilterSelect#,aMimeTypes,mimeTypeId,#mimeTypeId#,#1#):h}
+    </select>
+    &nbsp;
+    <label for="filter_type">{tr(#filter by media type#)}</label>
+    <select id="filter_type" name="media_type" flexy:ignore>
+        {this.plugin(#generateFilterSelect#,aMediaTypes,mediaTypeId,#mediaTypeId#,#1#):h}
+    </select>
+</p>            
+
+<div id="media-list" class="clearfix" flexy:if="aMedias">
+    {foreach:aMedias,k,oMedia}
+    
+    {if:isEqual(mediaId,oMedia.media_id)}
+        {assign(currentStyle,#item current#)}
+    {else:}
+        {assign(currentStyle,#item#)}                
+    {end:}
+    <div flexy:raw="{this.plugin(#getContentRowStyle#,currentStyle,#4#):h}" id="media-item_{oMedia.media_id}">                
+        {if:this.plugin(#isImageMimeType#,oMedia.mime_type)}
+        <a class="preview" href="{webRoot}/media2/img.php?path={this.plugin(#getImagePath#,oMedia)}"
+           title="{tr(#click to enlarge#)}">
+            <img class="image"
+                 src="{webRoot}/media2/img.php?path={this.plugin(#getImagePath#,oMedia,#small#)}" alt="" /></a>
+        {else:}
+        <a href="{makeUrl(#download#,#media2#,#media2#,aMedias,#mediaId|media_id#,k)}"
+           title="{tr(#click to download#)}">
+            <img class="image"
+                 src="{this.plugin(#getIconByMimeType#,oMedia.mime_type)}" alt="" /></a>
+        {end:}
+        <a href="#" class="descr accept" sgl:media_id="{oMedia.media_id}">
+            {summarise(oMedia.name,15,#1#)}</a>
+    </div>
+    
+    {end:}
+</div>
+
+<p class="pager" flexy:if="pagerLinks">{pagerLinks:h}</p>
+
+<p flexy:if="!aMedias">
+    {tr(#no media found#)}
+</p>

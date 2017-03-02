@@ -1,0 +1,8 @@
+<div id="content-status" class="block-helper block-dynamic-icon" flexy:ignore>
+    <h2 class="floatbox"><a href="#">{this.plugin(#getContentStatusIcon#,oContent):h} {tr(#status (header)#)}</a></h2>
+    <div class="inner">
+        <select name="content[status]">
+            {generateSelect(aStatuses,oContent.status):h}
+        </select>
+    </div>
+</div>

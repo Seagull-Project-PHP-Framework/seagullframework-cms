@@ -1,0 +1,14 @@
+<div class="article">
+    <div class="field">
+        <h3>{this.plugin(#renderAttributeAlias#,oContent,#introduction#)}</h3>
+        <p>{oContent.introduction}</p>
+    </div>
+    <div class="field">
+        <h3>{this.plugin(#renderAttributeAlias#,oContent,#body#)}</h3>
+        {oContent.body:h}
+    </div>
+    <div class="field">
+        <h3>{this.plugin(#renderAttributeAlias#,oContent,#isPublished#)}</h3>
+        <p>{this.plugin(#renderListAttribValue#,oContent,#isPublished#)}</p>
+    </div>
+</div>

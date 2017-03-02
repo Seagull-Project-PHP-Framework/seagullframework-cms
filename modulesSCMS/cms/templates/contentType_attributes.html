@@ -1,0 +1,70 @@
+<!--
+  --  REMINDER : {id} is a shortcut for {oContentType.id} --
+-->
+
+    <!-- ATTRIBUTES -->
+    <ol id="contentType_{id}_attributes" flexy:ignore>
+        {foreach:oContentType.aAttribs,oAttrib}
+            <flexy:include src="contentType_attribute.html" />
+        {end:}
+
+        <!-- ADD ATTRIBUTE FORM -->
+        <li class="newAttribute" id="contentType_{id}_newAttribute">
+            <form class="attributeEditForm" id="contentType_{id}_newAttributeForm" style="display:none">
+                <input type="hidden" name="contentTypeId" value="{id}" />
+                <ul>
+                    <li id="contentType_{id}_newAttribute_errorMsg" style="display:none"></li>
+                    <li>
+                        <label>Alias</label>
+                        <input type="text" value=""
+                               name="newAttribute[fieldAlias]" id="contentType_{id}_newAttribute_alias"
+                               onblur="cms.contentType.camelizeAttributeName(contentType_{id}_newAttribute_name, this.value)" />
+                    </li>
+                    <li>
+                        <label>Name</label>
+                        <input type="text"
+                               name="newAttribute[fieldName]" id="contentType_{id}_newAttribute_name" />
+                    </li>
+                    <li>
+                        <label>Type</label>
+                        <select name="newAttribute[fieldType]"
+                                class="attrTypeSelect" id="contentType_{id}_newAttribute_type">
+                                {generateSelect(attrTypes):h}
+                        </select>
+                    </li>
+                    <!-- PARAMETERS -->
+                    <li class="attributeParams" id="contentType_{id}_newAttribute_params" style="display:none">
+                        <span>Parameters</span>
+                        <div>
+                            <!-- LIST TYPE -->
+                            <div class="attributeField attrListType" id="contentType_{id}_newAttribute_typeList">
+                                <label>Select a list</label>
+                                <select name="newAttribute[fieldParams][attributeListId]">
+                                    <option value="">Choose ..</option>
+                                    {generateSelect(aListTypes):h}
+                                </select>
+                            </div>
+                            <!-- VISIBILITY -->
+                            <!--<div style="clear:both">
+                                <label>Attribute is visible</label>
+                                <input type="radio"
+                                       name="contentType[attributes][{oAttrib.id}][fieldParams][isVisible]"
+                                       value="1" {this.plugin(#checkRadio#,oAttrib.params.isVisible,#1#)} /> yes
+                                <input type="radio"
+                                       name="contentType[attributes][{oAttrib.id}][fieldParams][isVisible]"
+                                       value="0" {this.plugin(#checkRadio#,oAttrib.params.isVisible,#0#)} /> no
+                            </div>-->
+                        </div>
+                    </li>
+                </ul>
+                <p class="submit">
+                    <input type="submit" value="Add this attribute" />&nbsp;
+                    <span>or</span>&nbsp;
+                    <a href="#" class="action"
+                       onclick="cms.contentType.attributeCreator.cancel({id});return false;">I'm done</a>
+                </p>
+            </form>
+            <a href="#" class="action" id="contentType_{id}_newAttributeLink"
+               onclick="cms.contentType.attributeCreator.create({id});return false;">add an attribute</a>
+        </li>
+    </ol>

@@ -1,0 +1,25 @@
+<tr flexy:foreach="aPagedData[data],key,oRoute" flexy:raw="{this.plugin(#getContentRowStyle#):h}">
+    <input type="hidden" name="routeId" value="{oRoute.route_id}" flexy:ignore />
+    <td>
+        <input class="checkbox noBorder" type="checkbox" name="frmAction[]" value="{oRoute.route_id}" />
+    </td>
+    <td>
+        <a href="{makeUrl(#edit#,#route#,#page#,aPagedData[data],#routeId|route_id#,key)}">{oRoute.route}</a>
+        
+    </td>
+    <td>
+        {if:oRoute.description}{summarise(oRoute.description,#40#,#1#)}{else:}{tr(#no description#)}{end:}        
+    </td>
+    <td>
+        {if:oRoute.is_active}
+        <input type="checkbox" name="isActive" checked="checked" flexy:ignore />
+        {else:}
+        <input type="checkbox" name="isActive" flexy:ignore />
+        {end:}
+    </td>
+</tr>
+<tr flexy:if="!aPagedData[data]">
+    <td colspan="4">
+        {tr(#no urls found#)}
+    </td>
+</tr>

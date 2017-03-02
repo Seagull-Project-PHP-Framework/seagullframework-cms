@@ -1,0 +1,28 @@
+<div id="dashboard-medialist" class="block-helper block-item-list widget-item" flexy:if="aMedias"
+     sgl:widget="admin_dashboard-media_list">
+    <h2 class="widget-header"><a href="#">{tr(#latest media (header)#)}</a></h2>
+    <div class="inner">
+        <ul>
+            <li flexy:foreach="aMedias,k,oMedia">
+                <!-- img src="{this.plugin(#getIconByMimeType#,oMedia.mime_type)}"
+                     class="image" alt="" /-->
+                <strong>{formatDateTime2Pretty(oMedia.date_created)}</strong>
+                <a href="{makeUrl(#edit#,#media2#,#media2#,aMedias,#mediaId|media_id#,k)}">
+                    {this.plugin(#getArrayValueByKey#,aMimeTypes,oMedia.media_mime_id)}</a>
+                ({this.plugin(#formatFileSize#,oMedia.file_size)})
+                    
+                <!--
+                {if:!oMedia.media_type_id}
+                {tr(#default media type#)}
+                {else:}
+                {this.plugin(#getArrayValueByKey#,aMediaTypes,oMedia.media_type_id)}
+                {end:}
+                -->
+                
+            </li>
+        </ul>
+        <p>
+            <a href="{makeUrl(##,#media2#,#media2#)}">{tr(#view all media#)}</a>
+        </p>
+    </div>
+</div>

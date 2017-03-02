@@ -1,0 +1,18 @@
+{if:isAdd}
+<h2 id="attrib-list-item-header_{oAttr.id}" class="clearfix" style="display: none;">
+{else:}
+<h2 id="attrib-list-item-header_{oAttr.id}" class="clearfix">
+{end:}
+    <a class="name" name="{oAttr.id}">
+        {if:oAttr.name}{oAttr.name}{else:}{tr(#attribute name not specified#)}{end:}</a>
+    <em>({oAttr.id})</em>
+    <span class="actions clearfix">
+        <a id="attrib-list-item-edit_{oAttr.id}" href="#" title="{tr(#edit attribute list#)}">
+            <img src="{webRoot}/themes/{theme}/images/icons/page_edit.gif" alt="" /></a>
+        <a id="attrib-list-item-delete_{oAttr.id}" class="last" href="#"
+           title="{tr(#delete attribute list#)}">
+            <img src="{webRoot}/themes/{theme}/images/icons/action_stop.gif" alt="" /></a>
+        <img class="ajaxLoader" src="{webRoot}/themes/{theme}/images/ajax-loader.gif"
+             alt="" style="display: none;" />
+    </span>
+</h2>

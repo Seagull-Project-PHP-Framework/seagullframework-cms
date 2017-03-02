@@ -1,0 +1,100 @@
+/**
+ * Cms query styles/
+ */
+form#filterPanel {
+	
+}
+
+form#filterPanel fieldset label {
+	float: left;
+	display: block;
+	margin-top: 0.2em;
+	width: 100px; #
+	padding-bottom: 0.2em;
+}
+
+form#filterPanel fieldset input.remove {
+	position: absolute;
+	right: 0;
+	top: -2px;
+}
+
+/* Actions */
+form#filterPanel fieldset.actions {
+	margin-top: 0.5em;
+	border-top: 1px solid #ddd;
+	padding: 1em 0 0.5em;
+}
+
+form#filterPanel fieldset.actions label {
+	float: none;
+	display: inline;
+	width: auto;
+	margin-right: 5px;
+}
+
+form#filterPanel fieldset.actions select {
+	margin-right: 5px;
+}
+
+form#filterPanel fieldset.actions span.filterOptionsContainer {
+	margin-right: 10px;
+}
+
+form#filterPanel fieldset.actions input.update {
+	/* margin-left: 10px; */
+	
+}
+
+/* Common for all filter containers */
+form#filterPanel div.filterContainer {
+	position: relative;
+	padding-bottom: 1.5em;
+}
+
+* html form#filterPanel div.filterContainer {
+	height: 1%;
+}
+
+/* Status filter */
+form#filterPanel div#statusFilter_container {
+	padding-right: 70px;
+}
+
+form#filterPanel div#statusFilter_container span {
+	padding-left: 2px;
+	margin-right: 5px;
+}
+
+/* Content type filter */
+form#filterPanel div#contentTypeFilter_container select#contentTypeFilter
+	{
+	width: 200px;
+}
+
+form#filterPanel div#contentTypeFilter_container fieldset {
+	margin-left: 100px;
+}
+
+form#filterPanel div#contentTypeFilter_container fieldset label {
+	margin-top: 0.6em;
+}
+
+/* Attributes */
+form#filterPanel select#attributesFilter {
+	width: 150px;
+}
+
+form#filterPanel div#attributeFilterPanel {
+	
+}
+
+form#filterPanel div#attributeFilterPanel div.attributeContainer {
+	padding-top: 0.5em;
+	clear: left;
+}
+
+form#filterPanel div#attributeFilterPanel input.remove {
+	position: static;
+	margin-left: 10px;
+}

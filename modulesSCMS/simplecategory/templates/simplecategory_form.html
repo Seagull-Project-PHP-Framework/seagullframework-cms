@@ -1,0 +1,105 @@
+<div flexy:ignore>
+    <fieldset class="hide">
+        <input id="category_id" type="hidden" name="categoryId"
+            value="{oCategory.category2_id}" />
+        <input type="hidden" name="category[is_active]" value="0" />
+        <input type="hidden" name="redir" value="{redir}" />
+
+        {if:!isEdit}
+        <input type="hidden" name="category[language_id]" value="{oCategory.language_id}" />
+        <input type="hidden" name="category[parent_id]" value="{oCategory.parent_id}" />
+        {end:}
+    </fieldset>
+    <fieldset class="info">
+        <ol class="clearfix">
+            <li>
+                <label>{tr(#category path#)}</label>
+                <div>
+                    {this.plugin(#renderCategoryPath#,aPath):h}
+                    {if:!isEdit}
+                    {if:oCategory.parent_id}&nbsp;&gt;&nbsp;&nbsp;{end:}<strong>{tr(#new category#)}</strong>
+                    {end:}
+                </div>
+            </li>
+            <li>
+                <label>{tr(#category current language#)}</label>
+                <div>
+                    {this.plugin(#getContentLangIcon#,oCategory.language_id):h}
+                </div>
+            </li>
+        </ol>
+    </fieldset>
+    <fieldset class="fields">
+        <ol>
+            <!--li>
+                <label for="category_parent-id">{tr(#category parent#)}</label>
+                <div>
+                {if:isEdit}
+                    show parent
+                {else:}
+                    {if:!oCategory.parent_id}
+                    {tr(#top level category#)}
+                    {end:}
+                {end:}
+                </div>
+            </li-->
+            <li flexy:if="isEdit">
+                <label for="category_language-id">{tr(#category language#)}</label>
+                <div>
+                    <select id="category_language-id" name="category[language_id]">
+                        {generateSelect(aLangs,oCategory.language_id):h}
+                    </select>
+                </div>
+            </li>
+            <li>
+                <label for="category_name">{tr(#category name#)}</label>
+                <div>
+                    <input id="category_name" class="text" type="text"
+                           name="category[name]" value="{oCategory.name}" />
+                </div>
+            </li>
+            <li>
+                <label for="category_description">{tr(#category description#)}</label>
+                <div>
+                    <textarea id="category_description" name="category[description]"
+                        rows="5" cols="20">{oCategory.description}</textarea>
+                </div>
+            </li>
+            <li>
+                <label for="category_is-active">{tr(#category is active#)}</label>
+                <div>
+                    <input id="category_is-active" type="checkbox"
+                        name="category[is_active]" value="1" checked="checked"
+                        flexy:if="oCategory.is_active" />
+                    <input id="category_is-active" type="checkbox"
+                        name="category[is_active]" value="1"
+                        flexy:if="!oCategory.is_active" />
+                </div>
+            </li>
+        </ol>
+    </fieldset>
+    <p class="fieldIndent">
+        <span class="triggers">
+            {if:isEdit}
+            <input class="button" type="submit" name="submitted"
+                   value="{tr(#update root category (button)#)}" flexy:if="!oCategory.parent_id" />
+            <input class="button" type="submit" name="submitted"
+                   value="{tr(#update category (button)#)}" flexy:if="oCategory.parent_id" />
+            {else:}
+            <input class="button" type="submit" name="submitted"
+                   value="{tr(#add root category (button)#)}" flexy:if="!oCategory.parent_id" />
+            <input class="button" type="submit" name="submitted"
+                   value="{tr(#add category (button)#)}" flexy:if="oCategory.parent_id" />
+            {end:}
+
+            {if:redir}
+            &nbsp;
+            {tr(#or#)}
+            &nbsp;
+            <a href="{redir}">{tr(#cancel#)}</a>
+            {end:}
+        </span>
+        <img class="ajaxLoader" src="{imagesDir}/ajax-loader.gif" alt=""
+             style="display: none;" />
+    </p>
+</div>

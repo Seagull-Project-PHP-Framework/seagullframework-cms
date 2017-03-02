@@ -1,0 +1,87 @@
+<form id="media-edit" method="post" class="columns layout-2cols"
+      action="{makeUrl(#updateMedia#,#media2#,#media2#)}">
+      
+    <div class="title-edit">
+        <h1>{tr(#edit media (header)#)}</h1>
+        <span>
+            <a href="#" class="delete" sgl:redir="{redir}"
+               sgl:media_id="{oMedia.media_id}">{tr(#delete media (action)#)}</a>
+            <img class="ajaxLoader" src="{imagesDir}/ajax-loader.gif" alt=""
+                 style="display: none;" />
+        </span>
+    </div>
+      
+    <div class="c75l">
+        <div class="layout-inner" flexy:ignore>
+            <fieldset class="info">
+                <ol class="clearfix">
+                    <li>
+                        <label>{tr(#media icon#)}</label>
+                        <div>
+                            <img src="{this.plugin(#getIconByMimeType#,oMedia.mime_type)}"
+                                 alt="{oMedia.mime_type}" />
+                        </div>
+                    </li>
+                    <li>
+                        <label>{tr(#media mime type#)}</label>
+                        <div>
+                            {this.plugin(#getArrayValueByKey#,aMimeTypes,oMedia.media_mime_id)} ({oMedia.mime_type})
+                        </div>
+                    </li>
+                    <li>
+                        <label>{tr(#media type#)}</label>
+                        <div flexy:if="oMedia.media_type_id">
+                            {this.plugin(#getArrayValueByKey#,aMediaTypes,oMedia.media_type_id)}
+                        </div>
+                        <div flexy:if="!oMedia.media_type_id">
+                            {tr(#default media type#)}
+                        </div>                        
+                    </li>
+                </ol>
+            </fieldset>
+            <fieldset class="fields">
+                <ol class="clearfix">
+                    <li>
+                        <label for="media_name"><em>*</em> {tr(#media name#)}</label>
+                        <div>
+                            <input id="media_name" class="text" type="text"
+                                   name="aMedia[name]" value="{oMedia.name}" />
+                        </div>
+                    </li>
+                    <li>
+                        <label for="media_description">{tr(#media description#)}</label>
+                        <div>
+                            <textarea id="media_description" name="aMedia[description]"
+                                      cols="60" rows="10">{oMedia.description}</textarea>
+                        </div>
+                    </li>
+                </ol>           
+            </fieldset>
+            <fieldset class="hide">
+                <input type="hidden" name="aMedia[media_id]" value="{oMedia.media_id}" />
+                <input type="hidden" name="redir" value="{redir}" />
+            </fieldset>            
+            <p class="fieldIndent">
+                <span class="triggers">
+                    <input class="button" type="submit" name="submitted"
+                           value="{tr(#update media (button)#)}" />
+                    &nbsp;
+                    {tr(#or#)}
+                    &nbsp;
+                    <a flexy:if="redir" href="{redir}">{tr(#cancel#)}</a>
+                    <a flexy:if="!redir" href="{makeUrl(##,#media2#,#media2#)}">{tr(#cancel#)}</a>
+                </span>
+                <img class="ajaxLoader" src="{imagesDir}/ajax-loader.gif" alt=""
+                     style="display: none;" />
+            </p>
+            <p><em>*</em> {translate(#denotes required field#)}</p>            
+        </div>
+    </div><!-- item -->
+    
+    <div class="c25r">
+
+        <flexy:include src="block_media_overview.html" />
+    
+    </div>
+
+</form>

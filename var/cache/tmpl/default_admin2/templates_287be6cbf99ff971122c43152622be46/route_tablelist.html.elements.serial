@@ -1,0 +1,1 @@
+a:1:{s:6:"tmpId1";O:27:"HTML_Template_Flexy_Element":7:{s:3:"tag";s:5:"input";s:10:"attributes";a:5:{s:5:"class";s:17:"checkbox noBorder";s:4:"type";s:8:"checkbox";s:4:"name";s:11:"frmAction[]";s:1:"/";b:1;s:2:"id";s:6:"tmpId1";}s:8:"children";a:0:{}s:8:"override";b:0;s:6:"prefix";s:0:"";s:6:"suffix";s:0:"";s:5:"value";N;}}

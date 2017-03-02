@@ -1,0 +1,177 @@
+<style>
+<!--
+#configureImport p label {
+    width:130px;
+}
+-->
+</style>
+<div id="manager-actions">
+    <span>{translate(#Action#)}: &nbsp;</span>
+    <a class="action upload" href="javascript:formSubmit('configureImport','submitted',1,1)">{translate(#Import#)}</a>
+    <a class="action cancel" href="{makeUrl(##,#content#,#cms#)}">{translate(#Cancel#)}</a>
+</div>
+<div id="content">
+    <div id="content-header">
+        <h2>{pageTitle}</h2>
+        <div class="message">{msgGet()}</div>
+    </div>
+    <form method="post" name="configureImport" flexy:ignore id="configureImport" action="">
+        <div id="optionsLinks"></div>
+        <fieldset class="options" id="configurationTab">
+            <h3>{translate(#Configuration#)}</h3>
+            <input type="hidden" name="action" value="importPublisher" />
+            <p>
+                <label class="tipOwner" for="conf">{translate(#Type#)}
+                <span class="tipText">{translate(#Make sure you load the relevant schema#)}</span>
+                </label>
+                <select name="import[db][type]" id="import[db][type]">
+                    {generateSelect(aDbTypes,import[db][type]):h}
+                </select>
+            </p>
+            <p>
+                <label for="conf">{translate(#Host#)}</label>
+                <input type="text" name="import[db][host]" value="{import[db][host]}" />
+            </p>
+            <p>
+                <label for="conf">{translate(#Port#)}</label>
+                <input type="text" name="import[db][port]" value="{import[db][port]}" />
+            </p>
+            <p>
+                <label for="conf">{translate(#Protocol#)}</label>
+                <input type="text" name="import[db][protocol]" value="{import[db][protocol]}" />
+            </p>
+            <p>
+                <label for="conf">{translate(#Socket#)}</label>
+                <input type="text" name="import[db][socket]" value="{import[db][socket]}" />
+            </p>
+            <p>
+                <label for="conf">{translate(#DB username#)}</label>
+                <input type="text" name="import[db][user]" value="{import[db][user]}" />
+            </p>
+            <p>
+                <label for="conf">{translate(#DB password#)}</label>
+                <input type="password" name="import[db][pass]" value="{import[db][pass]}" />
+            </p>
+            <p>
+                <label for="conf">{translate(#DB name#)}</label>
+                <input type="text" name="import[db][name]" value="{import[db][name]}" />
+            </p>
+            <p>
+                <label class="tipOwner" for="conf_db_prefix">{translate(#Table prefix#)}
+                    <span class="tipText">{translate(#This is used to prefix all tables in database, change with caution#)}</span>
+                </label>
+                <span class="error" flexy:if="error[db][prefix]">{translate(error[db][prefix])}</span>
+                <input id="conf_db_prefix" type="text" name="import[db][prefix]" value="{import[db][prefix]}" />
+            </p>
+            <p>
+                <label class="tipOwner" for="import[db][postConnect]">{translate(#Post-connection query#)}
+                <span class="tipText">{translate(#This query is used to set the default character set for the current connection (MySQL 4.1 or higher). For example: SET NAMES utf8#)}</span>
+                </label>
+                <input type="text" class="longText" name="import[db][postConnect]" id="import[db][postConnect]" value="{import[db][postConnect]}" />
+            </p>
+        </fieldset>
+        <fieldset class="options" id="filtersTab">
+            <h3>{translate(#Filter#)}</h3>
+            <p>
+                <label for="import[filters][item_type_id]">{translate(#Article type#)}</label>
+                <select name="import[filters][item_type_id]" id="import[filters][item_type_id]">
+                    {generateSelect(aArticleTypes,import[filters][item_type_id]):h}
+                </select>
+            </p>
+            <p>
+                <label for="import[filters][status]">{translate(#Status#)}</label>
+                <select name="import[filters][status]" id="import[filters][status]">
+                    {generateSelect(aArticleStatus,import[filters][status]):h}
+                </select>
+            </p>
+            <p>
+                <label for="import[filters][date_created_after]">{translate(#Created after#)}</label>
+                <input type="hidden" name="import[filters][date_created_after]" id="import[filters][date_created_after]" value="{import[filters][date_created_after]}" />
+                <span name="frmCreatedAfterShow" id="frmCreatedAfterShow">{formatDatePretty(import[filters][date_created_after])}</span>
+                <img id="startDateTrigger" src="{webRoot}/themes/{theme}/images/16/clock.gif" alt="click to select start date" />
+                <span class="error" flexy:if="error[date_created_after]">{translate(error[date_created_after])}</span>
+            </p>
+            <p>
+                <label for="import[filters][date_created_before]">{translate(#Created before#)}</label>
+                <input type="hidden" name="import[filters][date_created_before]" id="import[filters][date_created_before]" value="{import[filters][date_created_before]}" />
+                <span name="frmCreatedBeforeShow" id="frmCreatedBeforeShow">{formatDatePretty(import[filters][date_created_before])}</span>
+                <img id="endDateTrigger" src="{webRoot}/themes/{theme}/images/16/clock.gif" alt="click to select start date" />
+                <span class="error" flexy:if="error[date_created_before]">{translate(error[date_created_before])}</span>
+            </p>
+        </fieldset>
+        <fieldset class="options" id="mappingTab">
+            <h3>{translate(#Mapping#)}</h3>
+            <p>
+                <label for="import[mapping][content_type_id]">{translate(#Content type#)}</label>
+                <select name="import[mapping][content_type_id]" id="import[mapping][content_type_id]" onchange="addFormValue(this, 'configureImport'); self.document.configureImport.submit()">
+                    {generateSelect(aContentTypes,import[mapping][content_type_id]):h}
+                </select>
+            </p>
+            <h4>{translate(#Attributes#)}</h4>
+            <p>
+                <label for="import[mapping][{contentTypeId}][name]">{translate(#Name#)}</label>
+                <select name="import[mapping][{contentTypeId}][name]" id="import[mapping][{contentTypeId}][name]">
+                    {generateSelect(aSourceFields,aImportMapping[name]):h}
+                </select>
+            </p>
+            <p>
+                <label for="import[mapping][{contentTypeId}][dateCreated]">{translate(#Date created#)}</label>
+                <select name="import[mapping][{contentTypeId}][dateCreated]" id="import[mapping][{contentTypeId}][dateCreated]">
+                    {generateSelect(aSourceFields,aImportMapping[dateCreated]):h}
+                </select>
+            </p>
+            {foreach:oContentType.aAttribs,oAttrib}
+            <p>
+                <label for="import[mapping][content_type_id]">{oAttrib.alias}</label>
+                <select name="import[mapping][{contentTypeId}][{oAttrib.name}]" id="import[mapping][{contentTypeId}][{oAttrib.name}]">
+                    {generateSelect(aSourceFields,oAttrib.import_mapping):h}
+                </select>
+            </p>
+            {end:}
+        </fieldset>
+    </form>
+
+    <div class="clear"></div>
+</div>
+<style type="text/css">
+@import url("{webRoot}/js/jscalendar/calendar-blue2.css");
+</style>
+<script type="text/javascript" src="{webRoot}/js/cleanUrls.js"></script>
+<script type="text/javascript">
+createAvailOptionsLinks('configureImport','h3');
+showSelectedOptions('configureImport','configurationTab');
+
+Calendar.setup(
+    {
+        inputField  : "import[filters][date_created_after]",         // ID of the input field
+        ifFormat    : "%Y-%m-%d %H:%M:%S",    // the date format
+        displayArea : "frmCreatedAfterShow",
+        daFormat    : SGL_JS_DATETEMPLATE,
+        button      : "startDateTrigger"      // ID of the button
+    }
+);
+Calendar.setup(
+    {
+        inputField  : "import[filters][date_created_before]",         // ID of the input field
+        ifFormat    : "%Y-%m-%d %H:%M:%S",    // the date format
+        displayArea : "frmCreatedBeforeShow",
+        daFormat    : SGL_JS_DATETEMPLATE,
+        button      : "endDateTrigger"      // ID of the button
+    }
+);
+function setEmpty(id) {
+    if (elementToEmpty = document.getElementById(id)) {
+        elementToEmpty.innerHTML = '';
+    }
+}
+function addFormValue(myElement, form)
+{
+    var myForm = document.getElementById(form);
+
+    newInput = document.createElement("input");
+    newInput.setAttribute('name', myElement.name);
+    newInput.setAttribute('value', myElement.value);
+    newInput.setAttribute('type', 'hidden');
+    myForm.appendChild(newInput);
+}
+</script>

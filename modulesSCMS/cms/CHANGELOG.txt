@@ -1,0 +1,127 @@
++-----------------------+
+| VERSION: 1.7          |
++-----------------------+
+BUGFIXES
+10-09-09    contentTypeId was not being captured in ContentViewMgr::_cmd_list
+10-09-09    Added the same Content Type template flexibility found in _cmd_view to _cmd_list
+10-09-09    translit.js and cleanUrls.js were not being loaded
+10-09-09    There was a problem with changing "Content type" when adding a new page to navigation
+03-09-09    Added missing observer required for uploading images within a content
+            item
+
+
++-----------------------+
+| VERSION: 1.6          |
++-----------------------+
+BUGFIXES
+23-09-08    Fixed problem with navigation content item not remembered on edit
+
+IMPROVEMENTS
+24-08-08    Cleaned up API docs
+24-08-08    New pages (navigation) published by default
+18-08-08    Implemented ability to get media associated with Content instances, see
+            http://trac.seagullproject.org/wiki/Modules/Cms/Api#getassociatedmediacontents
+05-08-08    Content name is automatically created (dmitri)
+04-08-08    Implemented multi-language support for content items in the database,
+            and for categories and navigation with file-based arrays.  See
+            UPGRADE.txt for details (julien)
+01-08-08    Improved UI and usability for Attribute List (laszlo)
+31-07-08    Export now only includes attribute lists associated with selected
+            Content Type
+
++-----------------------+
+| VERSION: 1.5          |
++-----------------------+
+BUGFIXES
+21-07-08    fixed bug where attrib lists didn't accept Chinese chars (laszlo)
+18-07-08    fixed exporting of attribute lists (laszlo)
+17-07-08    fixed editing blocks problem (demian)
+25-06-08    fixed attrib list sub-combobox js problem (in content type screen)
+            (laszlo)
+18-04-08    fixed wrong path to images in Manage Categories (demian)
+18-04-08    made DB tables 100% config driven (demian)
+
+IMPROVEMENTS
+24-07-08    implemented ajax reordering of categories (laszlo)
+16-07-08    unique content name checking (save buttons disabled if name not
+            unique)
+15-07-08    implemented content delete (demian)
+15-07-08    implemented pagination (dmitri, demian, laszlo)
+25-06-08    all modern browsers now supported: msie, safari, ff2 + 3
+25-06-08    attribute list screen rebuilt (laszlo)
+25-06-08    FCKeditor now used instead of wikiwyg (laszlo)
+25-06-08    implemented jquery tablesorter (laszlo)
+25-06-08    replaced prototype/scriptaculous with jquery (laszlo)
+21-05-08    added import from publisher functionality (laszlo)
+
++-----------------------+
+| VERSION: 1.4 [510]    |
++-----------------------+
+BUGFIXES
+18-04-08    fixed js bug which made it impossible to select attribute lists
+
+
++-----------------------+
+| VERSION: 1.3 [508]    |
++-----------------------+
+BUGFIXES
+31-03-08    content type names can now have a single quote
+29-03-08    search and Export screens fixed
+
+
+IMPROVEMENTS
+31-03-08    attribute list screen added to navigation
+31-03-08    all screens ported to admin GUI, therefore no more inline editing
+31-03-08    no more use of PEAR HTML_AJAX library
+29-03-08    utf-8 encoding enforced by default
+29-03-08    all SQL queries are now config driven
+29-03-08    updated all time usage to UTC to allow for later timezone sensitivity
+29-03-08    contents can now be versioned
+
++-----------------------+
+| VERSION: 1.2 [473]    |
++-----------------------+
+BUGFIXES
+
+
+IMPROVEMENTS
+02-01-08    created custom installer
+17-12-07    moving cms nav to admin view
+11-12-07    updated admin templates
+
+
++-----------------------+
+| VERSION: 1.1 [439]    |
++-----------------------+
+IMPROVEMENTS
+2007-05-05  integration with categories, single or one-to-many assignments possible
+2007-05-05  categories and content are linked to file association manager, so media
+            assets can be linked with any category or item of content
+2007-05-05  new link widget for creating internal and external links within your
+            content items
+2007-05-05  improved inline editing and ajax-load of attributes for long content
+            type lists
+2007-05-05  added list attribute type, so now you can create a list and specify
+            it as an content object attribute, and choose the relevant html widget
+            best-suited to the logic required, ie checkbox, combobox or radio buttons
+2007-05-05  content now has a status attribute, view all contents status in list
+            view
+2007-05-05  added ability to pass multiple attribute constraints to SGL_Finder
+            for searching, see API examples
+2007-05-05  content manager's screen now lets you filter by content type, status
+            and category
+2007-05-05  creating and editing content can be now be enhanced by adding observers
+            to actions, ie, onCreate do action Foo, where Foo equals send email, etc
+2007-05-05  content items can be linked to eachother, initially a one-to-many
+            association is possible
+2007-05-05  quick search of all content items implemented
+2007-05-05  added ability to define attribute lists from any datasource, including
+            database and flat files, useful for country lists, etc
+2007-05-05  screen added to edit and maintain all created lists
+2007-05-05  added data management tool that exports 'variablized' MySQL data
+            dumps for data types, links, categories and content
+2007-05-05  implemented advanced search feature that works like Trac search,
+            allowing you to add attribute constraints specific to content types searched
+2007-05-05  new factory type added, "ContentAssoc" so queries can be done on linked
+            content.  Ie, if you need all comments that are approved from within
+            a date range for a given article ID

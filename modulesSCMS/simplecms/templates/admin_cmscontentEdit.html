@@ -1,0 +1,263 @@
+<form id="content-container" class="columns layout-2cols" method="post"
+      action="{makeUrl(#updateContent#,#simplecms#,#simplecms#)}">
+
+    {if:isEdit}
+    <div class="title-edit-simple">
+        <h1>{this.plugin(#getContentTitle#,oContent)}&nbsp;</h1>
+        <span>
+            <a href="#" class="delete" sgl:redir="{redir}"
+               sgl:content_id="{oContent.id}"
+               sgl:content_lang="{oContent.langCode}">{tr(#delete content#)}</a>
+            <img class="ajaxLoader" src="{imagesDir}/ajax-loader.gif" alt=""
+                 style="display: none;" />
+        </span>
+    </div>
+    {else:}
+    <h1 class="title-single" flexy:if="!isNew">{tr(#create new language version (header)#)}</h1>
+    <h1 class="title-single" flexy:if="isNew">{tr(#create content (header)#)}</h1>
+    {end:}
+
+    <div class="c75l item">
+        <div class="layout-inner" flexy:ignore>
+
+            <fieldset class="hide">
+
+                <input id="content_type-name" type="hidden" name="type"
+                    value="{oContent.typeName}" />
+
+                {if:!isNew}
+                <!-- This is predefined when creating new language versions -->
+                <input type="hidden" name="content[id]" value="{oContent.id}" />
+                <input type="hidden" name="content[lang]" value="{oContent.langCode}" />
+
+                {if:!isEdit}
+                <!-- We don't need type_id for existing content -->
+                <input type="hidden" name="content[type_id]" value="{oContent.typeId}" />
+                {end:}
+
+                {end:}
+
+                {if:isEdit}
+                <!-- Content name is only known for existing content -->
+                <input type="hidden" name="content[name]" value="{oContent.name}" />
+
+                <!--
+                <input type="hidden" name="content[version]" value="{oContent.version}" />
+                <input type="hidden" name="content[is_current]" value="{oContent.isCurrent}" />
+                -->
+                {end:}
+
+                <input type="hidden" name="redir" value="{redir}" />
+            </fieldset>
+
+			<div id="content-panel-tabs">
+	            <ul id="content-panel-trigger" flexy:if="isEdit">
+	                <li>
+	                    <a href="#content-panel-main"><span>{tr(#content main tab#)}</span></a>
+	                </li>
+	                <li>
+	                    <a href="#content-panel-template"><span>{tr(#content template tab#)}</span></a>
+	                </li>
+	                <li>
+	                    <a href="#content-panel-associations"><span>{tr(#content associate tab#)}</span></a>
+	                </li>
+	            </ul>
+	
+	            <div id="content-panel-main">
+	                <fieldset class="info">
+	                    <ol class="clearfix">
+	
+	                        <!-- Only when creating new content it is possible to change language -->
+	                        <li flexy:if="!isNew">
+	                            <label>{tr(#content language#)}</label>
+	                            <div>
+	                                {this.plugin(#getContentLangIcon#,oContent.langCode):h}
+	                                {this.plugin(#getArrayValueByKey#,aLangs,cLang)}
+	                            </div>
+	                        </li>
+	
+	                        <!-- Version number is visible only for existing content -->
+	                        <li flexy:if="isEdit">
+	                            <label>{tr(#current content version#)}</label>
+	                            <div>
+	                                {tr(#content version %version%#,#vprintf#,oContent)}
+	                            </div>
+	                        </li>
+	
+	                        {if:isNew}
+	                        <li>
+	                            <label for="content_lang">{tr(#content language#)}</label>
+	                            <div>
+	                                <select id="content_lang" name="content[lang]">
+	                                    {generateSelect(aLangs,cLang):h}
+	                                </select>
+	                            </div>
+	                        </li>
+	                        <li>
+	                            <label for="content_type">{tr(#content type#)}</label>
+	                            <div>
+	                                <select id="content_type" name="content[type_id]">
+	                                {foreach:aContentTypes,typeId,typeName}
+	                                    {assign(typeId2,typeId)}
+	                                    <option flexy:if="!isEqual(typeId,type)"
+	                                            value="{makeUrl(#action|add||type|typeId2||cLang|cLang#)}">{typeName}</option>
+	                                    <option flexy:if="isEqual(typeId,type)" selected="selected"
+	                                            value="{makeUrl(#action|add||type|typeId2||cLang|cLang#)}">{typeName}</option>
+	                                {end:}
+	                                </select>
+	                                <input type="hidden" name="content[type_id]" value="{type}" />
+	                            </div>
+	                        </li>
+	                        <li>
+	                            <label for="content_status">{tr(#content status#)}</label>
+	                            <div>
+	                                <select id="content_status" name="content[status]">
+	                                    {generateSelect(aStatuses,oContent.status):h}
+	                                </select>
+	                            </div>
+	                        </li>
+	                        {end:}
+	                    </ol>
+	                </fieldset>
+	                <fieldset class="fields">
+	                    {this.plugin(#renderContentForEdit#,oContent):h}
+	                </fieldset>
+	            </div>
+	            <div id="content-panel-template" flexy:if="isEdit">
+	                <fieldset class="fields">
+	                    <ol class="onTop">
+	                        <li>
+	                            <label for="content_template">{tr(#content template#)}</label>
+	                            <div>
+	                                <textarea id="content_template" name="content[template]" cols="40" rows="20">{contentTemplate}</textarea>
+	                            </div>
+	                        </li>
+	                    </ol>
+	                </fieldset>
+	            </div>
+	            <div id="content-panel-associations" flexy:if="isEdit">
+	                <fieldset class="fields">
+	                    <ol class="clearfix">
+	                        <li>
+	                            <label>{tr(#assoc content language#)}</label>
+	                            <div>
+	                                {this.plugin(#getContentLangIcon#,oContent.langCode):h}
+	                                {this.plugin(#getArrayValueByKey#,aLangs,cLang)}
+	                                <input id="assoc-lang-id" type="hidden" name="assoc_langId" value="{oContent.langCode}" />
+	                            </div>
+	                        </li>
+	                        <li>
+	                            <label for="assoc_content-type">{tr(#assoc content type#)}</label>
+	                            <div>
+	                                <select id="assoc_content-type" name="assoc_contentTypeId">
+	                                    {generateSelect(aContentTypes,oContent.typeId):h}
+	                                </select>
+	                            </div>
+	                        </li>
+	                        <li>
+	                            <label for="assoc_content-value">{tr(#assoc content value#)}</label>
+	                            <div>
+	                                <input id="assoc_content-value" class="text" type="text" name="assoc[content_value]" value="" />
+	                                <p class="comment">
+	                                    {tr(#start typing to get available contents#)}
+	                                </p>
+	                            </div>
+	                        </li>
+	                    </ol>
+	                </fieldset>
+	                <fieldset id="assoc-content-ids" class="hide">
+	                {foreach:aAssocContents,oAssocContent}
+	                    <input id="assoc_content_{oAssocContent.id}" type="hidden" name="assocs[]" value="{oAssocContent.id}" />
+	                {end:}
+	                </fieldset>
+	                <fieldset class="info">
+	                    <ol class="clearfix">
+	                        <li>
+	                            <label>{tr(#current assoc contents#)}</label>
+	                            <div id="content-assocs-container">
+	                                <!--
+	                                <table class="full">
+	                                    <tbody>
+	                                    {foreach:aAssocContents,oAssocContent}
+	                                        <tr>
+	                                            <td>
+	                                                {this.plugin(#getContentTitle#,oAssocContent)}
+	                                            </td>
+	                                            <td>
+	                                                <a id="assoc-content_{oAssocContent.id}" href="#">{tr(#remove assoc content#)}</a>
+	                                            </td>
+	                                        </tr>
+	                                    {end:}
+	                                    {if:!oAssocContent}
+	                                        <tr>
+	                                            <td class="2">{tr(#no page content set#)}</td>
+	                                        </tr>
+	                                    {end:}
+	                                    </tbody>
+	                                </table>
+	                                -->
+	
+	                                <p flexy:foreach="aAssocContents,oAssocContent">
+	                                    {this.plugin(#getContentTitle#,oAssocContent)} | {oAssocContent.typeName}
+	                                    &nbsp;
+	                                    <a id="assoc-content_{oAssocContent.id}" class="del" href="#">{tr(#remove assoc content#)}</a>
+	                                </p>
+	
+	                                <p flexy:if="!aAssocContents">{tr(#no assoc content set#)}</p>
+	                                <p flexy:if="aAssocContents" style="display: none;">{tr(#no assoc content set#)}</p>
+	                            </div>
+	                        </li>
+	                    </ol>
+	                </fieldset>
+	            </div>
+			</div>
+			
+            <p class="fieldIndent">
+                <span class="triggers">
+                    {if:isEdit}
+                    <input class="button" type="submit" name="submitted"
+                           value="{tr(#update content (button)#)}" flexy:if="oContent.isCurrent" />
+                    <input class="button" type="submit" name="submitted"
+                           value="{tr(#revert content (button)#)}" flexy:if="!oContent.isCurrent" />
+                    &nbsp;&nbsp;
+                    <input class="button" type="submit" name="submittedContinue"
+                           value="{tr(#update content and continue (button)#)}" flexy:if="oContent.isCurrent" />
+                    <input class="button" type="submit" name="submittedContinue"
+                           value="{tr(#revert content and continue (button)#)}" flexy:if="!oContent.isCurrent" />
+                    {else:}
+                    <input class="button" type="submit" name="submitted"
+                           value="{tr(#add content (button)#)}" />
+                    &nbsp;&nbsp;
+                    <input class="button" type="submit" name="submittedContinue"
+                           value="{tr(#add content and continue (button)#)}" />
+                    {end:}
+                    &nbsp;
+                    {tr(#or#)}
+                    &nbsp;
+                    <a flexy:if="redir" href="{redir}">{tr(#cancel#)}</a>
+                    <a flexy:if="!redir" href="{makeUrl(##,#cmscontent#,#simplecms#)}">{tr(#cancel#)}</a>
+                </span>
+                <img class="ajaxLoader" src="{imagesDir}/ajax-loader.gif" alt=""
+                     style="display: none;" />
+            </p>
+        </div>
+    </div><!-- item -->
+
+    <div class="c25r">
+
+        <flexy:include src="block_content_preview.html" />
+        {if:!isNew}
+        <flexy:include src="block_content_overview.html" />
+        <flexy:include src="block_content_status.html" />
+        {end:}
+        <flexy:include src="block_content_category.html" />
+        {if:isEdit}
+        <flexy:include src="block_content_version.html" />
+        {end:}
+        {if:!isNew}
+        <flexy:include src="block_content_langs.html" />
+        {end:}
+
+    </div>
+
+</form><!-- content-container -->

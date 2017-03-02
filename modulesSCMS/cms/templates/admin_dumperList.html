@@ -1,0 +1,120 @@
+<style type="text/css" media="screen">
+    pre#sqlDump {
+        display: block;
+        padding: 4px;
+        border: 1px solid #999;
+        height: 300px;
+        overflow: auto;
+        background-color: #fafafa;
+        color: #000;
+    }
+    form#filterPanel fieldset p label {
+        width: 250px;
+    }
+</style>
+
+
+<div id="content">
+    <div id="content-header">
+        <h2>{translate(pageTitle)}</h2>
+        <div class="message" id="ajaxMessage">{msgGet()}</div>
+    </div>
+
+    <div class="wrap">
+        <form id="filterPanel" method="post" action="" flexy:ignore>
+            <fieldset class="hide">
+                <input type="hidden" name="action" value="dump" />
+                <input type="hidden" name="submitted" value="1" />
+            </fieldset>
+            <fieldset class="inside">
+                <p>
+                    <label>{translate(#Content type#)}</label>
+                    <select name="contentTypeId">
+                        <option value="0">{translate(#All#)}</option>
+                        {generateSelect(aContentTypes,contentTypeId):h}
+                    </select>
+                </p>
+                <p>
+                    <label>{translate(#Replace real ids with {SGL_NEXT_ID}#)}</label>
+                    {translate(#Yes#)}
+                    <input flexy:if="isEqual(replaceIds,#1#)" type="radio" name="replaceIds" value="1" checked="checked" />
+                    <input flexy:if="!isEqual(replaceIds,#1#)" type="radio" name="replaceIds" value="1" />
+                    &nbsp;
+                    {translate(#No#)}
+                    <input flexy:if="isEqual(replaceIds,#-1#)" type="radio" name="replaceIds" value="-1" checked="checked" />
+                    <input flexy:if="!isEqual(replaceIds,#-1#)" type="radio" name="replaceIds" value="-1" />
+                </p>
+                <p>
+                    <label>{translate(#Include data#)}</label>
+                    {translate(#Yes#)}
+                    <input flexy:if="includeData" type="radio" name="includeData" value="1" checked="checked" />
+                    <input flexy:if="!includeData" type="radio" name="includeData" value="1" />
+                    &nbsp;
+                    {translate(#No#)}
+                    <input flexy:if="!includeData" type="radio" name="includeData" value="0" checked="checked" />
+                    <input flexy:if="includeData" type="radio" name="includeData" value="0" />
+                </p>
+                <p>
+                    <label>{translate(#Include links#)}</label>
+                    {translate(#Yes#)}
+                    <input flexy:if="includeLinks" type="radio" name="includeLinks" value="1" checked="checked" />
+                    <input flexy:if="!includeLinks" type="radio" name="includeLinks" value="1" />
+                    &nbsp;
+                    {translate(#No#)}
+                    <input flexy:if="!includeLinks" type="radio" name="includeLinks" value="0" checked="checked" />
+                    <input flexy:if="includeLinks" type="radio" name="includeLinks" value="0" />
+                </p>
+                <p>
+                    <label>{translate(#Include attribute lists#)}</label>
+                    {translate(#Yes#)}
+                    <input flexy:if="includeAttributeLists" type="radio" name="includeAttributeLists" value="1" checked="checked" />
+                    <input flexy:if="!includeAttributeLists" type="radio" name="includeAttributeLists" value="1" />
+                    &nbsp;
+                    {translate(#No#)}
+                    <input flexy:if="!includeAttributeLists" type="radio" name="includeAttributeLists" value="0" checked="checked" />
+                    <input flexy:if="includeAttributeLists" type="radio" name="includeAttributeLists" value="0" />
+                </p>
+                <p>
+                    <label>{translate(#Include categories#)}</label>
+                    {translate(#Yes#)}
+                    <input flexy:if="includeCats" type="radio" name="includeCats" value="1" checked="checked" />
+                    <input flexy:if="!includeCats" type="radio" name="includeCats" value="1" />
+                    &nbsp;
+                    {translate(#No#)}
+                    <input flexy:if="!includeCats" type="radio" name="includeCats" value="0" checked="checked" />
+                    <input flexy:if="includeCats" type="radio" name="includeCats" value="0" />
+                </p>
+            </fieldset>
+            <fieldset class="actions noBorder">
+                <input type="submit" name="submit" value="{translate(#Submit#)}" />
+            </fieldset>
+        </form>
+    </div><!-- .wrap -->
+
+    <div class="clear"></div>
+
+    {if:sqlDump}
+    <pre id="sqlDump">{sqlDump}</pre>
+    <button onclick="HighlightText()">Highlight src</button>
+    <!--textarea id="sqlDump" name="sqlDump">{sqlDump:h}</textarea-->
+    {else:}
+    <p>Click submit to generate dump.</p>
+    {end:}
+
+</div>
+<script language="javascript">
+function HighlightText(){
+    if (document.selection) {
+         var r1 = document.body.createTextRange();
+         r1.moveToElementText(document.getElementById('sqlDump'));
+         r1.setEndPoint("EndToEnd", r1);
+         r1.select();
+    } else {
+         s = window.getSelection();
+         var r1 = document.createRange();
+         r1.setStartBefore(document.getElementById('sqlDump'));
+         r1.setEndAfter(document.getElementById('sqlDump'));
+         s.addRange(r1);
+    }
+}
+</script>

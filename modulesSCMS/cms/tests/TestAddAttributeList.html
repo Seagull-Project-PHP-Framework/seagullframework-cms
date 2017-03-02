@@ -1,0 +1,164 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>TestAddAttributeList</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TestAddAttributeList</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>http://dev.babyfy.com/index.php/user/login/action/logout</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>frm_username</td>
+	<td>admin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>frm_password</td>
+	<td>admin</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>submitted</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Maintenance</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>document.rebuildSeagull.submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Environment rebuilt successfully</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Content Types</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Content Type Manager</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>newAttribList_link</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>elemList_name</td>
+	<td>Test Attribute</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>listElementName</td>
+	<td>One</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>listElementValue</td>
+	<td>One</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='add']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>listElementName</td>
+	<td>Two</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>listElementValue</td>
+	<td>Two</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='add']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>listElementName</td>
+	<td>Three</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>listElementValue</td>
+	<td>Three</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='add']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value=' save list ']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Attribute list added successfully</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Admin</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Maintenance</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>document.rebuildSeagull.submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Environment rebuilt successfully</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=logout</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Login</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

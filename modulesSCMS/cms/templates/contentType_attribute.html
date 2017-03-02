@@ -1,0 +1,73 @@
+
+        <li class="attribute" id="attrib_{oAttrib.id}">
+            <div id="attrib_{oAttrib.id}_view">
+                <span id="attrib_{oAttrib.id}_viewInfo">{oAttrib.alias}&nbsp;({this.plugin(#attrTypeConstantToString#,oAttrib.typeId)})</span>
+                <span class="attributeActions">
+                    <a href="#" class="action editLink" onclick="cms.contentType.attributeEditor.edit({oAttrib.id});return false;">edit</a>
+                    <a href="#" class="action deleteLink" onclick="cms.contentType.deleteAttribute({oAttrib.id});return false;">
+                        <img src="{webRoot}/cms/images/trash.gif" alt="delete" />
+                    </a>
+                </span>
+            </div>
+            <div id="attrib_{oAttrib.id}_edit" style="display:none">
+
+                <!-- ATTRIBUTE EDIT FORM -->
+                <form class="attributeEditForm" id="attrib_{oAttrib.id}_editForm">
+                    <input type="hidden" name="attributeId" value="{oAttrib.id}" />
+                    <ul>
+                        <li id="attrib_{oAttrib.id}_errorMsg" style="display:none"></li>
+                        <li>
+                            <label>Alias</label>
+                            <input type="text"
+                                   name="contentType[attributes][{oAttrib.id}][fieldAlias]" id="attrib_{oAttrib.id}_alias"
+                                   value="{oAttrib.alias}"
+                                   onblur="cms.contentType.camelizeAttributeName(attrib_{oAttrib.id}_name, this.value)" />
+                        </li>
+                        <li>
+                            <label>Name</label>
+                            <input type="text"
+                                   name="contentType[attributes][{oAttrib.id}][fieldName]" id="attrib_{oAttrib.id}_name"
+                                   value="{oAttrib.name}" />
+                        </li>
+                        <li>
+                            <label>Type</label>
+                            <select name="contentType[attributes][{oAttrib.id}][fieldType]"
+                                    class="attrTypeSelect" id="attrib_{oAttrib.id}_type">
+                                    {generateSelect(attrTypes,oAttrib.typeId):h}
+                            </select>
+                        </li>
+                        <!-- PARAMETERS -->
+                        <li class="attributeParams" id="attrib_{oAttrib.id}_params" style="display:none">
+                            <span>Parameters</span>
+                            <div>
+                                <!-- LIST TYPE -->
+                                <div class="attributeField attrListType" id="attrib_{oAttrib.id}_typeList">
+                                    <label>Select a list</label>
+                                    <select name="contentType[attributes][{oAttrib.id}][fieldParams][attributeListId]">
+                                        <option value="">Choose ..</option>
+                                        {generateSelect(aListTypes,oAttrib.params[attributeListId]):h}
+                                    </select>
+                                </div>
+                                <!-- VISIBILITY -->
+                                <!--<div style="clear:both">
+                                    <label>Attribute is visible</label>
+                                    <input type="radio"
+                                           name="contentType[attributes][{oAttrib.id}][fieldParams][isVisible]"
+                                           value="1" {this.plugin(#checkRadio#,oAttrib.params.isVisible,#1#)} /> yes
+                                    <input type="radio"
+                                           name="contentType[attributes][{oAttrib.id}][fieldParams][isVisible]"
+                                           value="0" {this.plugin(#checkRadio#,oAttrib.params.isVisible,#0#)} /> no
+                                </div>-->
+                            </div>
+                        </li>
+                    </ul>
+                    <p class="submit">
+                        <input type="submit" value="Save this attribute" />&nbsp;
+                        <span>or</span>&nbsp;
+                        <a href="#" class="action"
+                           onclick="cms.contentType.attributeEditor.cancel({oAttrib.id});return false;">Cancel</a>
+                    </p>
+                </form>
+    
+            </div>
+        </li>

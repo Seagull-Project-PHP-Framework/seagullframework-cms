@@ -1,0 +1,18 @@
+                <tr class="{switchRowClass(##,##,#alternateRow#)}" flexy:foreach="aContents,key,oContent" flexy:ignore>
+                    <td><input class="checkbox noBorder" type="checkbox" name="frmDelete[]" value="{oContent.id}" /></td>
+                    <td scope="row">
+                        <a class="actionAlt" href="{makeUrl(#edit#,#content#,#cms#,aContents,#frmContentId|id||cLang|langCode#,key)}">{oContent.name}</a>
+                        {if:oContent.matchNumber} {translate(#matches#)}: {oContent.matchNumber}{end:}
+                    </td>
+                    <td>{this.plugin(#getExistingLanguageVersions#,oContent):h}</td>
+                    <td class="sortedColumn">{formatDate(oContent.lastUpdated)}</td>
+                    <td>{oContent.createdByName}</td>
+                    <td>{oContent.version}</td>
+                    <td nowrap="nowrap">{this.plugin(#getByKey#,aStatusTypes,oContent.status)}</td>
+                    <td>
+                        <a class="action" href="{makeUrl(#view#,#contentview#,#cms#,aContents,#frmContentId|id#,key)}">View</a>
+                    </td>
+                    <td nowrap="nowrap">
+                        <a href="{makeUrl(#edit#,#linker#,#cms#,aContents,#frmContentId|id#,key)}">{oContent.numLinks} links</a>
+                    </td>
+                </tr>

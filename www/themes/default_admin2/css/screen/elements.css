@@ -1,0 +1,314 @@
+
+/**
+ * Admin common elements.
+ *
+ * @package admin
+ * @author Dmitri Lakachauskis <lakiboy83@gmail.com>
+ */
+
+@media screen, projection
+{
+  /* Fieldset like styles */
+  .fieldsetlike {
+  }
+    .fieldsetlike dl {
+      margin: 0;
+    }
+    .fieldsetlike dt {
+      clear: left;
+      float: left;
+      width: 140px;
+    }
+    .fieldsetlike dd {
+      float: left;
+      #float: none;
+      margin: 0 0 0.25em 20px;
+      _display: inline;
+    }
+
+  /* colors */
+  .zebra {
+    background-color: #f5f5f5;
+  }
+
+
+  /**
+   * Common links.
+   */
+  a.delete,
+  a.upload,
+  a.accept {
+    padding: 0.1em 0 0.1em 20px;
+    background-repeat: no-repeat;
+    background-position: left center;
+  }
+  a.delete {
+    background-image: url(<?= $baseUrl ?>/images/icons/action_stop.gif);
+  }
+  a.upload {
+    background-image: url(<?= $baseUrl ?>/images/icons/icon_get_world.gif);
+  }
+  a.accept {
+    background-image: url(<?= $baseUrl ?>/images/icons/icon_accept.gif);
+  }
+
+
+  /**
+   * Styles for block elements.
+   */
+  .notfound {
+    padding-left: 20px;
+    background: url(<?= $baseUrl ?>/images/icons/action_stop.gif) no-repeat left top;
+  }
+  .help {
+    border: 1px solid #c4ccd0;
+    padding: 5px 10px 5px 30px;
+    background: #e8eff2 url(<?= $baseUrl ?>/images/icons/icon_info.gif) no-repeat 8px 5px;
+    line-height: 1.2em;
+    color: #666;
+  }
+  .pager {
+    text-align: center;
+  }
+    .pager span, .pager a {
+      margin: 0 5px;
+    }
+
+  .zebra-container {
+  }
+    .zebra-container .zebra-item {
+      margin-bottom: 0.5em;
+    }
+      .zebra-container .zebra-item em {
+        font-size: 0.9em;
+        color: #666;
+      }
+      .zebra-container .zebra-item h2 {
+        position: relative;
+        margin-bottom: 0.1em;
+        padding: 0.4em 100px 0.2em 5px;
+        background-color: #ff9;
+        font-size: 1.1em;
+        font-weight: normal;
+      }
+        .zebra-container .zebra-item h2 a {
+          text-decoration: none;
+          color: #000;
+        }
+        .zebra-container .zebra-item h2 .actions {
+          position: absolute;
+          right: 9px;
+          top: 4px;
+        }
+          .zebra-container .zebra-item h2 .actions a {
+            float: left;
+            margin-right: 10px;
+          }
+          .zebra-container .zebra-item h2 .actions .last {
+            margin-right: 0;
+          }
+      .zebra-container .zebra-item table {
+        margin-bottom: 0.5em;
+      }
+        .zebra-container .zebra-item table .cell-10 {
+          width: 50px;
+        }
+        .zebra-container .zebra-item table .cell-15 {
+          width: 75px;
+        }
+        .zebra-container .zebra-item table .cell-30 {
+          width: 180px;
+        }
+        .zebra-container .zebra-item table .cell-40 {
+          width: 240px;
+        }
+        .zebra-container .zebra-item table .cell-center {
+          text-align: center;
+        }
+        .zebra-container .zebra-item table .cell-right {
+          text-align: right;
+        }
+        .zebra-container .zebra-item table .actions a {
+          float: left;
+          margin-right: 10px;
+        }
+          .zebra-container .zebra-item table .actions .last {
+            margin-right: 0;
+          }
+
+
+  /**
+   * Common styles for columns/forms in 2 cols layout.
+   */
+  .layout-2cols .layout-inner {
+    margin-right: 30px;
+  }
+  form.layout-2cols .layout-inner {
+    padding-top: 0.5em;
+  }
+    form.layout-2cols .layout-inner ol li input.text,
+    form.layout-2cols .layout-inner ol li textarea {
+      width: 450px;
+    }
+    form.layout-2cols .layout-inner .fields {
+      margin-bottom: 1em;
+      padding-top: 1em;
+      background-color: #f5f5f5;
+    }
+    form.layout-2cols .layout-inner ol.onTop {
+      margin-left: 10px;
+    }
+    form.layout-2cols .layout-inner ol.onTop li input.text,
+    form.layout-2cols .layout-inner ol.onTop li textarea {
+      width: 595px;
+    }
+
+
+  /**
+   * Blocks.
+   */
+  .block-helper {
+    margin-bottom: 1em;
+  }
+    .block-helper h2 {
+      padding: 0.4em 5px 0.2em 0;
+      font-size: 1.2em;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+      .block-helper h2 a {
+        display: block;
+        padding-left: 5px;
+        color: inherit;
+        text-decoration: none;
+      }
+    .block-helper .inner {
+      padding: 0 5px;
+    }
+
+  /* icon subclass */
+  .block-icon h2 {
+    
+    background-color: #f5f5f5;
+    background-position: 5px center;
+    background-repeat: no-repeat;
+  }
+    .block-icon h2 a {
+      padding-left: 25px;
+    }
+
+  /* icons */
+  .block-icon-note h2 {
+    background-image: url(<?= $baseUrl ?>/images/icons/note.gif);
+  }
+  .block-icon-search h2 {
+    background-image: url(<?= $baseUrl ?>/images/icons/page_find.gif);
+  }
+  .block-icon-new h2 {
+    background-image: url(<?= $baseUrl ?>/images/icons/note_new.gif);
+  }
+
+  /* Overview block */
+  .block-overview {
+  }
+    .block-overview dt {
+      width: 80px;
+    }
+    .block-overview dd {
+      margin-left: 10px;
+    }
+
+  /* Search block */
+  .block-input {
+  }
+    .block-input .inner {
+      margin-bottom: 1em;
+    }
+    .block-input input.text {
+      width: 100px;
+    }
+    .block-input select {
+      margin-right: 5px;
+    }
+
+  /* Dynamic icon block */
+  .block-dynamic-icon {
+  }
+    .block-dynamic-icon h2 img {
+      float: left;
+      margin-right: 3px;
+    }
+
+  /* Item list block */
+  .block-item-list {
+  }
+    .block-item-list ul {
+      margin: 0;
+      list-style: none;
+    }
+    .block-item-list li {
+      margin: 0 0 0.1em 0;
+    }
+
+
+  /**
+   * Titles.
+   */
+  h1.title-single, div.title-edit {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.3em;
+  }
+  div.title-edit {
+    margin-bottom: 0.8em;
+  }
+  div.title-edit-simple,
+  div.title-edit {
+    position: relative;
+    padding-right: 100px;
+  }
+    div.title-edit h1 {
+      margin-bottom: 0;
+    }
+    div.title-edit-simple span,
+    div.title-edit span {
+      position: absolute;
+      right: 0;
+      bottom: 0.5em;
+    }
+
+
+  /**
+   * Context menu
+   */
+  div.context-menu-wrapper {
+  }
+    div.context-menu-wrapper .trigger-open,
+    div.context-menu-wrapper .trigger-close {
+      float: left;
+    }
+
+  div.context-menu {
+    position: absolute;
+    z-index: 100;
+    margin-top: 2px;
+    margin-left: 20px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+  }
+    div.context-menu ul {
+      margin: 0;
+      list-style: none;
+    }
+    div.context-menu li {
+      margin: 0;
+    }
+      div.context-menu ul a {
+        display: block;
+        padding: 3px 5px 2px 5px;
+        text-decoration: none;
+        color: #000;
+      }
+      div.context-menu ul a:hover {
+        background-color: #ff9;
+      }
+}

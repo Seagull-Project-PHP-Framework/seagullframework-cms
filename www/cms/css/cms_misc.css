@@ -1,0 +1,104 @@
+/************************************/
+	/*           ATTRIB LIST            */
+	/************************************/
+div#newAttribListBox textarea {
+	width: 177px;
+	height: 100px;
+}
+
+div#newAttribListBox input[type="text"] {
+	width: 75px;
+}
+
+div#newAttribListBox input[type="text"].text {
+	width: 177px;
+}
+
+div#attribListNameAndValues {
+	float: left;
+}
+
+div#attribListNameValuePairs {
+	float: left;
+}
+
+/* name and value inputs for attrib list */
+div#attribListNameAndValues dl dd dl {
+	width: 90px;
+	float: left;
+	display: inline;
+}
+
+/************************************/
+	/*           CATEGORY MGR           */
+	/************************************/
+#frmCategoryMgr p label {
+	width: 170px;
+}
+
+#frmCategoryMgr input.longText {
+	width: 40%;
+}
+
+#frmCategoryMgr span.tipText {
+	width: 300px;
+}
+
+#frmCategoryMgr fieldset#permissions,#frmCategoryMgr fieldset#description,#frmCategoryMgr fieldset#image
+	{
+	width: 80%;
+	margin-top: 1em;
+	border: 1px solid <? php echo $ borderDark ?>;
+}
+
+#frmCategoryMgr #permissions p label,#frmCategoryMgr #description p label,#frmCategoryMgr #image p label
+	{
+	width: 160px;
+}
+
+#frmCategoryMgr fieldset#description textarea {
+	width: 50%;
+}
+
+#frmCategoryMgr #image img {
+	border: 1px solid;
+}
+
+/************************************/
+	/*           PAGE MGR           */
+	/************************************/
+p.errorMsg {
+	color: <? php echo $ errorMessage ?>;
+	text-align: center;
+}
+
+#pageEdit p label {
+	width: 200px;
+}
+
+#pageEdit .longText {
+	width: 250px;
+}
+
+/************************************/
+	/*           LINKER MGR           */
+	/************************************/
+form#linkerForm p label {
+	float: left;
+	text-align: right;
+	margin-right: 10px;
+	width: 150px;
+}
+
+form#linkerForm p span {
+	background-color: #efefef;
+	width: 150px;
+}
+
+form#linkerForm p select#content_id {
+	width: 400px;
+}
+
+form#linkerForm p label.tipOwner {
+	width: 130px;
+}

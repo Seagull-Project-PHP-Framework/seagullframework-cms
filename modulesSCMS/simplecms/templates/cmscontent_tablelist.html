@@ -1,0 +1,74 @@
+<tr flexy:foreach="aContents,key,oContent" flexy:raw="{this.plugin(#getContentRowStyle#):h}">
+    <td>
+        {assign(contentId,oContent.id)}
+        <a href="{makeUrl(#action|edit||contentId|contentId||cLang|cLang#)}" title="{tr(#edit latest content version#)}">
+            {this.plugin(#getContentTitle#,oContent)}</a>
+    </td>
+    <!--td>{oContent.id}</td-->
+    <!--td class="version-cell context-menu-wrapper">
+
+        <div class="triggers floatbox">
+            {assign(contentId,oContent.id)}
+            <a class="version-current"
+               href="{makeUrl(#action|edit||contentId|contentId||cLang|cLang#)}" title="{tr(#edit latest content version#)}">
+                <img src="{webRoot}/themes/{theme}/images/icons/page_edit.gif" alt="" /></a>
+
+            {if:!isEqual(oContent.version,#1#)}
+            <a id="version-trigger-open_{oContent.id}" class="trigger-open version-trigger-open" href="#" title="{tr(#show version list#)}">
+                <img src="{webRoot}/themes/{theme}/images/icons/arrow_down.gif" alt="" /></a>
+            <a id="version-trigger-close_{oContent.id}" class="trigger-close version-trigger-close" href="#" title="{tr(#close version list#)}" style="display: none">
+                <img src="{webRoot}/themes/{theme}/images/icons/arrow_up.gif" alt="" /></a>
+            {end:}
+        </div>
+
+        <div id="version-wrapper_{oContent.id}" class="context-menu" style="display: none;"
+             flexy:if="!isEqual(oContent.version,#1#)">
+            {this.plugin(#renderContentEditVersionList#,oContent,cLang):h}
+        </div>
+    </td-->
+    <td class="lang-cell context-menu-wrapper">
+
+        <div class="triggers floatbox">
+            <span class="lang-current">{this.plugin(#getContentLangIcon#,oContent.langCode):h}</span>
+            <a id="lang-trigger-open_{oContent.id}" class="trigger-open lang-trigger-open" href="#" title="{tr(#show language list#)}">
+                <img src="{webRoot}/themes/{theme}/images/icons/arrow_down.gif" alt="" /></a>
+            <a id="lang-trigger-close_{oContent.id}" class="trigger-close lang-trigger-close" href="#" title="{tr(#hide language list#)}" style="display: none">
+                <img src="{webRoot}/themes/{theme}/images/icons/arrow_up.gif" alt="" /></a>
+        </div>
+
+        <div id="lang-wrapper_{oContent.id}" class="context-menu" style="display: none;">
+            {this.plugin(#renderContentEditLangList#,oContent,aLangs):h}
+        </div>
+    </td>
+    <td>{formatDate2Pretty(oContent.lastUpdated)}</td>
+    <td><a href="{makeUrl(##,#cmsactivity#,#simplecms#,aContents,#userId|createdById#,key)}">{oContent.createdByName}</a></td>
+    <td class="status-cell context-menu-wrapper">
+
+        <div class="triggers floatbox">
+            <span id="status-current_{oContent.id}"
+                  class="status-current status-{this.plugin(#getArrayValueByKey#,aStatusesData,oContent.status,#className#)}"></span>
+            <a id="status-trigger-open_{oContent.id}" class="trigger-open status-trigger-open" href="#" title="{tr(#show status list#)}">
+                <img src="{webRoot}/themes/{theme}/images/icons/arrow_down.gif" alt="" /></a>
+            <a id="status-trigger-close_{oContent.id}" class="trigger-close status-trigger-close" href="#" title="{tr(#hide status list#)}" style="display: none">
+                <img src="{webRoot}/themes/{theme}/images/icons/arrow_up.gif" alt="" /></a>
+        </div>
+        <img class="ajaxLoader" src="{webRoot}/themes/{theme}/images/ajax-loader.gif" alt=""
+             style="display: none;" />
+
+        <div id="status-wrapper_{oContent.id}" class="context-menu" style="display: none;">
+            <ul class="status-container">
+            {foreach:aStatusesData,key,aStatus}
+                <li class="{aStatus[className]}">
+                    <a href="#" sgl:status_id="{aStatus[status_id]}"
+                       sgl:content_id="{oContent.id}" sgl:lang_id="{cLang}">{tr(aStatus[name])}</a>
+                </li>
+            {end:}
+            </ul>
+        </div>
+    </td>
+</tr>
+<tr flexy:if="!aContents">
+    <td colspan="5">
+        {tr(#no contents found#)}
+    </td>
+</tr>

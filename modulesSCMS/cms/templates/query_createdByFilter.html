@@ -1,0 +1,9 @@
+<label for="createdByFilter">{translate(#Created by#)}</label>
+<select id="createdByFilter" name="createdByFilter" flexy:ignore>
+{foreach:aUserList,userId,userName}
+    <option value="{userId}">{userName}</option>
+{end:}
+</select>
+<input id="removeFilter_createdBy" class="remove" type="button"
+    value="{translate(#Remove#)}"
+    onclick="CmsQuery.removeFilter(this)" />

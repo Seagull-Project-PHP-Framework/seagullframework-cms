@@ -1,0 +1,60 @@
+<style type="text/css">
+span.cms_attribOrder {
+    display:inline-block;
+    vertical-align:top;
+    margin-top:10px;
+}
+.attribListButtons {
+    margin-left:125px;
+}
+#frmNewAtribList dl.onSide dt, 
+form.frmEditAttribList dl.onSide dt {
+    width:125px;
+}
+#frmNewAtribList table, 
+.frmEditAttribList table {
+    background-color:transparent !important;
+    border-width:0 !important; 
+}
+.frmEditAttribList input {
+    width:75px;
+}
+
+</style>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    cms.contentAttribute.init();
+});
+</script>
+
+<div id="manager-actions">
+    <span>{translate(#Action#)}: &nbsp;</span>
+    <a class="action add" href="#"
+       onclick="cms.contentAttribute.creator.toggle();return false;">{translate(#New attribute list#,#ucfirst#)}</a>
+</div>
+<div id="content">
+    <div id="content-header">
+        <h2>{translate(pageTitle)}</h2>
+        <div class="message" id="ajaxMessage">{msgGet()}</div>
+    </div>
+
+    <div id="screenIntro">
+        <p class="help">
+            {translate(#attribute list intro#)}
+        </p>
+    </div>
+
+    <flexy:include src="attribList_newAttribList.html" />
+
+    {if:aAttribLists}
+    <div id="attributeList">
+    {foreach:aAttribLists,attributeListId,aAttribList}
+        <flexy:include src="attribList_editAttribList.html" />
+    {end:}
+    </div>
+    {else:}
+    <p>{translate(#No attribute lists found#)}</p>
+    {end:}
+	<div class="clear"></div>
+</div>

@@ -1,0 +1,11 @@
+a:13:{i:0;s:45:"// bc
+        var SGL_JS_WEBROOT          = "";i:1;s:42:"";
+        var SGL_JS_SESSID           = "";i:2;s:42:"";
+        var SGL_JS_CURRURL          = "";i:3;s:42:"";
+        var SGL_JS_THEME            = "";i:4;s:85:"";
+        var SGL_JS_ADMINGUI         = "1";
+        var SGL_JS_URL_STRATEGY     = "";i:5;s:42:"";
+        var SGL_JS_FRONT_CONTROLLER = "";i:6;s:42:"";
+        var SGL_JS_DATETEMPLATE     = "";i:7;s:15:"// onload event";i:8;s:76:"if (typeof SGL2 != 'undefined') {
+            $(document).ready(function() {";i:9;s:51:"});
+        } else if (typeof SGL != 'undefined') {";i:10;s:11:"SGL.ready("";i:11;s:28:"window.onload = function() {";i:12;s:30:"window.onunload = function() {";}

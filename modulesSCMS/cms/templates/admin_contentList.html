@@ -1,0 +1,115 @@
+<div id="content" flexy:ignore>
+    <div id="content-header">
+        <h2>{translate(pageTitle)}</h2>
+        <div class="message" id="ajaxMessage">{msgGet()}</div>
+    </div>
+
+    <div id="screenIntro">
+    {if:aContentTypes}
+        <span>{translate(#new content of type:#,#ucfirst#)}</span>
+        <form id="frmNewContent" action="{makeUrl(#add#,#content#,#cms#)}" method="post">
+            <select name="frmContentTypeId">
+                {generateSelect(aContentTypes,contentTypeId):h}
+            </select>&nbsp;
+            <input type="submit" value="Create" name="submit" />
+        </form>
+        <p class="help" flexy:if="hasPerms(#CONTENTTYPEMGR_CMD_ADD#)">
+            {translate(#You cannot find the appropriate content type?#)}&nbsp;
+            <!--NEW CONTENT TYPE-->
+            <a class="actionAlt" href="{makeUrl(##,#contenttype#,#cms#)}">{translate(#create a new content type#)}</a>
+        </p>
+    {else:}
+        <p>You still haven't created any content type. <a class="actionAlt" href="{makeUrl(##,#contenttype#,#cms#)}">{translate(#create a new content type#,#ucfirst#)}</a> and come back to this page</p>
+    {end:}
+    </div>
+
+    <div id="moduleToolbarHeader">
+        <a class="actionAlt" id="contentListFilterShowAll" href="#"
+           onclick="cms.content.filter.toggle()" style="display:none">{translate(#Show all#)}</a>
+        <a class="actionAlt" id="contentListFilter" href="#"
+           onclick="cms.content.filter.toggle()">{translate(#Filter the content#)}</a>
+    </div>
+    <div id="moduleToolbar">
+        <form id="frmFilterContent" action="{makeUrl(#filter#,#content#,#cms#)}" method="post">
+            <!-- Content filter BOX -->
+            <div class="cmsBox" id="contentFilterBox" style="display: none;">
+                <input type="hidden" name="pageId" value="{pageId}" id="contentFilter_pageId" />
+                <input type="hidden" name="resPerPage" value="{resPerPage}" id="contentFilter_resPerPage" />
+
+                {translate(#By type#)} :
+                <select class="block" name="aFilter[typeId]" id="contentFilter_typeId">
+                <option value="0">All</option>
+                {generateSelect(aContentTypes,contentFilter[typeId]):h}
+                </select>
+                {translate(#By status#)} :
+                <select class="block" name="aFilter[status]" id="contentFilter_status">
+                <option value="0">All</option>
+                {generateSelect(aStatusTypes,contentFilter[status]):h}
+                </select>
+                {translate(#By category#)} :
+                <select name="aFilter[categoryId]" id="contentFilter_categoryId">
+                <option value="0">All</option>
+                {generateSelect(aElems,contentFilter[categoryId]):h}
+                </select>
+                &nbsp;
+                <input type="submit" value="{translate(#Filter#)}" name="submit" />
+            </div>
+        </form>
+    </div>
+
+    {if:aContents}
+
+    <p id="contentList-pager">{pageLinks:h}</p>
+    <form action="{makeUrl()}" method="post" id="frmContentPager" flexy:ignore>
+        <label for="pagerOptions">Results per page:</label>
+        <select class="pagerOptions" id="pagerOptions"
+                name="resPerPage" onchange="$('frmContentPager').submit()">
+        {generateSelect(aResPerPage,resPerPage):h}
+        </select>
+    </form>
+
+    <form method="post" action="{makeUrl(#delete#,#content#,#cms#)}" id="contentList" name="contentList">
+        <h3>{translate(#Content list#)}</h3>
+        <fieldset class="noBorder">
+            <table id="contentListTable" class="full tablesorter">
+                <thead>
+                    <flexy:include src="_contentListTableHead.html">
+                </thead>
+
+                <tbody id="contentList-items">
+
+                    <flexy:include src="contentList_items.html" />
+
+                     <tr flexy:if="!aContents">
+                        <td colspan="8">{translate(#No content found#)}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr class="tfoot">
+	                    <td colspan="99">
+	                    <p>
+	                    {translate(#With selected content#)} :
+	                    <input flexy:ignore class="sgl-button" type="submit" name="deleteButton" value="{translate(#delete#)}"
+	                       onClick="return confirmSubmit('content', 'contentList')" />
+	                    </p>
+	                    </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </fieldset>
+
+
+    </form>
+    {else:}
+    <p>No contents were found. To create your first content, simply click on the "New content" button above.</p>
+    {end:}
+    <div id="ajaxIndicator" style="display:none; position:absolute; top:0; right:0">
+        <span>Contacting server</span>
+    </div>
+	<div class="clear"></div>
+</div>
+{scriptOpen:h}
+$(document).ready(function(){
+cms.content.init();
+})
+{scriptClose:h}

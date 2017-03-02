@@ -1,0 +1,30 @@
+{if:isAdd}
+<table id="attrib-list-item-view_{oAttr.id}" class="full" style="display: none;">
+{else:}
+<table id="attrib-list-item-view_{oAttr.id}" class="full">
+{end:}
+    <tbody>
+    {foreach:oAttr.fields,fieldKey,fieldVal}
+        <tr flexy:raw="{this.plugin(#getContentRowStyle#):h}">
+            <td class="cell-40">{fieldKey}</td>
+            <td class="cell-10 cell-center">=&gt;</td>
+            <td class="cell-40">{fieldVal}</td>
+            <td class="cell-10 cell-right">
+                <!--
+                <a href="#" class="deleteField" title="{tr(#delete attribute list field#)}"
+                   sgl:list_id="{oAttr.id}" sgl:field_id="{fieldKey:u}">
+                    <img src="{webRoot}/themes/{theme}/images/icons/action_stop.gif" alt="" /></a>
+                <img class="ajaxLoader" src="{webRoot}/themes/{theme}/images/ajax-loader.gif"
+                     alt="" style="display: none" />
+                -->
+                &nbsp;
+            </td>
+        </tr>
+    {end:}
+    {if:!oAttr.fields}
+        <tr>
+            <td>{tr(#no fields specified#)}</td>
+        </tr>
+    {end:}
+    </tbody>
+</table>

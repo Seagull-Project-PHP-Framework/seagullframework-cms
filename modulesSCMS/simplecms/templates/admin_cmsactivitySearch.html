@@ -1,0 +1,23 @@
+<div id="content-activity" class="columns">
+
+
+    <div class="c75l list">
+        <div class="inner">
+
+            <p class="notfound">
+                {tr(#user with username %username% not found#,#vprintf#,aParams)}
+            </p>
+            <p>
+                <a href="{makeUrl(##,#cmsactivity#,#simplecms#)}">{tr(#show activity of all users#)}</a>
+            </p>
+                
+        </div><!-- inner -->
+    </div><!-- list -->
+    
+    <div class="c25r">
+    
+        <flexy:include src="block_activity_usersearch.html" />
+       
+    </div>
+
+</div><!-- content-activity -->

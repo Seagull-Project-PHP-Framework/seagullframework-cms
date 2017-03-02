@@ -1,0 +1,45 @@
+<div id="content-container" class="columns layout-2cols">
+
+    <div class="c75l list">
+        <div class="layout-inner">
+
+            <table id="content-list" class="full">
+                <thead>
+                    <tr>
+                        <th width="46%">{tr(#title (th)#)}</th>
+                        <!--<th>{tr(#content id (th)#)}</th>-->
+                        <!--th>&nbsp;</th-->
+                        <th width="10%">{tr(#language (th)#)}</th>
+                        <th width="20%" flexy:raw="{this.plugin(#getColumnSortIcon#,#last_updated#,sortBy,sortOrder):h}">
+                            <a sgl:sort_by="last_updated" href="#">{tr(#last updated (th)#)}</a>
+                        </th>
+                        <th width="15%" flexy:raw="{this.plugin(#getColumnSortIcon#,#username#,sortBy,sortOrder):h}">
+                            <a sgl:sort_by="username" href="#">{tr(#author (th)#)}</a>
+                        </th>
+                        <th width="9%" flexy:raw="{this.plugin(#getColumnSortIcon#,#status#,sortBy,sortOrder):h}">
+                            <a sgl:sort_by="status" href="#">{tr(#status (th)#)}</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <flexy:include src="cmscontent_tablelist.html" />
+                </tbody>
+            </table><!-- full -->
+
+            <img id="content-list-loader" src="{webRoot}/themes/{theme}/images/ajax-loader_2.gif"
+                alt="" style="display: none;" />
+
+            <p id="content-list-pager" class="pager">{pagerLinks:h}</p>
+
+        </div><!-- inner -->
+    </div><!-- list -->
+
+    <div class="c25r">
+
+        <flexy:include src="block_content_add.html" />
+        <flexy:include src="block_content_filter.html" />
+        <flexy:include src="block_content_filter_statuses.html" />
+
+    </div>
+
+</div><!-- content-container -->

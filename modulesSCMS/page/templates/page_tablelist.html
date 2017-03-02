@@ -1,0 +1,32 @@
+<tr flexy:foreach="aPages,key,oPage" flexy:raw="{this.plugin(#getContentRowStyle#):h}">
+    <td>
+        <a href="{makeUrl(#edit#,#page#,#page#,aPages,#pageId|page_id||langId|language_id#,key)}"
+           title="{tr(#edit page (action)#)}">
+            {if:oPage.title}{summarise(oPage.title,#40#,#1#)}{else:}{tr(#no page title translation#)}{end:}</a>
+    </td>
+    <td class="lang-cell">
+        <div class="floatbox">
+            {this.plugin(#getContentLangIcon#,oPage.language_id):h}
+        </div>
+    </td>
+    <td>{formatDate2Pretty(oPage.last_updated)}</td>
+    <td>{oPage.username}</td>
+    <td class="status-cell">
+        <div class="floatbox">
+        {if:isEqual(oPage.status,#1#)}
+            <img src="{webRoot}/themes/{theme}/images/icons/flag_green.gif"
+                 alt="{tr(#active (page status)#)}"
+                 title="{tr(#active (page status)#)}" />
+        {else:}
+            <img src="{webRoot}/themes/{theme}/images/icons/flag_red.gif"
+                 alt="{tr(#inactive (page status)#)}"
+                 title="{tr(#inactive (page status)#)}" />
+        {end:}
+        </div>
+    </td>
+</tr>
+<tr flexy:if="!aPages">
+    <td colspan="5">
+        {tr(#no pages found#)}
+    </td>
+</tr>

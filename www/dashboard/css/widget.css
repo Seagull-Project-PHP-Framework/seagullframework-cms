@@ -1,0 +1,16 @@
+/* Widgets styles */
+.widget-col {
+  _height: 100px;
+  min-height: 100px;
+}
+.widget-col .widget-header {
+  cursor: move;
+  position: relative;
+}
+.widget-col .widget-helper {
+  border: 1px dashed #ccc;
+  width: auto !important;
+}
+.widget-item {
+  text-align: left; /* sortables fix */
+}

@@ -1,0 +1,60 @@
+<form id="content-type-item-form_{contentTypeId}" class="editmode"
+      method="post" action="{makeUrl(#updateContentType#,#simplecms#,#simplecms#)}" flexy:ignore>
+
+    <fieldset class="header">
+        <ol class="clearfix">
+            <li>
+                <label>{tr(#content type name#)}</label>
+                <div>
+                    <input class="text" type="text" name="name" value="{contentTypeName}" />
+                </div>
+            </li>
+        </ol>
+        <span class="actions">
+            <a class="addfield" href="#">{tr(#add content type attribute (action)#)}</a>
+            <img class="ajaxLoader" src="{webRoot}/themes/{theme}/images/ajax-loader.gif"
+                 alt="" style="display: none;" />
+        </span>
+    </fieldset>
+
+    <table class="full">
+        <thead>
+            <tr>
+                <td>
+                    {tr(#content type attribute alias#)}
+                </td>
+                <td>
+                    {tr(#content type attribute name#)}
+                </td>
+                <td>
+                    {tr(#content type attribute type#)}
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+        {foreach:aAttribs,k,oAttr}
+            <flexy:include src="admin_contenttype_item_form_attr.html" />
+        {end:}
+        </tbody>
+    </table>
+
+    <p class="submit" flexy:ignore>
+        <span id="content-type-item-actions_{contentTypeId}" class="actions">
+            <input class="button" type="submit" name="submitted"
+                   value="{tr(#save content type (button)#)}" />
+            &nbsp;{tr(#or#)}&nbsp;
+            <a id="content-type-item-cancel_{contentTypeId}" href="#">{tr(#cancel#)}</a>
+        </span>
+        <img class="ajaxLoader" src="{webRoot}/themes/{theme}/images/ajax-loader.gif"
+             alt="" style="display: none;" />
+    </p>
+
+    <input type="hidden" name="id" value="{contentTypeId}" />
+    <input type="hidden" name="updateMessage" value="{tr(#contents %total% will be updated together with content type#,#vprintf#,aStats)}"
+           flexy:if="conf[CmsContentTypeMgr][updateContentsOnChange]" />
+    <input type="hidden" name="updateMessage" value="{tr(#contents %total% will not be updated together with content type#,#vprintf#,aStats)}"
+           flexy:if="!conf[CmsContentTypeMgr][updateContentsOnChange]" />
+</form>

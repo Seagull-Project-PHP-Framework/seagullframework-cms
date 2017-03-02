@@ -1,0 +1,9 @@
+<div id="content-preview" class="block-helper">
+    <h2><a href="#">{tr(#content preview (header)#)}</a></h2>
+    <div class="inner">
+        {assign(cVersion,oContent.version)}
+        <input id="content-preview-trigger" class="button" type="button" name="preview"
+            value="{tr(#preview content (button)#)}" flexy:ignore
+            sgl:link="{makeUrl(##,#cmscontentview#,#simplecms#)}" />
+    </div>
+</div>

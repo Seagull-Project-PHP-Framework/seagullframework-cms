@@ -1,0 +1,20 @@
+<!-- Filter -->
+<div id="media-filter" class="block-helper block-icon block-icon-search block-item-list">
+    <h2><a href="#">{tr(#media filter (header)#)}</a></h2>
+    <div class="inner">
+        <ul>
+            <li>
+                <label for="filter_mime">{tr(#filter by mime type#)}</label>
+                <select id="filter_mime" name="media_mime" flexy:ignore>
+                    {this.plugin(#generateFilterSelect#,aMimeTypes,mimeTypeId,#mimeTypeId#,#1#):h}
+                </select>                       
+            </li>
+            <li>
+                <label for="filter_type">{tr(#filter by media type#)}</label>
+                <select id="filter_type" name="media_type" flexy:ignore>
+                    {this.plugin(#generateFilterSelect#,aMediaTypes,mediaTypeId,#mediaTypeId#,#1#):h}
+                </select> 
+            </li>
+        </ul>
+    </div>
+</div>

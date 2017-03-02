@@ -1,0 +1,35 @@
+<div id="media-container" class="columns layout-2cols">
+
+    <div class="title-edit-simple">
+        <h1>{tr(#media list#)}</h1>
+        <span>
+            <a class="upload"
+               href="{makeUrl(#upload#,#media2#,#media2#)}">{tr(#upload media#)}</a>                        
+        </span>
+    </div>
+    
+    <div class="c75l list">
+        <div class="layout-inner">
+        
+            <div id="media-list" class="clearfix" flexy:if="aMedias">
+                {foreach:aMedias,k,oMedia}
+                <flexy:include src="admin_media2_item.html" />
+                {end:}
+            </div>
+            
+            <p class="pager" flexy:if="pagerLinks">{pagerLinks:h}</p>
+            
+            <p flexy:if="!aMedias">
+                {tr(#no media found#)}
+            </p>
+                
+        </div><!-- inner -->
+    </div><!-- list -->
+    
+    <div class="c25r">
+    
+        <flexy:include src="block_media_filter.html" />
+       
+    </div>    
+
+</div>

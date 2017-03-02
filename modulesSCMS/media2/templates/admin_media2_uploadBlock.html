@@ -1,0 +1,56 @@
+<div class="title-edit">
+    <h1>{tr(#media upload (header)#)}</h1>
+    <span>
+        <a flexy:if="redir" href="{redir}">{tr(#go back#)}</a>
+        <a flexy:if="!redir" href="{makeUrl(##,#media2#,#media2#)}">{tr(#go back to media list#)}</a>
+    </span>
+</div>
+  
+<div class="c75l">
+    <div class="layout-inner" flexy:ignore>
+        <fieldset class="hide" flexy:if="!aTypes">
+            <input id="media_type" type="hidden" name="typeId" value="0" />
+        </fieldset>                   
+        <fieldset class="info" flexy:if="aTypes">
+            <ol class="clearfix">
+                <li>
+                    <label for="media_type">{tr(#media type#)}</label>
+                    <div>
+                        <select id="media_type" name="typeId">
+                            <option value="">{tr(#default media type#)}</option>
+                            {generateSelect(aTypes):h}
+                        </select>
+                        <p class="comment">{tr(#media type select hint#)}</p>
+                    </div>
+                </li>
+            </ol>           
+        </fieldset>
+        <fieldset class="fields">
+            <ol class="clearfix">
+                <li>
+                    <label for="media_upload"><em>*</em> {tr(#select file to upload#)}</label>
+                    <div>
+                        <input id="media_upload" type="file" name="filedata" />
+                    </div>
+                </li>
+            </ol>           
+        </fieldset>
+        <fieldset class="hide">
+            <input id="media_redir" type="hidden" name="redir" value="{redir}" />
+        </fieldset>           
+        <p class="fieldIndent">
+            <span class="triggers">
+                <input class="button" type="button" name="submitted"
+                       value="{tr(#upload media (button)#)}" />
+                &nbsp;
+                {tr(#or#)}
+                &nbsp;
+                <a flexy:if="redir" href="{redir}">{tr(#cancel#)}</a>
+                <a flexy:if="!redir" href="{makeUrl(##,#media2#,#media2#)}">{tr(#cancel#)}</a>
+            </span>
+            <img class="ajaxLoader" src="{imagesDir}/ajax-loader.gif" alt=""
+                 style="display: none;" />
+        </p>
+        <p><em>*</em> {translate(#denotes required field#)}</p>            
+    </div>
+</div><!-- item -->

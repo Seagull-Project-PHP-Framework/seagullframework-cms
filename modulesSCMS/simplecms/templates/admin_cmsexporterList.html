@@ -1,0 +1,29 @@
+<div id="export-container" class="columns layout-2cols">
+
+    <div class="title-edit-simple">
+        <h1>{tr(#cms data export (header)#)}</h1>
+    </div>
+
+    <div class="c75l list">
+        <div class="layout-inner">
+
+            <fieldset id="export-data" flexy:ignore>
+                <p>
+                    <textarea id="export-data-text" rows="15" cols="50">{sglExport}</textarea>
+                </p>
+                <p>
+                    <input id="export-data-trigger" class="button" type="button" name="test"
+                           value="{tr(#select result (button)#)}" />
+                </p>
+            </fieldset>
+
+        </div><!-- inner -->
+    </div><!-- list -->
+
+    <div class="c25r">
+
+        <flexy:include src="block_export_config.html" />
+
+    </div>
+
+</div>

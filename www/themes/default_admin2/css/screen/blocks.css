@@ -1,0 +1,105 @@
+
+/**
+ * Admin common layout elements (blocks).
+ *
+ * @package admin
+ * @author Dmitri Lakachauskis <lakiboy83@gmail.com>
+ */
+
+@media screen, projection
+{
+  #logo {
+    position: absolute;
+    left: 10px;
+    top: 9px;
+  }
+  a#logo {
+    font: 1.3em "Trebuchet MS";
+    text-decoration: none;
+    color: #fff;
+  }
+
+  #greeting {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: transparent;
+  }
+  p#greeting {
+    color: #999;
+    font-size: 0.9em;
+  }
+
+  #langSwitcher {
+    position: absolute;
+    right: 10px;
+    top: 42px;
+    color: #a4bce3;
+  }
+    #langSwitcher select { /* opera fix */
+      background-color: #fff;
+    }
+    #langSwitcher a,
+    #greeting a {
+      color: #fff;
+    }
+
+  #message {
+    position: absolute;
+    z-index: 200;
+    right: 0;
+    bottom: 0;
+    max-width: 50%;
+    overflow: hidden;
+  }
+    #message p {
+      margin-bottom: 0;
+      height: 29px;
+      padding: 7px 10px 0 10px;
+      font: 0.9em/1.1em Arial;
+    }
+    #message .success {
+      background-color: green;
+      color: #fff;
+    }
+    #message .error {
+      background-color: red;
+      color: #fff;
+    }
+
+  #help {
+    position: absolute;
+    top: 25px;
+    right: 0;
+    z-index: 10;
+    color: #fff;
+  }
+    #help .inner {
+      border: 1px solid #aaa;
+      margin-top: 1px;
+      width: 500px;
+      padding: 8px 10px;
+      background-color: #fff;
+      color: #333;
+      display: none;
+    }
+      #help .inner p {
+        margin-bottom: 0.5em;
+      }
+    #help a.trigger {
+      float: right;
+      margin-right: 10px;
+      padding-left: 15px;
+      background: url(<?= $baseUrl ?>/images/button_01.gif) no-repeat left bottom;
+      color: inherit;
+      font-weight: bold;
+      text-decoration: none;
+    }
+      #help a.trigger span {
+        display: block;
+        height: 25px;
+        padding-right: 15px;
+        line-height: 25px;
+        background: url(<?= $baseUrl ?>/images/button_01.gif) no-repeat right bottom;
+      }
+}

@@ -1,0 +1,15 @@
+        <li flexy:foreach="aPagedData[data],k,oMedia">
+            <input name="mediaId" value="{oMedia.media_id}" type="hidden" />
+	        {if:this.plugin(#isImageMimeType#,oMedia.mime_type)}
+	        <a class="preview" href="{webRoot}/media2/img.php?path={this.plugin(#getImagePath#,oMedia)}"
+	           title="{tr(#click to enlarge#)}">
+	            <img class="image"
+	                 src="{webRoot}/media2/img.php?path={this.plugin(#getImagePath#,oMedia,#small#)}" alt="" /></a>
+	        {else:}
+	        <a href="{makeUrl(#download#,#media2#,#media2#,aMedias,#mediaId|media_id#,k)}"
+	           title="{tr(#click to download#)}">
+	            <img class="image"
+	                 src="{this.plugin(#getIconByMimeType#,oMedia.mime_type)}" alt="" /></a>
+	        {end:}
+	        <span>{summarise(oMedia.name,15,#1#)}</span>
+        </li>

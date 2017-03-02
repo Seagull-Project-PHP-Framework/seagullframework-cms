@@ -1,0 +1,175 @@
+<script type="text/javascript">
+function switch_image(elem)
+{
+    var media_id = elem.options[elem.selectedIndex].value;
+    var elem_id = 'the_image_' + elem.id;
+    var my_href = makeUrl({'module':'media2', 'manager':'media2', 'action':'preview', 'mediaId': media_id, 'thumb':'small'});
+    document.images[elem_id].src = my_href;
+}
+
+$(document).ready(function(){
+    cms.content.editor.init();
+});
+
+</script>
+
+<div id="content-header">
+    <h2>{translate(#Content Manager#)}</h2>
+    <div class="message" id="ajaxMessage">{msgGet()}</div>
+</div>
+
+<div class="moduleContainer" id="cmsContainer" flexy:ignore>
+
+    <form method="post" flexy:ignore id="contentEditForm"
+            onsubmit="return cms.content.editor.validateForm()"
+            enctype="multipart/form-data" />
+        <div class="moduleInfobar right">
+            <div class="wrap">
+                <h2>{translate(#Overview#)}</h2>
+                <p>
+                {translate(#type#,#ucfirst#)} : {oContent.typeName}<br/>
+                {translate(#created by#,#ucfirst#)} {oContent.createdByName}<br/>
+                {translate(#created date#,#ucfirst#)} {formatDatePretty(oContent.dateCreated)}
+                </p>
+
+                <!--STATUS-->
+                <h2>{translate(#status#,#ucfirst#)}</h2>
+                <p>
+                    <select name="content[status]">
+                        {generateSelect(aStatusList,oContent.status):h}
+                    </select>
+                </p>
+
+                <!--VERSION-->
+                <h2>{translate(#Version#)}</h2>
+                <p>{tr(#you're editing version %version%#,#vprintf#,#version|oContent.version#)}</p>
+                <table class="versions">
+                    {foreach:aVersions,oVersion}
+                    {if:isEqual(oVersion.version,oContent.version)}
+                    <tr class="selected">
+                    {else:}
+                    <tr>
+                    {end:}
+                        <td class="version_n">{oVersion.version}</td>
+                        {if:oVersion.is_current}
+                        <td class="version_c"><strong style="color:#000">*</strong></td>
+                        {else:}
+                        <td class="version_c">.</td>
+                        {end:}
+                        <td class="version_d"><a class="action" href="{makeUrl(#edit#,#content#,#cms#)}frmContentId/{oContent.id}/cLang/{cLang}/version/{oVersion.version}">
+                            {formatDate(oVersion.last_updated)}
+                        </a></td>
+                        <td class="version_a">{oVersion.author}</td>
+                    </tr>
+                    {end:}
+                </table>
+                <!--input type="submit" class="sgl-button action newVersion" name="newVersion" value="{translate(#create a new version#)}" /-->
+
+                <!--LANGUAGE-->
+                <h2>{translate(#Language#)}</h2>
+
+                {if:oContent.id} <!-- Edit mode -->
+                <p>{tr(#you are editing the %cLang% version#,#vprintf#,#cLang|cLang#)}</p>
+                <p>
+                    <span>{tr(#edit in#)}</span>
+                    <select name="content[language_id]" id="cLang">
+                        {this.plugin(#generateFilteredLanguagesSelect#,aLanguages,oContent,##):h}
+                    </select>
+                </p>
+                <p>
+                    <span>{tr(#create a new version in#)}</span>
+                    <select name="newLanguageId">
+                        {this.plugin(#generateFilteredLanguagesSelect#,aLanguages,oContent,#true#):h}
+                    </select>
+                    <input type="submit" class="sgl-button action newVersion" name="newLang" value="{translate(#add#)}" />
+                </p>
+                {else:}
+                <input type="hidden" name="content[language_id]" value="{cLang}" />
+                <p>{tr(#once you save this content in %clang%, you'll be able to add more languages.#,#vprintf#,#clang|cLang#)}</p>
+                {end:}
+
+                <!--CONDITIONAL CLASSIFIER INCLUDE-->
+                {if:classifyByCategory}
+                    {if:GLOBALS.count(aElems)}
+                    <h2>{translate(#Categories#)}</h2>
+                    <p class="categories">
+                        <select multiple="multiple" name="content[aClassifiers][categories][]">
+                            {generateSelect(aElems,oContent.aClassifiers[categories],#true#):h}
+                        </select>
+                    </p>
+                    {end:}
+                {end:}
+                {if:classifyByTags}
+                    <h2>{translate(#Tags#)}</h2>
+                    <p class="tags">
+                        <input size="25" type="text" name="content[aClassifiers][tags]" value="{oContent.aClassifiers[tags]}" />
+                    </p>
+                {end:}
+
+            </div>
+        </div>
+
+        <div class="moduleContent left">
+            <div class="wrap">
+                <h3>{translate(#edit#,#ucfirst#)}&nbsp;&nbsp;<span>{oContent.name}</span></h3>
+
+                <!-- PREVIEW BOX -->
+                <!--<fieldset id="contentPreview" flexy:if="preview">
+                    <legend>Preview (<a href="#contentEdit">skip</a>)</legend>
+                    <div class="previewBox"><flexy:include src="contentView.html" /></div>
+                </fieldset>-->
+                <!-- END PREVIEW BOX -->
+
+
+                    <fieldset class="noBorder">
+                        <input type="hidden" name="submitted" value="1" />
+                        <input type="hidden" name="action" id="formAction" value="{action}" />
+                        <input type="hidden" name="content[id]" value="{oContent.id}" />
+                        <input type="hidden" name="content[type_id]" value="{oContent.typeId}" />
+                        <input type="hidden" name="content[version]" value="{oContent.version}" />
+                        <input type="hidden" name="content[is_current]" value="{oContent.isCurrent}" />
+                        <input type="hidden" name="version" value="{version}" />
+                        <input type="hidden" name="redir" value="{redir}" />
+                        <input type="hidden" name="contentNameOriginal" id="contentNameOriginal" value="{oContent.name}" />
+
+                        <!--CONTENT ATTRIBUTES-->
+                        <dl class="onTop cmsBox">
+                            <dt>
+                                Name
+                            </dt>
+                            <dd>
+                                <input type="text" class="text medium" name="content[name]" id="contentName" value="{oContent.name}" />
+                            </dd>
+                        {foreach:oContent.aAttribs,oAttrib}
+                            <dt>{oAttrib.alias}</dt>
+                            <dd>{this.plugin(#renderEditAttribute#,oAttrib):h}</dd>
+                        {end:}
+                        </dl>
+                        <!--BUTTONS-->
+                        <div class="manager-actions">
+                            <span id="contentEditFormTrigger">
+                            {if:oContent.id} <!-- Edit mode -->
+                                <!--<input type="submit" class="button action preview" name="preview" value="{translate(#Preview#)}" />-->
+                                <input flexy:if="!version" type="submit" class="sgl-button action save" name="save" value="{translate(#Save#)}" />
+                                <input flexy:if="version" type="submit" class="sgl-button action save" name="save" value="{translate(#Revert to this version#)}" />
+                                {translate(#or#)}
+                                <input flexy:if="!version" type="submit" class="sgl-button action save" name="continueEdit" value="{translate(#Save and continue editing#)}" />
+                                <input flexy:if="version" type="submit" class="sgl-button action save" name="continueEdit" value="{translate(#Revert and continue editing#)}" />
+                            {else:} <!-- Add mode -->
+                                <input type="submit" class="sgl-button action create" name="create" value="{translate(#create#,#ucfirst#)}" />
+                                {translate(#or#)}
+                                <input type="submit" class="sgl-button action create" name="continueEdit" value="{translate(#Create and continue editing#)}" />
+                            {end:}
+                            {translate(#or#)}
+                            </span>
+                            {if:redir}
+                            <a class="action" href="{redir}">{translate(#Cancel#)}</a>
+                            {else:}
+                            <a class="action" href="{makeUrl(##,#content#,#cms#)}">{translate(#Cancel#)}</a>
+                            {end:}
+                        </div>
+                    </fieldset>
+            </div>
+        </div>
+    </form>
+</div>

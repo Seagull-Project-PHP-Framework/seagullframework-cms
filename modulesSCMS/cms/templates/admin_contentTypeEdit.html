@@ -1,0 +1,59 @@
+<script type="text/javascript" src="{webRoot}/js/scriptaculous/lib/prototype.js"></script>
+<script type="text/javascript" src="{webRoot}/js/scriptaculous/src/scriptaculous.js"></script>
+<script type="text/javascript" src="{webRoot}/cms/js/cms.js"></script>
+<script type="text/javascript" src="{webRoot}/ajaxServer.php?client=all&amp;stub=CmsAjaxProvider"></script>
+<div id="manager-actions">
+    <span>{translate(#Action#)}: &nbsp;</span>
+    <a class="action save" href="javascript:formSubmit('contentTypeEdit','submitted',1,1)" accesskey="s">{translate(#Save#)}</a>
+    {if:oContentType.typeId}
+    <a class="action save" href="javascript:$('formAction').value='updateExit';formSubmit('contentTypeEdit','submitted',1,1);" accesskey="w">{translate(#Save and exit#)}</a>
+    {end:}
+    <a class="action cancel" href="{makeUrl(##,#contenttype#,#cms#)}" accesskey="ESC">{translate(#Cancel#)}</a>
+</div>
+<div id="content">
+    <div id="content-header">
+        <h2>{translate(pageTitle)} :: {translate(action)}</h2>
+        <div class="message" id="ajaxMessage">{msgGet()}</div>
+    </div>
+    <form method="post" action="{makeUrl(#update#,#contenttype#,#cms#)}" id="contentTypeEdit" flexy:ignore>
+        <fieldset class="inside">
+            <input type="hidden" name="action" id="formAction" value="{action}" />
+            <input type="hidden" name="contentType[id]" value="{oContentType.typeId}" />
+            <dl class="onSide box-contentType">
+                <h3>Content type</h3>
+                <dt>
+                    <label for="contentType_name">Name</label>
+                </dt>
+                <dd>
+                    <div class="error" flexy:if="error[name]">{error[name]}</div>
+                    <input type="text" class="longText" name="contentType[name]" id="contentType_name" value="{oContentType.typeName}" />
+                </dd>
+            </dl>
+            <dl class="onTop box-attributes" id="attributesBox">
+                <h3>Attributes</h3>
+                <dd>
+                {if:!oContentType.aAttribs}
+                    <p>{translate(#This content type does not have any attribute yet, please add at least one.#)}</p>
+                {else:}
+                    <flexy:include src="contentTypeEdit_attributes.html" />
+                {end:}
+                </dd>
+            </dl>
+            <div class="attributes-actionbox">
+                {if:oContentType.typeId}
+                <div class="box">
+                    <select id="addAttributeType">
+                        {generateSelect(fieldTypes):h}
+                    </select>
+
+                    <input type="button" class="sgl-button" value="{translate(#Add attribute#)}"
+                           onclick="Attribute.add({oContentType.typeId}, $(addAttributeType).value)" />
+                </div>
+                {else:}
+                    <p class="warning">Save this content type to be able to add additional attributes</p>
+                {end:}
+            </div>
+        </fieldset>
+    </form>
+    <div class="spacer"></div>
+</div>

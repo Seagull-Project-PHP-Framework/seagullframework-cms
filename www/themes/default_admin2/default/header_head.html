@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{currLang}"
+      lang="{currLang}" dir="{langDir}">
+<head>
+    <title>{conf[site][name]}</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="{currLang}" />
+    <meta name="rating" content="General" />
+    <meta name="generator" content="Seagull PHP Framework" />
+    <meta name="copyright" content="Copyright (c) 2009 {conf[site][name]}" />
+
+    {scriptOpen:h}
+        {getExportedJsVars():h}
+    {scriptClose:h}
+
+    {if:myComment} ---------------------------------------------------- {end:}
+    {if:myComment} --- Application wide + manager specific JS + CSS --- {end:}
+    {if:myComment} ---------------------------------------------------- {end:}
+
+    {makeCssOptimizerLink(##,#main.css#):h}
+    {makeJsOptimizerLink():h}
+
+    {if:myComment} --------------------------- {end:}
+    {if:myComment} --- Onload events setup --- {end:}
+    {if:myComment} --------------------------- {end:}
+
+    {scriptOpen:h}
+    {if:onReadyDom}
+        $(document).ready(function() {
+            {foreach:onReadyDom,eventHandler}
+            {eventHandler};
+            {end:}
+        });
+    {end:}
+    {if:onLoad}
+        window.onload = function() {
+            {foreach:onLoad,eventHandler}
+            {eventHandler};
+            {end:}
+        }
+    {end:}
+    {scriptClose:h}
+
+    {if:myComment} --------------------- {end:}
+    {if:myComment} --- WYSIWYG setup --- {end:}
+    {if:myComment} --------------------- {end:}
+
+    {if:wysiwyg}
+    {if:wysiwyg_fck}
+    <script type="text/javascript" src="{webRoot}/fckeditor/fckeditor.js"></script>
+    {scriptOpen:h}
+        oFCKEditors = new Array;
+
+        // initalises an instance of FCK
+        function fck_add(id) {
+            var i = oFCKEditors.length;
+
+            // width/height and toolbar must be customized
+            oFCKEditors[i] = new FCKeditor(id, 460, 300);
+            oFCKEditors[i].ToolbarSet = '{wysiwygToolbarType}';
+
+            oFCKEditors[i].BasePath = SGL_WEBROOT + '/fckeditor/';
+            oFCKEditors[i].Config['CustomConfigurationsPath'] = SGL_WEBROOT + '/admin/js/FckConfig.js';
+            oFCKEditors[i].ReplaceTextarea();
+        }
+
+        function fck_init() {
+            if (document.getElementsByTagName) {
+                var aAreas = document.getElementsByTagName('textarea');
+                for (var i = 0; i < aAreas.length; i++) {
+                    if (aAreas[i].className.match('wysiwyg')) {
+                        fck_add(aAreas[i].id);
+                    } else if (aAreas[i].id.match('frmBodyName')) {
+                        // fallback for old templates
+                        fck_add('frmBodyName');
+                    }
+                }
+            }
+        }
+    {scriptClose:h}
+    {end:}
+    {end:}
+
+    {if:myComment} --------------------------------------- {end:}
+    {if:myComment} --- Application wide JS translation --- {end:}
+    {if:myComment} --------------------------------------- {end:}
+
+    <script type="text/javascript" src="{webRoot}/admin/js/Localisation/{currFullLang}.js?rev={rev}"></script>
+
+    {if:myComment} ------------------------------------- {end:}
+    {if:myComment} --- Application wide IE 6/7 fixes --- {end:}
+    {if:myComment} ------------------------------------- {end:}
+
+    {commentOpen:h}[if lte IE 7]>
+    <link rel="stylesheet" type="text/css"
+          href="{webRoot}/themes/{theme}/css/patches/main.css?rev={rev}" />
+    <![endif]{commentClose:h}
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#langSwitcher select').change(function() {
+            document.location.href = $(this).val();
+        });
+    });
+    </script>
+</head>

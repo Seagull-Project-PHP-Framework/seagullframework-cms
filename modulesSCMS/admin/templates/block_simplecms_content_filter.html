@@ -1,0 +1,33 @@
+<!-- Filter -->
+<div id="content-filter" class="block-helper block-icon block-icon-search block-item-list widget-item"
+     sgl:widget="admin_dashboard-content_filter">
+    <h2 class="widget-header"><a href="#">{tr(#content filter (header)#)}</a></h2>
+    <form class="inner" action="{makeUrl(##,#cmscontent#,#simplecms#)}" method="post" flexy:ignore>
+        <ul>
+            <li>
+                <label for="filter_type">{tr(#filter by type#)}</label>
+                <select id="filter_type" name="type" flexy:ignore>
+                    <option value="all">{tr(#all#)}</option>
+                    {generateSelect(aContentTypes):h}
+                </select>                       
+            </li>
+            <li>
+                <label for="filter_status">{tr(#filter by status#)}</label>
+                <select id="filter_status" name="status" flexy:ignore>
+                    <option value="all">{tr(#all#)}</option>                
+                    {generateSelect(aStatuses):h}
+                </select> 
+            </li>
+            <li>
+                <label for="filter_lang">{tr(#filter by lang#)}</label>
+                <select id="filter_lang" name="cLang" flexy:ignore>
+                    {generateSelect(aLangs):h}
+                </select>                 
+            </li>
+        </ul>
+        <p>
+            <input class="submit" type="submit" name="isSubmitted" value="{tr(#search (action)#)}" />
+        </p>
+    </form>
+</div>
+

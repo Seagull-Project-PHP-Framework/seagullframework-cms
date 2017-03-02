@@ -1,0 +1,59 @@
+#
+# Unfortunately SVN doesn't support externals for files (only for directories).
+# To hack this we export some SGL files to CMS project directory. We do
+# not add them to CMS repo to avoid headache with sync.
+#
+# CMS should be a part (extension/module/feature/plugin you name it) of SGL
+# - this is our goal. Currently it is vice versa, CMS uses SGL. As soon as
+# default_admin2 is merged with main SGL, old CMS is replaced with new
+# SimpleCMS, this step would be not necessary (it'd be completely different
+# setup).
+#
+# Small comment to devs. I don't think we can achieve this with bugfix though.
+# To make CMS a part of SGL current bugfix branch should be significally
+# modified, what we don't want. Things should become normal only with decent
+# SGL 2.0. (Dmitri's point)
+#
+
+1. Run etc/setup.sh
+
+2. Run installation wizard
+
+#
+# Note to myself (Dmitri):
+#
+# This warning will be fixed/removed together with setup.php improvement
+# and navigation/block module removal/replacement.
+#
+
+   a) don't pay attention on "undefined constant" error
+
+#
+# Note to myself (Dmitri):
+#
+# Checkout if we really need this step.
+#
+
+3. Login as admin and rebuild with sample data (just to make sure everything is OK)
+
+#
+# Below instructions will not be needed as soon as user2 will completely
+# supersede user1 module.
+#
+
+4. Add/replace below lines in `var/config/user2.ini` under `Login2Mgr` container
+
+   ---
+   loginRootGoto      = default^maintenance
+   loginModeratorGoto = admin^admin
+   ---
+
+   If relevant cached config file doesn't exist, request e.g.
+   `index.php/login`, then go back - it should be created (grant write permissions)
+
+5. Create a symlink from the global config file in var to localhost.conf.php
+
+6. Login via user2 module
+
+    a) goto index.php/login
+    b) do login: moderator, password: qwerty

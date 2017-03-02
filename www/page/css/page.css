@@ -1,0 +1,105 @@
+
+/**
+ * Page filter.
+ */
+#page-filter li {
+  margin: 0 0 0.5em 0;
+}
+
+
+#page-tree h2 {
+  position: relative;
+  padding-right: 30px;
+}
+  #page-tree h2 img {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+
+
+/**
+ * Page list.
+ */
+#page-container .layout-inner {
+  position: relative;
+}
+
+#page-list.locked {
+  opacity: 0.5;
+}
+  #page-list th a {
+    color: inherit;
+    text-decoration: none;
+  }
+  #page-list td.lang-cell img,
+  #page-list td.status-cell img {
+    float: left;
+  }
+
+#page-list-loader {
+  position: absolute;
+  left: 50%;
+  top: 25px;
+  margin-left: -28px;
+}
+
+
+/**
+ * Page language.
+ */
+#page-language-container .lang {
+  float: left;
+}
+  #page-language-container .lang select {
+    margin-right: 10px;
+  }
+  
+/**
+ * Route widget
+ */
+div.route-widget-controller {
+}
+
+div.route-widget ol li select,div.route-widget ol li input{
+	width:180px;
+	border:1px solid #CDD3D5;
+	color:#333333;
+	padding:2px;	
+}
+
+/**
+ * Route list
+ */
+#route-list.locked {
+  opacity: 0.5;
+}
+  #route-list th a {
+    color: inherit;
+    text-decoration: none;
+  }
+#route-list-loader {
+  position: absolute;
+  left: 50%;
+  top: 25px;
+  margin-left: -28px;
+}
+
+#route-container input.path{
+  width: 560px;
+  padding:4px;
+  font-size: 1.2em;
+  margin-right: 5px;	
+}
+
+#route-container select{
+	width: 450px;
+}
+#route-container input.dynamic{
+	width: 440px;
+}
+#route-container .remove-parameter{
+	text-decoration:none;
+	margin-left:5px;
+}
+ 

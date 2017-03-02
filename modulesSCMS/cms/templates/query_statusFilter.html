@@ -1,0 +1,11 @@
+<label>{translate(#Status#)}</label>
+<input id="statusFilter_any" type="radio" name="statusFilter" value="0"
+    checked="checked"
+    flexy:ignore /><span>{translate(#Any#)}</span>
+{foreach:aStatusTypes,statusId,statusName}
+<input id="statusFilter_{statusId}" type="radio" name="statusFilter"
+    value="{statusId}" flexy:ignore /><span>{translate(statusName)}</span>
+{end:}
+<input id="removeFilter_status" class="remove" type="button"
+    value="{translate(#Remove#)}"
+    onclick="CmsQuery.removeFilter(this)" />

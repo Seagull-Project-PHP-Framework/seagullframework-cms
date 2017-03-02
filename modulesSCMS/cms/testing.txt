@@ -1,0 +1,10 @@
+[schemaFiles]
+file7               = modules/cms/data/schema.my.sql
+
+[dataFiles]
+file6               = modules/cms/data/data.test.my.sql
+file7               = modules/cms/data/data.default.my.sql
+
+;to run cms tests from CLI
+;
+;php tests/cli.php --type=unit --level=folder --layer=wdd --folder=modules/cms

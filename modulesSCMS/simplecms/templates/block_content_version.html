@@ -1,0 +1,28 @@
+<div id="content-version" class="block-helper block-overview">
+    <h2><a href="#">{this.plugin(#getContentLangIcon#,oContent.langCode):h} {tr(#content versions (header)#)}</a></h2>
+    <div class="inner fieldsetlike">
+        <dl class="clearfix">
+        {foreach:aVersions,k,oVersion}
+            <!--dt>{tr(#content version %version%#,#vprintf#,aVersion)}</dt-->
+            <dt>{formatDate(oVersion.last_updated)}</dt>
+            {assign(verId,oVersion.version)}
+            <dd flexy:if="!isEqual(oContent.version,oVersion.version)">
+                <a class="version"
+                   href="{makeUrl(#action|edit||contentId|contentId||cLang|cLang||versionId|verId#)}">
+                    {tr(#content version %version%#,#vprintf#,oVersion)}</a>
+                &nbsp;
+                <a href="{makeUrl(##,#cmsactivity#,#simplecms#,aVersions,#userId|updated_by_id#,k)}">
+                    {summarise(oVersion.author,#13#,#1#,##)}</a>
+            </dd> 
+            <dd flexy:if="isEqual(oContent.version,oVersion.version)" class="current">
+                <a class="version"
+                   href="{makeUrl(#action|edit||contentId|contentId||cLang|cLang||versionId|verId#)}">
+                    {tr(#content version %version%#,#vprintf#,oVersion)}</a>
+                &nbsp;
+                <a href="{makeUrl(##,#cmsactivity#,#simplecms#,aVersions,#userId|updated_by_id#,k)}">
+                    {summarise(oVersion.author,#13#,#1#,##)}</a>
+            </dd> 
+        {end:}
+        </dl>
+    </div>
+</div>

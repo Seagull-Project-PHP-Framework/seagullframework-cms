@@ -1,0 +1,32 @@
+{foreach:aSections,section}
+
+    {if:isEqual(section[level],#0#)}
+        {if:section[is_current]}
+            {if:section[sub]}
+    <ul class="clearfix">
+    {if:section[sub]}{renderer.toHtml(section[sub]):h}{end:}
+    </ul>
+            {end:}
+        {end:}
+    {end:}
+
+    {if:isEqual(section[level],#1#)}
+        {if:notfirst}
+    <li flexy:if="section[is_current]">
+        <a href="{section[url]}"><strong>{tr(section[title])}</strong></a>
+    </li>
+    <li flexy:if="!section[is_current]">
+        <a href="{section[url]}">{tr(section[title])}</a>
+    </li>
+        {else:}
+    <li flexy:if="section[is_current]" class="first">
+        <a href="{section[url]}"><strong>{tr(section[title])}</strong></a>
+    </li>
+    <li flexy:if="!section[is_current]" class="first">
+        <a href="{section[url]}">{tr(section[title])}</a>
+    </li>
+        {end:}
+        {assign(notFirst,#1#)}
+    {end:}
+
+{end:}

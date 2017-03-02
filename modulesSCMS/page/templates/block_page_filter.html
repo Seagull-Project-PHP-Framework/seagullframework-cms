@@ -1,0 +1,47 @@
+<!-- Filter -->
+<div id="page-filter" class="block-helper block-icon block-icon-search block-item-list">
+    <h2><a href="#">{tr(#page filter (header)#)}</a></h2>
+    <div class="inner">
+
+        <input id="filter_site_value" type="hidden" name="siteId" value="{siteId}" />
+        <input id="filter_parent_value" type="hidden" name="parentId" value="{parentId}" />
+        <input id="filter_lang_value" type="hidden" name="langId" value="{langId}" />
+        <input id="filter_status_value" type="hidden" name="status" value="{status}" />
+        <input id="filter_resPerPage_value" type="hidden" name="resPerPage" value="{resPerPage}" />
+        <input id="filter_sortBy_value" type="hidden" name="sortBy" value="{sortBy}" />
+        <input id="filter_sortOrder_value" type="hidden" name="sortOrder" value="{sortOrder}" />
+
+        <ul>
+            <li>
+                <label for="filter_site">{tr(#filter by site#)}</label>
+                <select id="filter_site" name="siteId" flexy:ignore>
+                    {this.plugin(#generateSiteFilterSelect#,aSites,siteId):h}
+                </select>
+            </li>
+            <li>
+                <label for="filter_parent">{tr(#filter by parent#)}</label>
+                <select id="filter_parent" name="parentId" flexy:ignore>
+                    {this.plugin(#renderPageFilterSelect#,aTree,parentId):h}
+                </select>
+            </li>
+            <li>
+                <label for="filter_status">{tr(#filter by status#)}</label>
+                <select id="filter_status" name="status" flexy:ignore>
+                    {this.plugin(#generateFilterSelect#,aStatuses,status,#status#,#1#):h}
+                </select>
+            </li>
+            <li>
+                <label for="filter_lang">{tr(#filter by lang#)}</label>
+                <select id="filter_lang" name="langId" flexy:ignore>
+                    {this.plugin(#generateFilterSelect#,aLangs,langId,#langId#):h}
+                </select>
+            </li>
+            <li>
+                <label for="filter_resPerPage">{tr(#filter results per page#)}</label>
+                <select id="filter_resPerPage" name="resPerPage" flexy:ignore>
+                    {this.plugin(#generateFilterSelect#,aResPerPage,resPerPage,#resPerPage#):h}
+                </select>
+            </li>
+        </ul>
+    </div>
+</div>

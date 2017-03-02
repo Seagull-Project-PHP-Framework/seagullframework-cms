@@ -1,0 +1,13 @@
+<div id="route-create" class="block-helper block-icon block-icon-new block-input">
+    <h2><a href="#">{tr(#create url (header)#)}</a></h2>
+    <form class="inner" method="post" action="" flexy:ignore>
+        <fieldset>
+            <select>
+            {foreach:aSites,siteId,siteName}
+                <option value="{makeUrl(#action|add#)}{siteId}">{siteName}</option>
+            {end:}
+            </select>
+            <input class="button" type="button" name="submitted" value="{tr(#create url (action)#)}" />
+        </fieldset>
+    </form>
+</div>

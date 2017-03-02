@@ -1,0 +1,51 @@
+<!-- Header -->
+<div id="header">
+
+    <!-- Site name -->
+    <a id="logo" href="{makeUrl(##,#admin#,#admin#)}">{conf[site][name]}</a>
+
+    <p id="greeting">
+        <a href="{getHomePageLink():h}">{tr(#go to home page#)}</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="{makeUrl(#logout#,#login2#,#user2#)}">{tr(#logout#)}</a>
+    </p>
+
+    <!-- begin: main navigation #nav -->
+    <div id="nav">
+        <!-- skiplink anchor: navigation -->
+        <a id="navigation" name="navigation"></a>
+
+        <div id="nav_main">
+        {foreach:blocksAdminNavPri,key,valueObj}
+            {valueObj.content:h}
+        {end:}
+        </div>
+
+        <div id="nav_sub">
+            <div class="inner">
+            {foreach:blocksAdminNavSec,key,valueObj}
+                {valueObj.content:h}
+            {end:}
+            </div>
+        </div>
+
+        <div id="help" class="floatbox" style="display: none;">
+            <div class="inner"></div>
+            <a class="trigger" href="#"><span>{tr(#help panel#)}</span></a>
+        </div>
+    </div>
+    <!-- end: main navigation -->
+
+    <div id="langSwitcher">
+        {getLoggedOnUserString(loggedOnUser):h}
+        &nbsp;
+        <select name="lang" flexy:ignore>
+            {generateLanguageSelect(currLang):h}
+        </select>
+    </div>
+
+    <div id="message" style="display: none;"><p>message placeholder</p></div>
+    {msgGet():h}
+
+</div>
+<!-- END: header -->

@@ -1,0 +1,53 @@
+
+/**
+ * Content filter.
+ */
+#media-filter li {
+  margin: 0 0 0.5em 0;
+}  
+
+/**
+ * Media list.
+ */
+#media-list .item {
+  position: relative;
+  float: left;
+  margin-bottom: 1em;  
+  width: 140px;
+  height: 90px;  
+  padding: 5px 10px;
+}
+#media-list .current {
+  border: 1px solid #666;
+  padding: 4px 9px;
+}
+  #media-list .item .deleteItem,
+  #media-list .item .editItem,
+  #media-list .item .ajaxLoader {
+    position: absolute;
+    right: 10px;
+  }
+  #media-list .item .ajaxLoader, 
+  #media-list .item .deleteItem {  
+    top: 5px;
+  }
+  #media-list .item .editItem {
+    bottom: 5px;
+  }
+  #media-list .item .descr {
+    position: absolute;
+    left: 10px;
+    bottom: 5px;    
+    color: #000;
+  }
+  #media-list .current .descr {
+    left: 9px;
+    bottom: 4px;
+  }
+  #media-list .item .image {
+    display: block;
+    margin: 5px auto 0;
+  }
+  #media-list .current .image {
+    #margin-top: 4px;
+  }

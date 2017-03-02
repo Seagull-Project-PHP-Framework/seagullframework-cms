@@ -1,0 +1,8 @@
+<div id="content-categories" class="block-helper" flexy:ignore flexy:if="categoriesEnabled">
+    <h2><a href="#">{tr(#content categories (header)#)}</a></h2>
+    <div class="inner fieldsetlike">
+        <select multiple="multiple" name="content[aClassifiers][categories][]">
+            {this.plugin(#renderCategoriesSelect#,oContent.langCode,oContent.aClassifiers[categories]):h}
+        </select>
+    </div>
+</div>

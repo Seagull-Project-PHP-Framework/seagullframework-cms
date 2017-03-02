@@ -1,0 +1,37 @@
+<tr flexy:ignore>
+    <td class="cell-30">
+        <input type="hidden" name="attr[id][]" value="{oAttr.attr_id}" flexy:if="oAttr.attr_name" />
+        <input type="hidden" name="attr[id][]" value="" flexy:if="!oAttr.attr_name" />
+        <input class="text alias" type="text" name="attr[alias][]" value="{oAttr.attr_alias}" />
+    </td>
+    <td class="cell-30">
+        <input class="text readonly" type="text" name="attr[name][]" value="{oAttr.attr_name}"
+               readonly="readonly" />
+    </td>
+    <td class="cell-30">
+        <select class="types" name="attr[type_id][]" flexy:ignore>
+            {generateSelect(aAttribTypes,oAttr.attr_type_id):h}
+        </select>
+
+        {if:this.plugin(#attribTypeIsList#,oAttr.attr_type_id)}
+        &nbsp;
+        <select class="list" name="attr[list_id][]" flexy:ignore>
+            <option value="">{tr(#select attribute list#)}</option>
+            {generateSelect(aLists,oAttr.attr_params[attributeListId]):h}
+        </select>
+        {else:}
+        &nbsp;
+        <select class="list" name="attr[list_id][]" flexy:ignore style="display: none">
+            <option value="">{tr(#select attribute list#)}</option>
+            {generateSelect(aLists):h}
+        </select>
+        {end:}
+    </td>
+    <td class="cell-10 cell-right">
+        <a href="#" class="deleteattr"
+           title="{tr(#delete content type attribute#)}">
+            <img src="{webRoot}/themes/{theme}/images/icons/action_stop.gif" alt="" /></a>
+        <img class="ajaxLoader" src="{webRoot}/themes/{theme}/images/ajax-loader.gif"
+             alt="" style="display: none;" />
+    </td>
+</tr>

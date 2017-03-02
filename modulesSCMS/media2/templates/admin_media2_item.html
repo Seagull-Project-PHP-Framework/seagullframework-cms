@@ -1,0 +1,31 @@
+<div flexy:raw="{this.plugin(#getContentRowStyle#,#item#,#4#):h}" id="media-item_{oMedia.media_id}">
+    {if:this.plugin(#isImageMimeType#,oMedia.mime_type)}
+    <a class="preview" href="{webRoot}/media2/img.php?path={this.plugin(#getImagePath#,oMedia)}"
+       title="{tr(#click to enlarge#)}">
+        <img class="image"
+             src="{webRoot}/media2/img.php?path={this.plugin(#getImagePath#,oMedia,#small#)}" alt="" /></a>
+    {else:}
+    <a href="{makeUrl(#download#,#media2#,#media2#,aMedias,#mediaId|media_id#,k)}"
+       title="{tr(#click to download#)}">
+        <img class="image"
+             src="{this.plugin(#getIconByMimeType#,oMedia.mime_type)}" alt="" /></a>
+    {end:}
+    <a href="{makeUrl(#edit#,#media2#,#media2#,aMedias,#mediaId|media_id#,k)}" class="descr">
+        {summarise(oMedia.name,15,#1#)}</a>
+    <span class="triggers clearfix">
+        <!--
+        {if:this.plugin(#isImageMimeType#,oMedia.mime_type)}
+        <a class="preview" href="{webRoot}/media2/img.php?path={this.plugin(#getImagePath#,oMedia)}">View</a>
+        {else:}
+        <a href="{makeUrl(#download#,#media2#,#media2#,aMedias,#mediaId|media_id#,k)}">DL</a>
+        {end:}
+        -->
+        <a class="editItem" href="{makeUrl(#edit#,#media2#,#media2#,aMedias,#mediaId|media_id#,k)}" title="{tr(#edit media (action)#)}">
+            <img src="{webRoot}/themes/{theme}/images/icons/page_edit.gif" alt="" /></a>
+        <a class="deleteItem" sgl:media_id="{oMedia.media_id}"
+           href="#" title="{tr(#delete media (action)#)}">
+            <img src="{webRoot}/themes/{theme}/images/icons/action_stop.gif" alt="" /></a>
+    </span>
+    <img style="display: none;" class="ajaxLoader"
+         src="{webRoot}/themes/{theme}/images/ajax-loader.gif" alt="" />
+</div>

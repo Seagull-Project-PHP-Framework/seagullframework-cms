@@ -1,0 +1,73 @@
+{if:isAdd}
+<form id="attrib-list-item-form_{oAttr.id}" class="editmode" method="post"
+      action="{makeUrl(#updateAttributeList#,#simplecms#,#simplecms#)}" flexy:ignore>
+{else:}
+<form id="attrib-list-item-form_{oAttr.id}" class="editmode" method="post"
+      action="{makeUrl(#updateAttributeList#,#simplecms#,#simplecms#)}" flexy:ignore style="display: none;">
+{end:}
+    <div class="subcolumns">
+        <fieldset class="c50l newfield">
+            <ol class="clearfix">
+                <li>
+                    <label for="attrib-list-item-field-name_{oAttr.id}">{tr(#attribute list name#)}</label>
+                    <div>
+                        <input id="attrib-list-item-field-name_{oAttr.id}"
+                               class="text" type="text"
+                               name="list[name]" value="{oAttr.name}" />
+                    </div>
+                </li>
+                <li>
+                    <label for="attrib-list-item-field-key_{oAttr.id}">{tr(#list field key#)}</label>
+                    <div>
+                        <input id="attrib-list-item-field-key_{oAttr.id}"
+                               class="text" type="text"
+                               name="list_field_key" value="" />
+                    </div>
+                </li>
+                <li>
+                    <label for="attrib-list-item-field-value_{oAttr.id}">{tr(#list field value#)}</label>
+                    <div>
+                        <input id="attrib-list-item-field-value_{oAttr.id}"
+                               class="text" type="text"
+                               name="list_field_value" value="" />
+                    </div>
+                </li>
+            </ol>
+            <p class="fieldIndent">
+                <span class="actions">
+                    <input id="attrib-list-item-submit_{oAttr.id}" class="button"
+                           type="button" name="submit"
+                           value="{tr(#save list (button)#)}" />
+                    &nbsp;{tr(#or#)}&nbsp;
+                    <a id="attrib-list-item-cancel_{oAttr.id}" href="#">{tr(#cancel#)}</a>
+                </span>
+                <img class="ajaxLoader" src="{webRoot}/themes/{theme}/images/ajax-loader.gif" alt=""
+                     style="display: none;" />
+            </p>
+        </fieldset>
+        <fieldset class="c50r fields">
+            <div class="inner">
+                <a id="field-add_{oAttr.id}" class="field-add" href="#" title="{tr(#add or update list field#)}">
+                    <img src="{webRoot}/themes/{theme}/images/icons/action_forward.gif" alt="" /></a>
+                <a id="field-up_{oAttr.id}" class="field-up" href="#" title="{tr(#move selected field up#)}">
+                    <img src="{webRoot}/themes/{theme}/images/icons/arrow_up.gif" alt="" /></a>
+                <a id="field-down_{oAttr.id}" class="field-down" href="#" title="{tr(#move selected field down#)}">
+                    <img src="{webRoot}/themes/{theme}/images/icons/arrow_down.gif" alt="" /></a>
+                <p>
+                    <select id="attrib-fields_{oAttr.id}" name="list[fields]"
+                            multiple="multiple" size="5">
+                    {foreach:oAttr.fields,fieldKey,fieldValue}
+                        <option>{fieldKey} =&gt; {fieldValue}</option>
+                    {end:}
+                    </select>
+                </p>
+                <p>
+                    <input id="attrib-list-item-field-delete_{oAttr.id}" class="button"
+                           type="button" name="delete"
+                           value="{tr(#delete selected field (button)#)}" />
+                </p>
+            </div>
+        </fieldset>
+    </div>
+    <input type="hidden" name="listId" value="{oAttr.id}" />
+</form>

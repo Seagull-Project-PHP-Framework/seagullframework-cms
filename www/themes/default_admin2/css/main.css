@@ -1,0 +1,9 @@
+/* YAML core */
+@import url(<?php echo $baseUrl; ?>/css/yaml/core/base.css);
+<?php
+require dirname(__FILE__) . '/screen/layout.css';
+require dirname(__FILE__) . '/screen/typo.css';
+require dirname(__FILE__) . '/screen/forms.css';
+require dirname(__FILE__) . '/screen/blocks.css';
+require dirname(__FILE__) . '/screen/elements.css';
+?>

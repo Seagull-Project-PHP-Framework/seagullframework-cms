@@ -1,0 +1,17 @@
+<!-- Statuses -->
+<div id="content-status-legend" class="block-helper">
+    <h2><a href="#">{tr(#statuses (header)#)}</a></h2>
+    <div class="inner">
+        <ul class="status-container">
+        {foreach:aStatusesData,key,aStatus}
+            {assign(statusId,aStatus[status_id])}
+            <li flexy:if="isEqual(aStatus[status_id],status)" class="{aStatus[className]}">
+                <a href="{makeUrl(#module|simplecms||manager|cmscontent||type|type||status|statusId||cLang|cLang||resPerPage|resPerPage#)}"><strong>{tr(aStatus[name])}</strong></a>
+            </li>
+            <li flexy:if="!isEqual(aStatus[status_id],status)" class="{aStatus[className]}">
+                <a href="{makeUrl(#module|simplecms||manager|cmscontent||type|type||status|statusId||cLang|cLang||resPerPage|resPerPage#)}">{tr(aStatus[name])}</a>
+            </li>
+        {end:}
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+        <form name="frmCategoryMgr" action="" method="post" flexy:ignore id="frmCategoryMgr">
+            <fieldset class="inside">
+                <input type="hidden" name="action" value="update" />
+                <input type="hidden" name="category[category_id]" value="{category[category_id]}" />
+                <input type="hidden" name="category[order_id]" value="{category[order_id]}" />
+                <input type="hidden" name="category[original_parent_id]" value="{category[parent_id]}" />
+                <input type="hidden" name="frmDelete[{category[category_id]}]" value="{category[category_id]}" />
+                <input type="hidden" name="cLang" value="{cLang}" />
+
+                <p>
+                    <h3>{translate(#category#,#ucfirst#)} (id#{category[category_id]}) {category[label]}</h3>
+                    <label>{translate(#You are here#)}</label> :
+                    <span>{breadCrumbs:h}</span>
+                </p>
+                <p>
+                    <label for="category[parent_id]">{translate(#Target Parent Category#)}</label>
+                    <select name="category[parent_id]" id="category[parent_id]">
+                        <option value="0">{translate(#Top level (no parent)#)}</option>
+                        {generateSelect(aCategories,category[parent_id]):h}
+                    </select>
+                </p>
+                <p>
+                    <label for="cLang">{translate(#Edit this category in#)}</label>
+                    <select name="cLang" id="cLang">
+                        {this.plugin(#generateLanguagesSelect#,aLanguages,cLang):h}
+                    </select>
+                </p>
+                <p>
+                    <label for="category[label]">{translate(#Current Category Name#)}</label>
+                    <span class="error" flexy:if="error[name]">{error[label]}</span>
+                    <input type="hidden" name="category[label_original]" value="{category[label]}" />
+                    <input type="text" class="longText" name="category[label]" id="category[label]" value="{translate(category[label],##,##,##,cLang):h}" />
+                </p>
+                <!--DESCRIPTION-->
+                <fieldset id="description">
+                    <legend>{translate(#Description#)}</legend>
+                    <p>
+                        <label for="category[description]">{translate(#Describe category#)}</label>
+                        <textarea name="category[description]">{category[description]}</textarea>
+                    </p>
+                </fieldset>
+
+                {if:classifyByTags}
+                <!--TAGS-->
+                <fieldset id="tags">
+                    <legend>{translate(#Tags#)}</legend>
+                    <p>
+                        <label for="category[tags]">{translate(#Tags#)}</label>
+                        <span class="error" flexy:if="error[tags]">{error[tags]}</span>
+                        <input type="text" class="longText" name="category[tags]" id="category[tags]" value="{category[tags]}" />
+                    </p>
+                </fieldset>
+                {end:}
+
+                <!--IMAGE-->
+                <fieldset id="image">
+                    <legend>{translate(#Image#)}</legend>
+                    <p>
+                        <label for="category[description]">{translate(#Select category image#)}</label>
+                        <a class="image" href="{makeUrl(##,#mediaassoc#,#media2#)}entity/category/entityId/{category[category_id]}/redir/{redir}/" title="{category[label]}">
+                            <img src="{makeUrl(#preview#,#media2#,#media2#)}mediaId/{category[media_id]}/thumb/small" alt="" title="" />
+                        </a>
+                    </p>
+                </fieldset>
+
+                <!--PERMISSIONS-->
+                <fieldset id="permissions">
+                    <legend>{translate(#Permissions#)}</legend>
+                    <p>
+                        <label class="tipOwner" for="category[perms]">{translate(#Has Permissions#)}
+                            <span class="tipText">{translate(#Permissions are set by default to allow all users into all catgories. If you would like to deny a certain group access to a category, choose "no" in response to "has permissions" for the given group.#)}</span>
+                        </label>
+                        <span>&nbsp;</span>
+                    </p>
+                    {this.plugin(#generatePermsRadioList1#,perms,#role_id#):h}
+                </fieldset>
+
+            </fieldset>
+        </form>

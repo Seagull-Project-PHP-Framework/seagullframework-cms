@@ -1,0 +1,49 @@
+<!-- Filter -->
+<div id="content-filter" class="block-helper block-icon block-icon-search block-item-list">
+    <h2><a href="#">{tr(#content filter (header)#)}</a></h2>
+    <div class="inner">
+
+        <input id="filter_type_value" type="hidden" name="type" value="{type}" />
+        <input id="filter_status_value" type="hidden" name="status" value="{status}" />
+        <input id="filter_lang_value" type="hidden" name="lang" value="{cLang}" />
+        <input id="filter_resPerPage_value" type="hidden" name="resPerPage" value="{resPerPage}" />
+        <input id="filter_sortBy_value" type="hidden" name="sortBy" value="{sortBy}" />
+        <input id="filter_sortOrder_value" type="hidden" name="sortOrder" value="{sortOrder}" />
+
+        <ul>
+            <li>
+                <label for="filter_type">{tr(#filter by type#)}</label>
+                <select id="filter_type" name="type" flexy:ignore>
+                    {this.plugin(#generateFilterSelect#,aContentTypes,type,#type#,#1#):h}
+                </select>
+            </li>
+            <li>
+                <label for="filter_status">{tr(#filter by status#)}</label>
+                <select id="filter_status" name="status" flexy:ignore>
+                    {this.plugin(#generateFilterSelect#,aStatuses,status,#status#,#1#):h}
+                </select>
+            </li>
+            <li>
+                <label for="filter_lang">{tr(#filter by lang#)}</label>
+                <select id="filter_lang" name="lang" flexy:ignore>
+                    {this.plugin(#generateFilterSelect#,aLangs,cLang,#cLang#):h}
+                </select>
+            </li>
+            <li>
+                <label for="filter_resPerPage">{tr(#filter results per page#)}</label>
+                <select id="filter_resPerPage" name="resPerPage" flexy:ignore>
+                    {this.plugin(#generateFilterSelect#,aResPerPage,resPerPage,#resPerPage#):h}
+                </select>
+            </li>
+            <!--li>
+                <label for="filter_field">{tr(#order by field#)}</label>
+                <select id="filter_field" name="sortBy" flexy:ignore>
+                    {this.plugin(#generateFilterSelect#,aSortFields,sortBy,#sortBy#):h}
+                </select>
+                <select name="sortOrder" flexy:ignore>
+                    {this.plugin(#generateFilterSelect#,aSortOrder,sortOrder,#sortOrder#):h}
+                </select>
+            </li-->
+        </ul>
+    </div>
+</div>

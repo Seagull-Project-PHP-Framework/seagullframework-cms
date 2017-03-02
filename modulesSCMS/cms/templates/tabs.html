@@ -1,0 +1,65 @@
+{scriptOpen:h}
+var SGL_JS_AJAX_URL="{ajaxUrl}";
+{scriptClose:h}
+
+<script type="text/javascript">
+
+var inputFieldForm = ''+
+	'<li>'+
+	'	<form id="myform" action="" method="post"  flexy:ignore >'+
+	'	<input 	type="text" id="text1" name="myvalue" value="new tab" size="5" '+
+	'				onblur="new Ajax.Request( '+
+	'					SGL_JS_AJAX_URL, '+
+	'					{asynchronous:true, '+
+	'					 method:\'post\', '+
+	'					 parameters:Form.serialize($(\'myform\')), '+
+	'					 onSuccess:handlerFunc}); '+
+	'				return false;" />	'+
+	'	<a href="">x</a>'+		
+	'	</form>'+
+	'</li>';
+	
+var newLink = '' +
+	'<li id="myListItem_1"> '+
+	'	<a href="#" id="mylink_1" onclick="replaceLinkWithInputField(this.parentNode.id)">new tab</a> '+
+	'</li>';	
+
+var handlerFunc = function(t) {
+	Element.hide('myform');
+	var replacementTab = '<a href="#">'+t.responseText+'</a>';
+	new Insertion.Bottom('navlist', replacementTab);	
+    new Insertion.Bottom('navlist', inputFieldForm);
+}
+	
+var replaceLinkWithInputField = function(id) {
+	Element.hide(id);
+	Element.show('newListItem');
+}
+
+</script>
+
+
+<a href="javascript:document.location.href=''">refresh</a>
+<p></p>
+
+<ul id="navlist">
+	<li id="newListItem" style="display:none">
+			<form id="myform" action="" method="post"  flexy:ignore >
+			<input 	type="text" id="text1" name="myvalue" value="new tab" size="5" 
+					onblur="new Ajax.Request(
+						'{makeUrl(#getFoo#,##,#cms#)}', 
+						{asynchronous:true, 
+						 method:'post',
+						 parameters:Form.serialize($('myform')),
+						 onSuccess:handlerFunc}); 
+					return false;" />
+			<a href="">x</a>		
+			</form>
+	</li>
+	
+	<li id="myListItem_1">
+		<a href="#" id="mylink_1" onclick="replaceLinkWithInputField(this.parentNode.id)">new tab</a>
+	</li>		
+</ul>
+  
+  

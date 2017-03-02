@@ -1,0 +1,14 @@
+<script type="text/javascript">
+SGL.ready(function() {
+    var aTypeSelects = $$('.attrTypeSelect');
+    $A(aTypeSelects).each(function(select) {
+        cms.contentType.parameter.toggleListType($(select.id).value, select.id +'List');
+    });
+});
+</script>
+<div class="moduleContainer" id="cmsContainer">
+    <div class="moduleContent left">
+    <h1>{translate(#Content Type Manager#)}</h1>
+    <flexy:include src="contentType_contentType.html" />
+    </div>
+</div>

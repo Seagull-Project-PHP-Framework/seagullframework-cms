@@ -1,0 +1,36 @@
+<div id="attrib-list-container" class="columns layout-2cols">
+
+    <div class="title-edit-simple">
+        <h1>{tr(#attribute lists (header)#)}</h1>
+        <span>
+            <a id="attrib-list-add"
+               href="#">{tr(#add attribute list (action)#)}</a>
+            <img class="ajaxLoader" src="{webRoot}/themes/{theme}/images/ajax-loader.gif" alt=""
+                 style="display: none;" />
+        </span>
+    </div>
+
+    <div class="c75l list">
+        <div class="layout-inner">
+
+            <p class="help">
+                {tr(#attribute list help#)}
+            </p>
+
+            <div id="attrib-list" class="zebra-container">
+            {foreach:aAttrLists,oAttr}
+                <flexy:include src="admin_attribute_item_full.html" />
+            {end:}
+            </div>
+
+            <p class="notfound" flexy:if="!aAttrLists">
+                {tr(#no attribute lists found#)}
+            </p>
+
+        </div><!-- inner -->
+    </div><!-- list -->
+
+    <div class="c25r">
+    </div>
+
+</div>

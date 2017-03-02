@@ -1,0 +1,7 @@
+From 1.5 to 1.6
+==================
+ *  CMS module now depends on media2 and tranlate modules
+ *  replace SGL_Task_SetupLangSupport with SGL_Task_SetupLangSupport2 in the global
+    filterchain
+ *  use only utf-8 languages
+ *  create a sgl/data/lang directory and give it webserver write perms

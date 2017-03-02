@@ -1,0 +1,55 @@
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.contentTypeEditForm').ajaxForm({
+        url :         makeUrl({module: 'cms', action: 'updateName'}),
+        type:         'post',
+        dataType :    'json',
+        beforeSubmit: cms.contentType.editor.validate,
+        success:      cms.contentType.editor.save
+    });
+    $('#newContentTypeForm').ajaxForm({
+        url :         makeUrl({module: 'cms', action: 'addContentType'}),
+        dataType :    'json',
+        beforeSubmit: cms.contentType.creator.validate,
+        success:      cms.contentType.creator.save
+    });
+});
+</script>
+<div id="manager-actions">
+    <span>{translate(#Action#)}: &nbsp;</span>
+    <a class="action add" href="#"
+       onclick="cms.contentType.creator.toggle();return false;">{translate(#new content type#,#ucfirst#)}</a>
+</div>
+<div id="content">
+    <div id="content-header">
+        <h2>{translate(#Content Type Manager#)}</h2>
+        <div class="message" id="ajaxMessage">{msgGet()}</div>
+    </div>
+
+    <div id="screenIntro">
+        <p class="help">
+            {translate(#content type intro#)}
+        </p>
+    </div>
+
+    <div class="fieldsetlike">
+        <div class="cmsBox clearfix" id="newAttribListBox" style="display:none">
+            <flexy:include src="contentType_newAttribListForm.html" />
+        </div>
+    </div>
+
+    <div class="clearfix" id="newContentType">
+            <flexy:include src="contentType_newContentTypeForm.html" />
+    </div>
+
+    {if:aContentTypes} <!-- SHOW CONTENT TYPEs -->
+        <div id="contentTypeList">
+        {foreach:aContentTypes,id,oContentType}
+            <flexy:include src="contentType_contentType.html" />
+        {end:}
+        </div>
+        {else:} <!-- NO CONTENT TYPES -->
+            <p>{translate(#No content types were found#)}</p>
+        {end:}
+	<div class="clear"></div>
+</div>

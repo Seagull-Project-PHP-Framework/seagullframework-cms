@@ -1,0 +1,11 @@
+<div id="content-type-stats" class="block-helper">
+    <h2><a href="#">{tr(#content types usage (header)#)}</a></h2>
+    <div class="inner">
+        <p><em>{tr(#content types usage total content items#)}</em></p>
+        <ul>
+            <li flexy:foreach="aStats,aStat">
+                {aStat[name]}: {aStat[total]}
+            </li>
+        </ul>
+    </div>
+</div>

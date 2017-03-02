@@ -1,0 +1,154 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>TestAddEditContentType</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TestAddEditContentType</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>http://dev.babyfy.com/index.php/user/login/action/logout</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>frm_username</td>
+	<td>admin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>frm_password</td>
+	<td>admin</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>submitted</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Maintenance</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>document.rebuildSeagull.submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Environment rebuilt successfully</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Content Types</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Content Type Manager</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>newContentTypeLink</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>contentType_name</td>
+	<td>New Content</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Content Type Manager</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Content Types</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>New Content</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[@onclick='cms.contentType.editor.edit(45);return false;']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>contentType_45_name</td>
+	<td>Changed Name</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>document.forms[43].elements[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>contentType_45_viewInfo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Admin</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Maintenance</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>document.rebuildSeagull.submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Environment rebuilt successfully</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=logout</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Login</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

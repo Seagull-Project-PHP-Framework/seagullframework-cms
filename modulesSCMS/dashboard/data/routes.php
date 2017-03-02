@@ -1,0 +1,3 @@
+<?php
+$aRoutes = array();
+?>

@@ -1,0 +1,64 @@
+<div id="content">
+    <div id="content-header">
+        <h2>{translate(pageTitle)}</h2>
+        <div class="message" id="ajaxMessage">{msgGet()}</div>
+    </div>
+
+            <div class="wrap">
+
+                <form id="filterPanel" method="post" action="" flexy:ignore>
+                    <fieldset class="hide">
+                        <input id="ajaxAddQueryFilterUrl" type="hidden"
+                            name="ajaxAddQueryFilterUrl"
+                            value="{makeUrl(#addQueryFilter#,##,#cms#)}" />
+                        <input id="ajaxGetAttributesUrl" type="hidden"
+                            name="ajaxGetAttributesUrl"
+                            value="{makeUrl(#getAttributesByContentTypeId#,##,#cms#)}" />
+                        <input id="ajaxGetQueryResultUrl" type="hidden"
+                            name="ajaxGetQueryResultUrl"
+                            value="{makeUrl(#getQueryResult#,##,#cms#)}" />
+                    </fieldset>
+
+                    <fieldset class="inside" id="filterParameters"></fieldset>
+
+                    <fieldset class=" inside actions">
+                        <span id="filterOptionsContainer">
+                            <label for="filterOptions">{translate(#Add filter#)}</label>
+                            <select id="filterOptions" name="filterOptions"></select>
+
+                            <input type="button" name="addFilter" value="{translate(#Add#)}"
+                                onclick="CmsQuery.addFilter()" />
+                        </span>
+
+                        <input class="update" type="submit" name="getResults"
+                            value="{translate(#Update#)}" />
+                    </fieldset>
+                </form>
+
+                <div class="clear"></div>
+
+	            <form flexy:ignore method="post" action="{makeUrl(#delete#,#content#,#cms#)}" id="contentList" name="contentList">
+	                <table class="full tablesorter" id="contentListTable" style="display: none;">
+	                    <!-- TABLE HEADER -->
+	                    <thead>
+	                       <flexy:include src="_contentListTableHead.html">
+	                    </thead>
+	                    <tfoot>
+	                        <tr class="tfoot">
+	                            <td colspan="99">
+			                    <p>
+			                    {translate(#With selected content#)} :
+			                    <input flexy:ignore class="sgl-button" type="submit" name="deleteButton" value="{translate(#delete#)}"
+			                           onClick="return confirmSubmit('content', 'contentList')" />
+			                    </p>
+
+	                            </td>
+	                        </tr>
+	                    </tfoot>
+	                    <tbody id="contentList-items">
+	                    </tbody>
+	                </table>
+
+	            </form>
+            </div>
+</div>

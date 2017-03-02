@@ -1,0 +1,45 @@
+<div id="content-view" class="{camelise(oContent.typeName)}">
+
+    <!--h1>{oContent.typeName}</h1-->
+
+    <div class="field" flexy:foreach="oContent.aAttribs,oAttrib">
+        <h3>{oAttrib.alias}</h3>
+        {if:oAttrib.value}
+
+        <!-- Rich text -->
+        {if:this.plugin(#attribTypeIsRichtext#,oAttrib.typeId)}
+        {oAttrib.value:h}
+        {else:}
+
+        <!-- Attribute list -->
+        {if:this.plugin(#attribTypeIsList#,oAttrib.typeId)}
+        <p>{this.plugin(#renderListAttribValue#,oContent,oAttrib.name)}</p>
+        {else:}
+
+        <!-- Media -->
+        {if:this.plugin(#attribTypeIsMedia#,oAttrib.typeId)}
+        <p>
+            {this.plugin(#renderMediaFile#,oAttrib.value):h}
+        </p>
+        {else:}
+
+        <!-- Date -->
+        {if:this.plugin(#attribTypeIsDate#,oAttrib.typeId)}
+        <p>
+            {formatDate2(oAttrib.value)}
+        </p>
+        {else:}
+
+        <!-- Regular text/value -->
+        <p>{oAttrib.value}</p>
+        {end:}
+        {end:}
+        {end:}
+        {end:}
+
+        {else:}
+        <p>{tr(#no value set#)}</p>
+        {end:}
+    </div>
+
+</div><!-- content-view -->

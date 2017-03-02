@@ -1,0 +1,20 @@
+<table id="content-type-item-view_{contentTypeId}" class="full">
+    <tbody>
+    {foreach:aAttribs,oAttr}
+        <tr flexy:raw="{this.plugin(#getContentRowStyle#):h}">
+            <td class="cell-10"><em>{oAttr.attr_id}</em></td>
+            <td class="cell-40">{oAttr.attr_alias}</td>
+            <td class="cell-40">
+                {this.plugin(#getArrayValueByKey#,aAttribTypes,oAttr.attr_type_id)}
+                {if:this.plugin(#attribTypeIsList#,oAttr.attr_type_id)}
+                    {if:oAttr.attr_params[attributeListId]}
+                <em>({this.plugin(#getArrayValueByKey#,aLists,oAttr.attr_params[attributeListId])})</em>
+                    {else:}
+                <em>({tr(#list is not defined#)})</em>
+                    {end:}
+                {end:}
+            </td>
+        </tr>
+    {end:}
+    </tbody>
+</table>

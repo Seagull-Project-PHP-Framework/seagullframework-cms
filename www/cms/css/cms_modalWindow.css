@@ -1,0 +1,132 @@
+
+/*--------------------------------------
+MODAL WINDOW
+--------------------------------------*/
+#modalWindow .mwInner {
+    width: 500px;
+}
+html > body #modalWindow .mwInner {
+    width: auto;
+    min-width: 500px;
+}
+#modalWindow h2 {
+    margin: 0 0 0.5em;
+    padding: 0.5em;
+	background: #99CC00;
+	color: #FFF;
+}
+#modalWindow .manager-actions {
+    clear: left;
+    padding: 8px 2px;
+    border-top: 2px solid <?php echo $primary ?>;
+}
+#modalWindow .button {
+    padding: 2px 8px;
+    color: #000;
+    background: #f2f2f2;
+    border: 2px outset;
+    font-size: 1em;
+    text-decoration: none;
+}
+#modalWindow .action {
+    padding: 2px;
+    text-decoration: underline;
+}
+#modalWindow .action:hover {
+    color: #fff;
+    text-decoration: none;
+}
+/* FILE Modal Window */
+#mediaThumbs {
+    height: 270px;
+    width: 500px;
+    overflow: auto;
+    background: #fff;
+}
+.thumb {
+    float: left;
+    margin: 7px;
+    border: 2px solid <?php echo $greyLightest ?>;
+}
+.thumbInner {
+    text-align: center;
+    vertical-align: middle;
+    width: 70px;
+    height: 70px;
+    border: 1px solid #ccc;
+}
+#mediaThumbs .current {
+    border: 2px solid <?php echo $primary ?>;
+}
+/* URL Modal Window */
+#linkAssoc #linkEditor {
+    position: relative;
+}
+#linkAssoc #linkEditorHeader {
+    margin: 10px 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid <?php echo $primary ?>;
+}
+#linkAssoc input#linkText-editValue {
+    width: 400px;
+}
+#linkAssoc #linkTypePane {
+    float: left;
+    width: 150px;
+    margin: 0;
+    padding: 20px 0 0;
+}
+#linkAssoc #linkTypePane dt {
+    margin: 0 0 1em;
+    padding: 0;
+}
+#linkAssoc #linkTypePane dd {
+    margin: 0;
+    padding: 10px 10px 10px 20px;
+}
+#linkAssoc #linkTypePane dd.selected {
+    background: #fff;
+}
+#linkAssoc #linkResourcePane {
+    float: left;
+    width: 440px;
+    margin: 0;
+    padding: 0;
+}
+#linkAssoc .linkResourcePane {
+    padding: 5px;
+    background: #fff;
+}
+#linkAssoc input#linkHref-editField {
+    width: 420px;
+}
+#linkAssoc #linkTypeInternal-pane {
+    height: 300px;
+    overflow: auto;
+}
+#linkAssoc #linkTypeInternal-pane ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#linkAssoc #linkTypeInternal-pane ul li.parent {
+    font-weight: bold;
+}
+#linkAssoc #linkTypeInternal-pane ul li {
+    margin: 0;
+    padding: 3px;
+    padding-left: 20px;
+    font-weight: normal;
+}
+#linkAssoc #linkTypeInternal-pane ul li a {
+    color: #666;
+}
+#linkAssoc #linkTypeInternal-pane ul li img {
+    vertical-align: middle;
+}
+#linkAssoc #linkTypeInternal-pane li.current ul {
+    display: block;
+}
+#linkAssoc #linkTypeInternal-pane li ul {
+    display: none;
+}
